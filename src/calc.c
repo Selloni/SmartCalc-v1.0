@@ -7,9 +7,9 @@ int validation(char *value) {
         printf("err 1");
     } else {
         while (value[i] != '\0') {
+            int err_flag = 0;
             int point = 0;
             int bracket = 0;
-
             // char *sing = '=+-()/*^';
             char *cos = "cosintaqrlg";
             if ((value[i] > '41' && value[i] < '47' || value[i] == '94') &&\
@@ -27,14 +27,14 @@ int validation(char *value) {
                 }
             } else if (value[i] == '40') {  // (
                 bracket++;
-            } else if (value[i] == 41) {  // )
+            } else if (value[i] == '41') {  // )
                 if (bracket == 0) {
                     break;
                     printf('err_bracket');
                 } else {
                     bracket--;
                 }
-            } else if (value[i] > '47' && value[i] < '58') {
+            } else if (value[i] > '47' && value[i] < '58') {  //   cos, sin, tg
                 int flag_stop = 0;
                 for(int a = 0; cos[a] != '\0'; a++) {
                     if (value[i] != cos[a])
@@ -46,4 +46,18 @@ int validation(char *value) {
             i++;
         }
     }
+    // return(err_flag);
 }
+
+push(int value) {
+
+}
+
+pop() {
+
+}
+
+int pull_stack() {
+
+}
+

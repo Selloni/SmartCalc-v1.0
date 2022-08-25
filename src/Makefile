@@ -1,16 +1,19 @@
 CC = gcc -std=c11
 GCC = $(CC) -Wall -Wextra -Werror
-SOURSE = 
+SOURSE = main.c 
 OBJECT =
 
+debug:
+	$(CC) $(SOURSE)
 
-all:
+all: 
 
 install:
 
 uninstall:
 
 clean:
+	rm -rf a.out
 
 dvi:
 
