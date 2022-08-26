@@ -72,9 +72,22 @@ Data pop(Node **plist) {
     return res;
 }
 
+int pars_sign(val) {
+    int priora;
+    if(val == '+' || val == '-'){
+        priora = plus;
+    } else if (val == '/' || val == '*'){
+        priora = div;
+    } else if (val == '^'){
+        priora = exp;
+    }
+    return priora;
+}
+
 int pull_stack(char *value) {
-    int err_flag = 0;
+    int err_flag = 0;  //  раскрыть флаг 
     Node *list = NULL;
+    sing *s_lst = NULL;
     int i = 0;
     int j = 0;
     char *str;
@@ -85,11 +98,12 @@ int pull_stack(char *value) {
         else if (value[i] < '47' && value[i] > '57') {
             int num;
             num = str - '0';
-            printf('%s', str);  /////////
+            printf('%s', str);  ///////// 
             push(&list ,num, 0);
-            push 
+            push(&s_lst, value[i], pars_sing(value[i])); 
         }
     }
+    return (err_flag);
 }
 
 int liksema () {

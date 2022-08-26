@@ -25,7 +25,11 @@ typedef struct Node {
 }Node;
 // typedef struct Node Node;
 
-
+typedef struct sing {
+    char data; // по этому указателю мы храним какие-то данные
+    struct sing *next; // это у нас ссылка на следующий указатель
+    int prioritet;// struct list_item *prev; // это у нас ссылка на предыдущий указатель
+}sing;
 // // Общая структура списка
 // typedef struct list {
 //     int count; // информация о размере списка
@@ -36,3 +40,4 @@ typedef struct Node {
 void push(Node **plist, Data value, int import);
 int is_emty(Node *list);
 int pop(Node **plist);
+int pull_stack(char *value);
