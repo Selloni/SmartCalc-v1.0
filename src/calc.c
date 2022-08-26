@@ -2,10 +2,12 @@
 
 
 int validation(char *value) {
+    int err_flag = 1;
     int i = 0;
     if (value[0] == '94' && value[0] == '46' && value[0] == '47' && value[0] == '42') {
         printf("err 1");
     } else {
+        int len = strlen(value);
         while (value[i] != '\0') {
             int err_flag = 0;
             int point = 0;
@@ -34,7 +36,7 @@ int validation(char *value) {
                 } else {
                     bracket--;
                 }
-            } else if (value[i] > '47' && value[i] < '58') {  //   cos, sin, tg
+            } else if (value[i] > '47' && value[i] < '58') {  //   cos, sin, tg /// переделать проверу на тангенс
                 int flag_stop = 0;
                 for(int a = 0; cos[a] != '\0'; a++) {
                     if (value[i] != cos[a])
@@ -44,20 +46,52 @@ int validation(char *value) {
                 if (flag_stop > 0) break;
             }
             i++;
+            if (i = len) err_flag = 0;
         }
     }
-    // return(err_flag);
+    return(err_flag);  // 0 not error
 }
 
-push(int value) {
-
+void push(Node **plist, Data value, int import) {
+    Node *p = malloc(sizeof(Node));
+    p->data = value; 
+    p->next = *plist;
+    p->prioritet = import;
+    *plist = p;
 }
 
-pop() {
-
+int is_emty(Node *list) {
+    return (list == NULL) ? 0 : 1;
 }
 
-int pull_stack() {
-
+Data pop(Node **plist) {
+    Node *p = *plist;
+    Data res = p->data;
+    *plist = p->next; 
+    free (p);
+    return res;
 }
 
+int pull_stack(char *value) {
+    int err_flag = 0;
+    Node *list = NULL;
+    int i = 0;
+    int j = 0;
+    char *str;
+    while (value[i] != '\0') {
+        if(value[i] > '47' && value[i] < '57') {
+            str[j] = value[i];
+        }
+        else if (value[i] < '47' && value[i] > '57') {
+            int num;
+            num = str - '0';
+            printf('%s', str);  /////////
+            push(&list ,num, 0);
+            push 
+        }
+    }
+}
+
+int liksema () {
+
+}

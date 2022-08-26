@@ -1,20 +1,22 @@
 #include "calc.h"
 
-int main () {
+int main (int argc, char **argv) {
     // typedef struct list_item Node;
+    int test[] = {3, 15 ,6};
     Node *list = NULL;
-    Node a = {3};
-    Node b = {5};
-    Node c = {15};
-    list = &a;
-    a.next = &b;
-    b.next = &c; 
-    c.next = NULL;
+    for(size_t i = 0; i < sizeof(test)/sizeof(test[0]); i++) {
+        push(&list, test[i], 0);
+        // printf(&list);
+    }
 
     for (Node *p = list; p != NULL; p = p->next){
         printf("%d ", p->data);
     }
-    // prinf("%d", p -> data); p = p -> next;
-    // prinf("%d", p -> data); p = p -> next;
-    // prinf("%d", p -> data); p = p -> next;
+    
+    // while (! is_emty(list)) {
+    //     int d = pop(&list);
+    //     printf(pop(is_emty));
+    // }
 }
+
+

@@ -1,6 +1,6 @@
 CC = gcc -std=c11
 GCC = $(CC) -Wall -Wextra -Werror
-SOURSE = main.c 
+SOURSE = main.c calc.c
 OBJECT =
 
 debug:
@@ -19,7 +19,8 @@ dvi:
 
 dist:
 
-tests:
+tests: OBJECT
+	$(CC) -I include  $(SOURSE) unit_test.c -o test -lcheck
 
 gcov_report:
 
@@ -28,3 +29,5 @@ git:
 	git commit -m "$(date)"
 	git push
 
+OBJECT:
+	$(GCC) $(SOURSE) -c
