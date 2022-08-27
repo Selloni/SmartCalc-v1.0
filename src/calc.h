@@ -13,6 +13,7 @@ enum prioritet {
     div = 3,
     exp = 4,
     mod = 1,
+    cos = 5,
 };
 
 

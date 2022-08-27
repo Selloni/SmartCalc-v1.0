@@ -90,22 +90,52 @@ int pull_stack(char *value) {
     sing *s_lst = NULL;
     int i = 0;
     int j = 0;
+    char *trg = "cosintaqrlg";
     char *str;
     while (value[i] != '\0') {
         if(value[i] > '47' && value[i] < '57') {
             str[j] = value[i];
-        }
+        } /////////// заупстить тригонометрическую функцияю 
+
         else if (value[i] < '47' && value[i] > '57') {
             int num;
             num = str - '0';
+            str = ' ';
+            for(int l = 0; trg[l]; l++) {  // смотрим наш масиф тригонометрический и проверям ввод пользователья\
+            запсисывваем в строку с которой в дальнейшем будем работать
+                if (value[i] = trg[l]) str[l] = trg[l];
+            }
             printf('%s', str);  ///////// 
             push(&list ,num, 0);
-            push(&s_lst, value[i], pars_sing(value[i])); 
+            push(&s_lst, value[i], pars_sing(value[i]));
         }
+        i++;
+        j++;
     }
     return (err_flag);
 }
 
-int liksema () {
 
+int trigonometr(char str) {
+    int prior = 5;
+    if (str = 'cos') {
+        prior = 5;
+    } else if (str = 'sin') {
+        prior = 5;
+        } else if (str = 'tan') {
+        prior = 5;
+        } else if (str = 'acos') {
+        prior = 5;
+        } else if (str = 'asin') {
+        prior = 5;
+        } else if (str = 'atan') {
+        prior = 5;
+        } else if (str = 'sqrt') {
+        prior = 5;
+        } else if (str = 'ln') {
+        prior = 5;
+        }  else if (str = 'log') {
+        prior = 5;
+        }
+        return prior;
 }
