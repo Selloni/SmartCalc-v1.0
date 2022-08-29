@@ -1,6 +1,6 @@
 CC = gcc -std=c11
 GCC = $(CC) -Wall -Wextra -Werror
-SOURSE = main.c calc.c
+SOURSE = main.c s21_calc.c s21_steck.c
 OBJECT =
 
 debug:
@@ -27,7 +27,7 @@ gcov_report:
 
 git:
 	git add .
-	git commit -m "calc"
+	git commit -m "нужно передалеть тригонометрю, возможно сторит передалеть стек"
 	git push
 
 OBJECT:

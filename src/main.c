@@ -1,8 +1,9 @@
-#include "calc.h"
+#include "s21_calc.h"
 
 int main () {
     Node *list = NULL;
     Node *s_lst = NULL;
+    Node *p;
     char *str = "(0.25+17)*86";
     int err;
     err = validation(str);
@@ -12,13 +13,13 @@ int main () {
         pull_stack(str, list, s_lst);
     }
     for (Node *p = list; p != NULL; p = p->next) {
-        printf("o%d ", p->data);
+        printf("l %d ", p->data);
     }
     printf ("\n");
     for (Node *p = s_lst; p != NULL; p = p->next) {
-        printf("p%d ", p->data);
+        printf("s %d ", p->data);
     }
-    printf("asa");
+    // printf("asa");
 
     
     // typedef struct list_item Node;

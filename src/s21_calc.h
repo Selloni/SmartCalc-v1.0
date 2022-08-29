@@ -1,4 +1,8 @@
 #pragma once
+
+// #ifndef SRC_S21_CALC_H_
+// #define SRC_S21_CALC_H_
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -37,7 +41,7 @@ enum operator {
 typedef struct Node {
     Data data; // по этому указателю мы храним какие-то данные
     struct Node *next; // это у нас ссылка на следующий указатель
-    int operator;
+    char operator;
     int prioritet;// struct list_item *prev; // это у нас ссылка на предыдущий указатель
 }Node;
 // typedef struct Node Node;
@@ -64,3 +68,5 @@ int pull_stack(char *value, Node *list, Node *s_lst);
 int trigonometr(Node *s_lst, char *str);
 int validation(char *value);
 int pars_sing(Node *s_lst, char val);
+
+// #endif

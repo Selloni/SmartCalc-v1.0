@@ -1,4 +1,4 @@
-#include "calc.h"
+#include "s21_calc.h"
 
 
 int validation(char *value) {
@@ -54,26 +54,6 @@ int validation(char *value) {
     return(err_flag);  // 0 not error
 }
 
-void push(Node **plist, Data value, int operator, int prior) {
-    Node *p = malloc(sizeof(Node));
-    p->data = value; 
-    p->next = *plist;
-    p->prioritet = prior;
-    p->operator = operator;
-    *plist = p;
-}
-
-// int is_emty(Node *list) {
-//     return (list == NULL) ? 0 : 1;
-// }
-
-Data pop(Node **plist) {
-    Node *p = *plist;
-    Data res = p->data;
-    *plist = p->next; 
-    free (p);
-    return res;
-}
 
 int pars_sing(Node *s_lst, char val) {
     int oper = 0;
@@ -105,26 +85,36 @@ int pars_sing(Node *s_lst, char val) {
 int pull_stack(char *value, Node *list, Node *s_lst) {
     int err_flag = 0;  //  раскрыть флаг 
     int num_flag = 0;
-    int num;
+    double num;
     int i = 0;
     int j = 0;
     char *trg = "mdcosintaqrlg";
-    char str[256] = {0};  //  есть ли не обходимось создавать статический масив
-    while (value[i] != '\0') {
+    char str[256] = {'\0'};  //  есть ли не обходимось создавать статический масив
+    int len = strlen(value);
+    len +=1;
+    // len = len + 1;
+    while (i != len) {
+        if (value[0] == '-') {
+            push(&list, 0, 0, 0);
+            push(&s_lst, 0, minus, 1);
+            i++;
+        }
         if(value[i] > 47 && value[i] < 58 || value[i] == '.') {
             str[j] = value[i];
             num_flag = 1;
             j++;
+            printf(".-%s-.", str);
          /////////// заупстить тригонометрическую функцию 
          } else {  //  не цифры
-            j = 0;
+            j = 0;  //////// касяк  
             int have_trg = 0;
             if (num_flag) {
-                num = *str - '0';
+                num = atof(str);
                 push(&list, num, 0, 0);
+                printf("num-%f\n", num);
             }
             num_flag = 0;
-            *str = ' ';
+            memset(str, '\0', 256);
             if (value[i] > 96 && value[i] < 123 ) {  // alphabet
                 for(int l = 0; trg[l]; l++) {  // смотрим наш масиф тригонометрический и проверям ввод пользователья\
                 запсисывваем в строку с которой в дальнейшем будем работать
@@ -135,7 +125,7 @@ int pull_stack(char *value, Node *list, Node *s_lst) {
                 printf("err_trigonmetri");
                 break;
             } else {
-                printf("в стк%s ", str);  ///////// 
+                // printf("в стк%s ", str);  ///////// 
                 int g = pars_sing(s_lst, value[i]);
                 // printf("%d",g);
             }
@@ -148,37 +138,38 @@ int pull_stack(char *value, Node *list, Node *s_lst) {
 
 
 int trigonometr(Node *s_lst, char *str) {
-    int prior = 0;
+    int err = 0;
     if (str == "cos") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, cos, 4);
     } else if (str == "sin") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, sin, 4);
     } else if (str == "tan") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, tan, 4);
     } else if (str == "acos") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, acos, 4);
     } else if (str == "asin") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, asin, 4);
     } else if (str == "atan") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, atan, 4);
     } else if (str == "sqrt") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, sqrt, 4);
     } else if (str == "ln") {
-        prior = 1;
+        err = 1;
         push(&s_lst, 0, ln, 4);
-    }  else if (str == "log") {
-        prior = 1;
+    } else if (str == "log") {
+        err = 1;
         push(&s_lst, 0, log, 4);
-    } else if (str == "mod"); {
-        prior = 1;
+    } else if (str == "mod") {
+        err = 1;
         push(&s_lst, 0, mod, 2);
     }
-    return (prior);
+    return (err);
 }
+
