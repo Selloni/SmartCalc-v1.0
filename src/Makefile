@@ -4,7 +4,7 @@ SOURSE = main.c calc.c
 OBJECT =
 
 debug:
-	$(CC) $(SOURSE)
+	$(CC) $(SOURSE) -g
 
 all: 
 
@@ -14,6 +14,7 @@ uninstall:
 
 clean:
 	rm -rf a.out
+	rm -rf a.out*
 
 dvi:
 
@@ -26,7 +27,7 @@ gcov_report:
 
 git:
 	git add .
-	git commit -m "$(date)"
+	git commit -m "calc"
 	git push
 
 OBJECT:
