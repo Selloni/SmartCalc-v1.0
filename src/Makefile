@@ -27,7 +27,7 @@ gcov_report:
 
 git:
 	git add .
-	git commit -m "нужно передалеть тригонометрю, возможно сторит передалеть стек"
+	git commit -m "s21_calc"
 	git push
 
 OBJECT:

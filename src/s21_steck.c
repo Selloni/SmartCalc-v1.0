@@ -2,10 +2,10 @@
 
 void push(Node **plist, Data value, int operator, int prior) {
     Node *p = malloc(sizeof(Node));
-    p->data = value; 
+    p->data = value;
+    p->operator = operator;
     p->next = *plist;
     p->prioritet = prior;
-    p->operator = operator;
     *plist = p;
 }
 
@@ -13,7 +13,7 @@ void push(Node **plist, Data value, int operator, int prior) {
 //     return (list == NULL) ? 0 : 1;
 // }
 
-Data pop(Node **plist) {
+int pop(Node **plist) {
     Node *p = *plist;
     Data res = p->data;
     *plist = p->next; 

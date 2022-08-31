@@ -41,7 +41,7 @@ enum operator {
 typedef struct Node {
     Data data; // по этому указателю мы храним какие-то данные
     struct Node *next; // это у нас ссылка на следующий указатель
-    char operator;
+    int operator;
     int prioritet;// struct list_item *prev; // это у нас ссылка на предыдущий указатель
 }Node;
 // typedef struct Node Node;

@@ -3,12 +3,12 @@
 int main () {
     Node *list = NULL;
     Node *s_lst = NULL;
-    Node *p;
-    char *str = "(0.25+17)*86";
+    // char *str = "(0.25+17)*8.6";
+    char *str = "25+17*86";
     int err;
     err = validation(str);
     if(validation(str)) {
-        printf("%dvalid\n", err);
+        printf("\n%dvalid\n", err);
     } else {
         pull_stack(str, list, s_lst);
     }

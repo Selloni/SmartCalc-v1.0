@@ -15,7 +15,7 @@ int validation(char *value) {
             // char *sing = '=+-()/*^';
             char *cos = "cosintaqrlg";
             if ((value[i] > 41 && value[i] < 47 || value[i] == 94) &&\
-            value[i++] > 41 && value[i+1] < 47 || value[i+1] == 94 ) {  //  //  )*+,-./^
+            value[i+1] > 41 && value[i+1] < 47 || value[i+1] == 94 ) {  //  //  )*+,-./^
                 printf("err 2 %d---", i);
                 break;
             } else if (value[0] == 94 && value[0] == 45) {  // ^.
@@ -36,15 +36,6 @@ int validation(char *value) {
                 } else {
                     bracket--;
                 }
-            } else if (value[i] < 47 || value[i] > 58) {  //   cos, sin, tg /// переделать проверу на тангенс
-                int flag_stop = 0;
-                for(int a = 0; cos[a] != '\0'; a++) {
-                    if (value[i] != cos[a])
-                    flag_stop = 1;
-                    printf("err 6 i=%d---", i);
-                    break;
-                }
-                if (flag_stop > 0) printf("err 7 %d---", i); break;
             }
             // printf("%d", i);
             i++;
@@ -57,35 +48,45 @@ int validation(char *value) {
 
 int pars_sing(Node *s_lst, char val) {
     int oper = 0;
+    printf("вхождение в поиск знака");
     if(val == '+') {
         push(&s_lst, 0, plus, 1);
         oper = plus;
+        printf("sd-%d ", s_lst->operator);
     } else if (val == '-') {
         push(&s_lst, 0, minus, 1);
         oper = minus;
+        printf("sd-%d ", s_lst->data);
     } else if (val == '/') {
         push(&s_lst, 0, division, 2);
         oper = division;
+        printf("sd-%d ", s_lst->data);
     } else if (val == '*') {
         push(&s_lst, 0, mult, 2);
         oper = mult;
+        printf("sd-%d ", s_lst->data);
     } else if (val == '^') {
         push(&s_lst, 0, exp, 5);
         oper = exp;
+        printf("sd-%d ", s_lst->data);
     } else if (val == '(') {
         push(&s_lst, 0, brack_op, 5);
         oper = brack_op;
+        printf("sd-%d ", s_lst->data);
     } else if (val == '(') {
         push(&s_lst, 0, brack_cl, 5);
         oper = brack_cl;
+        printf("sd-%d ", s_lst->data);
     }
+    printf("\n");
+    // printf("sd-%d ", s_lst->operator);
     return oper;
 }
 
 int pull_stack(char *value, Node *list, Node *s_lst) {
     int err_flag = 0;  //  раскрыть флаг 
     int num_flag = 0;
-    double num;
+    Data num;
     int i = 0;
     int j = 0;
     char *trg = "mdcosintaqrlg";
@@ -109,16 +110,20 @@ int pull_stack(char *value, Node *list, Node *s_lst) {
             j = 0;  //////// касяк  
             int have_trg = 0;
             if (num_flag) {
-                num = atof(str);
+                num = atoi(str);
                 push(&list, num, 0, 0);
                 printf("num-%f\n", num);
+                printf("d-%d ", list->data);
+                printf("p-%d ", list->prioritet);
+                printf("o-%d ", list->operator);
             }
             num_flag = 0;
             memset(str, '\0', 256);
             if (value[i] > 96 && value[i] < 123 ) {  // alphabet
                 for(int l = 0; trg[l]; l++) {  // смотрим наш масиф тригонометрический и проверям ввод пользователья\
                 запсисывваем в строку с которой в дальнейшем будем работать
-                if (value[i] = trg[l]) str[l] = trg[l];
+                str[i] = value[i];
+                if (value[i] == trg[l]) str[l] = trg[l];
                     have_trg = 1;  //   думал реализовать флаг, для контроля входа в цикл
                 }
             } else if (!trigonometr(s_lst, str) && (have_trg)) {  //  проверить чательнее 
@@ -126,8 +131,8 @@ int pull_stack(char *value, Node *list, Node *s_lst) {
                 break;
             } else {
                 // printf("в стк%s ", str);  ///////// 
-                int g = pars_sing(s_lst, value[i]);
-                // printf("%d",g);
+                pars_sing(s_lst, value[i]);
+                printf("end");
             }
         }
         i++;
