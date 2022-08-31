@@ -112,7 +112,7 @@ int pull_stack(char *value, Node *list, Node *s_lst) {
             if (num_flag) {
                 num = atoi(str);
                 push(&list, num, 0, 0);
-                printf("num-%f\n", num);
+                printf("num-%d\n", num);
                 printf("d-%d ", list->data);
                 printf("p-%d ", list->prioritet);
                 printf("o-%d ", list->operator);
