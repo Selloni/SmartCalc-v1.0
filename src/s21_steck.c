@@ -9,6 +9,13 @@ void push(Node **plist, Data value, int operator, int prior) {
     *plist = p;
 }
 
+void print(Node *list) {
+    printf("-\n");
+    for(Node *p = list; p != NULL; p = p->next) {
+        printf("%d ", p->data);
+    }
+    printf("-\n");
+}
 // int is_emty(Node *list) {
 //     return (list == NULL) ? 0 : 1;
 // }

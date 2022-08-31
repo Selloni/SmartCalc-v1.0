@@ -10,15 +10,19 @@ int main () {
     if(validation(str)) {
         printf("\n%dvalid\n", err);
     } else {
-        pull_stack(str, list, s_lst);
+        pull_stack(str, &list, &s_lst);
     }
-    for (Node *p = list; p != NULL; p = p->next) {
-        printf("l %d ", p->data);
-    }
+    // for (Node *p = list; p != NULL; p = p->next) {
+    //     printf("l %d ", p->data);
+    // }
+    // print(&list);
+    printf("%p ", list);
     printf ("\n");
-    for (Node *p = s_lst; p != NULL; p = p->next) {
-        printf("s %d ", p->data);
-    }
+    printf("kostya");
+    // for (Node *p = s_lst; p != NULL; p = p->next) {    
+    //     printf("s %d ", p->operator);
+    //     printf("s %d ", p->prioritet);
+    // }
     // printf("asa");
 
     
@@ -30,9 +34,9 @@ int main () {
 //         // printf(&list);
 //     }
 
-//     for (Node *p = list; p != NULL; p = p->next){
-//         printf("%d ", p->data);
-//     }
+    for (Node *p = list; p != NULL; p = p->next){
+        printf("%d ", p->data);
+    }
     
 //     // while (! is_emty(list)) {
 //     //     int d = pop(&list);

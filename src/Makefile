@@ -1,6 +1,6 @@
 CC = gcc -std=c11
 GCC = $(CC) -Wall -Wextra -Werror
-SOURSE = main.c s21_calc.c s21_steck.c
+SOURSE = main.c s21_calc.c s21_steck.c s21_validation.c
 OBJECT =
 
 debug:
@@ -27,7 +27,7 @@ gcov_report:
 
 git:
 	git add .
-	git commit -m "s21_calc"
+	git commit -m "решил вопрос с указателями, возможо стоит откатить для конфортной рабоыт"
 	git push
 
 OBJECT:
