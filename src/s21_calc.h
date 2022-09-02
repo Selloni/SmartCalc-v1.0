@@ -6,31 +6,31 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-// #include <math.h>
+#include <math.h>
 
 #define tgr m || d || c || o || s || i || n || t || a || q || r || l || g  //  вместо перебора в цикле
-typedef int Data;
+typedef double Data;
 
 
 enum operator {
     // score = 0.
-    plus = 1,
-    minus = 2,
-    mult = 3,
-    division = 4,
-    exp = 5,
-    mod = 6,
-    cos = 7,
-    sin = 8,
-    tan = 9,
-    acos = 10,
-    asin = 11,
-    atan = 12,
-    sqrt = 13,
-    ln = 14,
-    log = 15,
-    brack_op = 16,
-    brack_cl = 17,
+    plus_s = 1,
+    minus_s = 2,
+    mult_s = 3,
+    division_s = 4,
+    exp_s = 5,
+    mod_s = 6,
+    cos_s = 7,
+    sin_s = 8,
+    tan_s = 9,
+    acos_s = 10,
+    asin_s = 11,
+    atan_s = 12,
+    sqrt_s = 13,
+    ln_s = 14,
+    log_s = 15,
+    brack_op_s = 16,
+    brack_cl_s = 17,
 
 };
 
@@ -67,7 +67,7 @@ int pop(Node **plist);
 int pull_stack(char *value, Node **list, Node **s_lst);
 int trigonometr(Node **s_lst, char *str);
 int validation(char *value);
-int pars_sing(Node **s_lst, char val);
+// int pars_sing(Node **s_lst, char val);
 void print(Node *list);
 
 // #endif

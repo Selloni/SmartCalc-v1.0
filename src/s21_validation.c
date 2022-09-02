@@ -1,5 +1,5 @@
 #include "s21_calc.h"
-
+///////// проверить на масимально допустимое число
 int validation(char *value) {
     int err_flag = 1;
     int i = 0;

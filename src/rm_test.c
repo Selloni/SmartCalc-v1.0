@@ -23,6 +23,17 @@ void push (Nod **list, Data val) {
     // free(*tmp);
 }
 
+int pop(Nod **plist) {
+    Nod *p = *plist;
+    Data res = p->data;
+    *plist = p->next; 
+    free (p);
+    return res;
+}
+
+int empty(list) {
+    return (list == NULL);
+}
 
 
 int main () {
@@ -43,5 +54,11 @@ int main () {
         push(&list, test[i]);
     }
     print(list);
+    pop(&list);
+    print(list);
+    while (!empty(list)){
+        pop(&list);
+        print(list);
+    }
     return 0;
 }

@@ -3,8 +3,17 @@
 int main () {
     Node *list = NULL;
     Node *s_lst = NULL;
-    // char *str = "(0.25+17)*8.6";
-    char *str = "25+17*86";
+    char *str = "-2.5+17+86+sin(45)";
+//  реализовать запись строки в обратную сторону 
+    int len = strlen(str);
+    char invert[len];
+    int i = 0;
+    while (len != 0) {
+        invert[i] = str[len]; 
+        i++;
+        len--;
+    }
+//  реализовал запись строки в обратную сторону
     int err;
     err = validation(str);
     if(validation(str)) {
@@ -12,13 +21,10 @@ int main () {
     } else {
         pull_stack(str, &list, &s_lst);
     }
-    // for (Node *p = list; p != NULL; p = p->next) {
-    //     printf("l %d ", p->data);
-    // }
-    // print(&list);
     printf("%p ", list);
+    print(list);
     printf ("\n");
-    printf("kostya");
+    print(s_lst);
     // for (Node *p = s_lst; p != NULL; p = p->next) {    
     //     printf("s %d ", p->operator);
     //     printf("s %d ", p->prioritet);
@@ -34,9 +40,10 @@ int main () {
 //         // printf(&list);
 //     }
 
-    for (Node *p = list; p != NULL; p = p->next){
-        printf("%d ", p->data);
-    }
+    // for (Node *p = list; p != NULL; p = p->next){
+    //     printf("%d ", p->data);
+    // }
+    
     
 //     // while (! is_emty(list)) {
 //     //     int d = pop(&list);
