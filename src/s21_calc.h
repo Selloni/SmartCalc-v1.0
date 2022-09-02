@@ -61,7 +61,7 @@ typedef struct Node {
 
 
 
-void push(Node **plist, Data value, int operator, int prior);
+void push(Node **plist, Data value, char operator, int prior);
 int is_emty(Node *list);
 int pop(Node **plist);
 int pull_stack(char *value, Node **list, Node **s_lst);

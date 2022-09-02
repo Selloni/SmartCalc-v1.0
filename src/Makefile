@@ -27,7 +27,7 @@ gcov_report:
 
 git:
 	git add .
-	git commit -m "решил вопрос с указателями, возможо стоит откатить для конфортной рабоыт"
+	git commit -m "не удаеться счиать структуру"
 	git push
 
 OBJECT:

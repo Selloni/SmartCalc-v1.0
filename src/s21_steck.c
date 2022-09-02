@@ -21,10 +21,8 @@ int pull_stack(char *value, Node **list, Node **s_lst) {
             str[j] = value[i];
             num_flag = 1;
             j++;
-            // printf(".-%s-.", str);
          /////////// заупстить тригонометрическую функцию 
-         } else if (value[i] == 'X') {  //   передовать переменную , которой пользователь будет присваивать х
-            // push(list, num, 0, 0);
+        //  } else if (value[i] == 'X') {  //   передовать переменную , которой пользователь будет присваивать х
          } else {  //  не цифры
             j = 0;  //////// касяк  
             int have_trg = 0;
@@ -42,8 +40,8 @@ int pull_stack(char *value, Node **list, Node **s_lst) {
                 printf("err_trigonmetri");
                 break;
             } else {
-                // printf("в стк%s ", str);  ///////// 
-                calc(&list, &s_lst, pars_sing(value[i]), value[i]);
+                int prior = pars_sing(value[i]);
+                calc(&list, &s_lst, prior, value[i]);
             }
         }
         i++;
@@ -98,7 +96,7 @@ int trigonometr(Node **s_lst, char *word) {
     char tmp9[] = "log";
     char tmp10[] = "mod";
     for(int i = 0; word[i] != '\0'; i++){  //  отстой, спросить рекомендации как сдлеать лучше 
-        printf("%s\n", word);
+        // printf("%s\n", word);
         str[i] = word[i];
     }
     if (!strcmp(str, tmp0)) {
@@ -135,7 +133,7 @@ int trigonometr(Node **s_lst, char *word) {
     return (err);
 }
 
-void push(Node **plist, Data value, int operator, int prior) {
+void push(Node **plist, Data value, char operator, int prior) {
     Node *p = malloc(sizeof(Node));
     p->data = value;
     p->operator = operator;
@@ -160,16 +158,16 @@ int is_emty(Node *list) {
 int pop(Node **plist) {
     Node *p = *plist;
     Data res = p->data;
-    printf("%d", res);
+    // printf("int pop%d\n", res);
     *plist = p->next; 
-    free (p);
+    // free (p);
     return res;
 }
 
-// int pop_s(Node **plist) {
-//     Node *p = *plist;
-//     char res = p->operator;
-//     *plist = p->next; 
-//     free (p);
-//     return res;
-// }
+char pop_s(Node **plist) {
+    Node *p = *plist;
+    char res = p->operator;
+    *plist = p->next; 
+    // free (p);
+    return res;
+}

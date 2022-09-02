@@ -53,8 +53,11 @@ int main () {
     for (int i = 0; i < 4; i ++){
         push(&list, test[i]);
     }
+    
     print(list);
-    pop(&list);
+    int sum = pop(&list);
+    sum = sum + pop(&list);
+    printf("sum %d\n", sum);
     print(list);
     while (!empty(list)){
         pop(&list);

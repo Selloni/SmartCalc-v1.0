@@ -5,13 +5,16 @@ int calc(Node *list, Node *s_list, int prior, char oper) {
         Data var1;
         Data var2;
         Data sum = 0;
-        char stek_oper = s_list->operator;
+        // char stek_oper = s_list->operator;
             //передаю инвентированную строку 
         if (prior >= s_list->prioritet || oper == ')' || oper == '(') {
             push(s_list, 0, oper, prior);
         } else {
             var1 = pop(&list);
+            printf("1var%f\n", var1);
             var2 = pop(&list);
+            printf("2var%f\n", var2);
+            printf("c%cc", oper);
             if (oper == '+') {
                 sum = var2 + var1;  
             } else if (oper == '-') {
@@ -27,12 +30,12 @@ int calc(Node *list, Node *s_list, int prior, char oper) {
             } else if (oper == ')') {
                 
             }
-            printf("%d", sum);
+            printf("sum%f\n", sum);
         }
     } else {
         push(s_list, 0, oper, prior);
     }
-   
+    return 0;
 }
 
 int pars_sing(char val) {
@@ -56,42 +59,5 @@ int pars_sing(char val) {
     return prior;
 }
 
-// int pars_sing(Node *s_lst, char val) {
-//     int oper = 0;
-//     int prior = s_lst->prioritet;
-//     Data var1;
-//     Data var2;
-//     char sign;    
-//     if (val == '+') {
-//         if (s_lst->prioritet >= 1) {
 
-//         }
-//     } else if (val == '-') {
-//         if (prior > s_lst->prioritet) {
-//             push(s_list, 0, oper, prior);
-//         } else {            
-//     } else if (val == '/') {
-//         push(s_lst, 0, division_s, 2);
-//         oper = division_s;
-              
-//     } else if (val == '*') {
-//         push(s_lst, 0, mult_s, 2);
-//         oper = mult_s;
-              
-//     } else if (val == '^') {
-//         push(s_lst, 0, exp_s, 5);
-//         oper = exp_s;
-              
-//     } else if (val == '(') {
-//         push(s_lst, 0, brack_op_s, 5);
-//         oper = brack_op_s;
-              
-//     } else if (val == '(') {
-//         push(s_lst, 0, brack_cl_s, 5);
-//         oper = brack_cl_s;
-//     }
-//     printf("\n");
-//     return oper;
-// }
-// }
   
