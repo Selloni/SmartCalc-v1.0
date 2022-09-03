@@ -10,38 +10,46 @@ int pull_stack(char *value, Node **list, Node **s_lst) {
     char *trg = "mdcosintaqrlg";
     char str[256] = {'\0'};  //  есть ли не обходимось создавать статический масив
     int len = strlen(value);
-    len +=1;
+    // int len_s = len + 1;
+    // printf("len%d\n", len);
     if (value[0] == '-') {
-        push(list, 0, 0, 0);
-        push(s_lst, 0, minus_s, 1);
+        push(list, 0, '0', 0);
+        push(s_lst, 0, '-', 1);
         i++;
+        // printf("value[0]");
     }
-    while (i != len) {
-        if (value[i] > 47 && value[i] < 58 || value[i] == '.') {
+    while (i != (len + 1)) {
+        // printf("i=%d\n", i);
+        if (value[i] > 47 && value[i] < 58 || value[i] == '.') { // while
             str[j] = value[i];
             num_flag = 1;
             j++;
-         /////////// заупстить тригонометрическую функцию 
         //  } else if (value[i] == 'X') {  //   передовать переменную , которой пользователь будет присваивать х
          } else {  //  не цифры
             j = 0;  //////// касяк  
             int have_trg = 0;
             if (num_flag) {
                 num = atof(str);
-                push(list, num, 0, 0);
+                push(list, num, '0', 0);
                 memset(str, '\0', 256);  //  зачистить статическую строку
             }
             num_flag = 0;
-            if (value[i] > 96 && value[i] < 123) {  // alphabet
-                str[k] = value[i]; 
-                have_trg = 1;  //   думал реализовать флаг, для контроля входа в цикл
-                k++;
-            } else if (!trigonometr(s_lst, str) && (have_trg)) {  //  проверить чательнее 
-                printf("err_trigonmetri");
-                break;
+            if(i != len) {
+                if (value[i] > 96 && value[i] < 123) {  // alphabet
+                    str[k] = value[i]; 
+                    have_trg = 1;  //   думал реализовать флаг, для контроля входа в цикл
+                    k++;
+                } else if (!trigonometr(s_lst, str) && (have_trg)) {  //  проверить чательнее 
+                    printf("err_trigonmetri");
+                    break;
+                } else {
+                    int prior = pars_sing(value[i]);
+                    printf("передаю в calc приоритет-%d символ|%c\n", prior, value[i]);
+                    calc(*list, *s_lst, prior, value[i]);
+                    // print(s_lst);
+                }
             } else {
-                int prior = pars_sing(value[i]);
-                calc(&list, &s_lst, prior, value[i]);
+                //  функция для расчета
             }
         }
         i++;
@@ -142,14 +150,6 @@ void push(Node **plist, Data value, char operator, int prior) {
     *plist = p;
 }
 
-void print(Node *list) {
-    printf("-\n");
-    for(Node *p = list; p != NULL; p = p->next) {
-        printf("int%f ", p->data);
-        printf("sign%d\n ", p->operator); 
-    }
-    printf("-\n");
-}
 
 int is_emty(Node *list) {
     return (list == NULL);

@@ -8,7 +8,6 @@
 #include <string.h>
 #include <math.h>
 
-#define tgr m || d || c || o || s || i || n || t || a || q || r || l || g  //  вместо перебора в цикле
 typedef double Data;
 
 
@@ -41,7 +40,7 @@ enum operator {
 typedef struct Node {
     Data data; // по этому указателю мы храним какие-то данные
     struct Node *next; // это у нас ссылка на следующий указатель
-    int operator;
+    char operator;
     int prioritet;// struct list_item *prev; // это у нас ссылка на предыдущий указатель
 }Node;
 // typedef struct Node Node;
@@ -67,7 +66,8 @@ int pop(Node **plist);
 int pull_stack(char *value, Node **list, Node **s_lst);
 int trigonometr(Node **s_lst, char *str);
 int validation(char *value);
-// int pars_sing(Node **s_lst, char val);
+int pars_sing(char val);
 void print(Node *list);
+int calc(Node *list, Node *s_list, int next_prior, char oper);
 
 // #endif
