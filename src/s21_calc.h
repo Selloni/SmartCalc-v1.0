@@ -63,11 +63,12 @@ typedef struct Node {
 void push(Node **plist, Data value, char operator, int prior);
 int is_emty(Node *list);
 int pop(Node **plist);
-int pull_stack(char *value, Node **list, Node **s_lst);
-int trigonometr(Node **s_lst, char *str);
+char pop_s(Node **plist);
+int pull_stack(char *value);
+int trigonometr(Node *s_lst, char *str);
 int validation(char *value);
 int pars_sing(char val);
+int calc(Node **list, Node **s_list, int next_prior, char oper);
 void print(Node *list);
-int calc(Node *list, Node *s_list, int next_prior, char oper);
-
+Data total(Node *list, Node *s_lst);
 // #endif
