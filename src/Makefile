@@ -27,7 +27,7 @@ gcov_report:
 
 git:
 	git add .
-	git commit -m "не удаеться счиать структуру"
+	git commit -m "рабочее состояние-проверить сложные функции"
 	git push
 
 OBJECT:

@@ -47,17 +47,16 @@ int calc(Node **list, Node **s_lst, int next_prior, char oper) {
 }
 
 Data total(Node **list, Node **s_lst) {
-
     Data var1 = 0;
     Data var2 = 0;
     char sign;
     // printf("hj%p\n", s_lst);
-    printf ("totol sign%c\n", s_lst->operator);
-    while(! is_emty(list)) {
+    printf ("totol sign%c\n", (**s_lst).operator);
+    while(*s_lst != NULL) {
         Data sum = 0;
-        var2 = pop(&list);
-        var1 = pop(&list);
-        sign = pop_s(&s_lst);
+        var2 = pop(list);
+        var1 = pop(list);
+        sign = pop_s(s_lst);
         if (sign == '+') {
             sum = var2 + var1;  
         } else if (sign == '-') {
@@ -70,9 +69,9 @@ Data total(Node **list, Node **s_lst) {
             sum = pow(var2, var1);
         }
         printf("sum%f\n", sum);
-        push(&list, sum, '0', 0);
+        push(list, sum, '0', 0);
     }
-    Data total = pop(&list);
+    Data total = pop(list);
     printf("итого%f", total);
     return(total);
 }

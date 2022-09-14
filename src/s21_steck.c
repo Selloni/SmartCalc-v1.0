@@ -1,7 +1,5 @@
 #include "s21_calc.h"
-/// могу ли яне передаввать адрес 
-
-  //  нужно добавить if-х, после разбора qt 
+//  нужно добавить if-х, после разбора qt 
 int pull_stack(char *value) {
     Node *list = NULL;
     Node *s_lst = NULL;
@@ -61,7 +59,7 @@ int pull_stack(char *value) {
     }
     print(s_lst);
     print(list);
-    printf("oo%p\n", s_lst);
+    // printf("oo%p\n", s_lst);
     total(&list, &s_lst);
     return (err_flag);
     
@@ -172,7 +170,7 @@ void print(Node *list) {
     printf("-\n");
 }
 
-int is_emty(Node *list) {
+int is_emty(Node **list) {
     return (list == NULL);
 }
 
