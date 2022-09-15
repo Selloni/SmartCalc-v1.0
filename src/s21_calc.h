@@ -62,7 +62,7 @@ typedef struct Node {
 
 void push(Node **plist, Data value, char operator, int prior);
 int is_emty(Node **list);
-int pop(Node **plist);
+Data pop(Node **plist);
 char pop_s(Node **plist);
 int pull_stack(char *value);
 int trigonometr(Node *s_lst, char *str);
@@ -71,4 +71,6 @@ int pars_sing(char val);
 int calc(Node **list, Node **s_list, int next_prior, char oper);
 void print(Node *list);
 Data total(Node **list, Node **s_lst);
+Node *revers_steack(Node **list);
+Node *revers_steack_s(Node **list);
 // #endif

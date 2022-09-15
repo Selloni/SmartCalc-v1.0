@@ -4,7 +4,7 @@ int main () {
  
     // s_lst->prioritet = 0;
     // s_lst->operator = '\0';
-    char *str = "2+17";
+    char *str = "2.8+1.4/2-2*4.1/3";
 //  реализовать запись строки в обратную сторону 
     // int len = strlen(str);
     // char invert[--len];
@@ -27,3 +27,4 @@ int main () {
 
     
 }
+ 

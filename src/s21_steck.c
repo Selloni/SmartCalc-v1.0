@@ -8,8 +8,7 @@ int pull_stack(char *value) {
     Data num;
     int i = 0;
     int j = 0;
-    int k = 0;  //  нужно придумать что то элегантнее 
-    char *trg = "mdcosintaqrlg";
+    int k = 0;  //  нужно придумать что то элегантнее
     char str[256] = {'\0'};  //  есть ли не обходимось создавать статический масив
     int len = strlen(value);
     len +=1;
@@ -18,7 +17,6 @@ int pull_stack(char *value) {
         push(&s_lst, 0, '-', 1);
         i++;
     }
-    // printf("hj%p\n", s_lst);
     while (i != len) {
         if (value[i] > 47 && value[i] < 58 || value[i] == '.') {
             str[j] = value[i];
@@ -46,10 +44,9 @@ int pull_stack(char *value) {
                 if (value[i] != '\0') {
                 int prior = pars_sing(value[i]);
                 // push(&s_lst, 0, value[i], prior);
-                // print(s_lst);
-                calc(&list, &s_lst, prior, value[i]);
-                // printf("qq%p\n", s_lst);
+                printf("списаок занков");
                 print(s_lst);
+                calc(&list, &s_lst, prior, value[i]);
                 } else {
                     break;
                 }
@@ -59,46 +56,13 @@ int pull_stack(char *value) {
     }
     print(s_lst);
     print(list);
-    // printf("oo%p\n", s_lst);
+    list = revers_steack(&list);
+    s_lst = revers_steack_s(&s_lst);
+    print(s_lst);
+    print(list);
     total(&list, &s_lst);
-    return (err_flag);
-    
-    // printf("sign %c\n",s_lst->operator);
-    
+    return (err_flag); 
 }
-
-// int pars_sing(Node **s_lst, char val) {
-//     int oper = 0;
-//     if(val == '+') {
-//         push(s_lst, 0, plus_s, 1);
-//         oper = plus_s;
-//     } else if (val == '-') {
-//         push(s_lst, 0, minus_s, 1);
-//         oper = minus_s;
-              
-//     } else if (val == '/') {
-//         push(s_lst, 0, division_s, 2);
-//         oper = division_s;
-              
-//     } else if (val == '*') {
-//         push(s_lst, 0, mult_s, 2);
-//         oper = mult_s;
-              
-//     } else if (val == '^') {
-//         push(s_lst, 0, exp_s, 5);
-//         oper = exp_s;
-              
-//     } else if (val == '(') {
-//         push(s_lst, 0, brack_op_s, 5);
-//         oper = brack_op_s;
-              
-//     } else if (val == '(') {
-//         push(s_lst, 0, brack_cl_s, 5);
-//         oper = brack_cl_s;
-//     }
-//     printf("\n");
-//     return oper;
-// }
 
 int trigonometr(Node *s_lst, char *word) {
     char str[5];
@@ -113,8 +77,7 @@ int trigonometr(Node *s_lst, char *word) {
     char tmp8[] = "ln";
     char tmp9[] = "log";
     char tmp10[] = "mod";
-    for(int i = 0; word[i] != '\0'; i++){  //  отстой, спросить рекомендации как сдлеать лучше 
-        // printf("%s\n", word);
+    for(int i = 0; word[i] != '\0'; i++){  //  отстой, спросить рекомендации как сдлеать лучше
         str[i] = word[i];
     }
     if (!strcmp(str, tmp0)) {
@@ -149,7 +112,33 @@ int trigonometr(Node *s_lst, char *word) {
         push(&s_lst, 0, mod_s, 2);
     }
     return (err);
+}
 
+Node *revers_steack(Node **list) {
+    Node *revers_list = NULL;
+    while (*list != NULL) {
+        Data data = pop(list);
+        push(&revers_list, data, '0', 0);
+    }
+    return revers_list;
+}
+
+Node *revers_steack_s(Node **list) {
+    Node *revers_list = NULL;
+    while (*list != NULL) {
+        char data = pop_s(list);
+        push(&revers_list, 0, data, 0);
+    }
+    return revers_list;
+}
+
+Data pop(Node **plist) {
+    Node *p = *plist;
+    Data res = p->data;
+    // printf("int pop%d\n", res);
+    *plist = p->next; 
+    free (p);
+    return res;
 }
 
 void push(Node **plist, Data value, char operator, int prior) {
@@ -165,22 +154,13 @@ void print(Node *list) {
     printf("-\n");
     for(Node *p = list; p != NULL; p = p->next) {
         printf("int%f ", p->data);
-        printf("sign%d\n ", p->operator); 
+        printf("sign%c\n ", p->operator); 
     }
     printf("-\n");
 }
 
 int is_emty(Node **list) {
     return (list == NULL);
-}
-
-int pop(Node **plist) {
-    Node *p = *plist;
-    Data res = p->data;
-    // printf("int pop%d\n", res);
-    *plist = p->next; 
-    free (p);
-    return res;
 }
 
 char pop_s(Node **plist) {
