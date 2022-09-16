@@ -33,14 +33,9 @@ int calc(Node **list, Node **s_lst, int next_prior, char oper) {
                     sum = var2 * var1;
                 } else if (stek_oper == '^') {
                     sum = pow(var2, var1);
-                // } else if (stek_oper == '(') {
-                //     push(s_lst, 0, oper, next_prior);
-                // } else if (stek_oper == ')') {
                 }
                 printf("sum%f\n", sum);
                 push(list, sum, '0', 0);
-                // printf("cycle%p\n", *s_lst);
-                // print(*s_lst);
             }
             printf("какой знак пушим%c\n", oper);
             push(s_lst, 0, oper, next_prior);    
@@ -56,13 +51,22 @@ int calc(Node **list, Node **s_lst, int next_prior, char oper) {
 Data total(Node **list, Node **s_lst) {
     Data var1 = 0;
     Data var2 = 0;
-    char sign;    
+    Data sum = 0;
+    Data total;
+    char sign;
+    int flag = 0;   
     while(*s_lst != NULL) {
         printf ("totol sign%c\n", (**s_lst).operator);
-        Data sum = 0;
-        var2 = pop(list);
-        var1 = pop(list);
         sign = pop_s(s_lst);
+        if (sign == '(') {
+            flag = 1;
+            printf("'('sum%f\n", sum);
+            // push(list, sum, '0', 0);
+            break;
+        }
+        
+        var1 = pop(list);
+        var2 = pop(list);
         if (sign == '+') {
             sum = var2 + var1;  
         } else if (sign == '-') {
@@ -73,17 +77,24 @@ Data total(Node **list, Node **s_lst) {
             sum = var2 * var1;
         } else if (sign == '^') {
             sum = pow(var2, var1);
-        } else if (sign == '(') {
-            // printf("sum%f\n", sum);
-            // push(list, sum, '0', 0);
-            // break;
-        }
+        } 
+        // else if (sign == '(') {
+        //     flag = 1;
+        //     printf("'('sum%f\n", sum);
+        //     push(list, sum, '0', 0);
+        //     break;
+        // }
         /// не пушит сумму 
         printf("sum%f\n", sum);
         push(list, sum, '0', 0);
     }
-    Data total = pop(list);
-    printf("итого%f", total);
+    
+    if (flag == 1) {
+        total = sum;
+        printf("итого%f", total);
+    } else {
+        total = pop(list);
+    }
     return(total);
 }
 

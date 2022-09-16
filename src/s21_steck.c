@@ -43,7 +43,6 @@ int pull_stack(char *value) {
             } else {
                 if (value[i] != '\0') {
                 int prior = pars_sing(value[i]);
-                // push(&s_lst, 0, value[i], prior);
                 printf("списаок занков");
                 print(s_lst);
                 calc(&list, &s_lst, prior, value[i]);
@@ -56,8 +55,8 @@ int pull_stack(char *value) {
     }
     print(s_lst);
     print(list);
-    list = revers_steack(&list);
-    s_lst = revers_steack_s(&s_lst);
+    // list = revers_steack(&list);
+    // s_lst = revers_steack_s(&s_lst);
     print(s_lst);
     print(list);
     total(&list, &s_lst);
@@ -135,7 +134,6 @@ Node *revers_steack_s(Node **list) {
 Data pop(Node **plist) {
     Node *p = *plist;
     Data res = p->data;
-    // printf("int pop%d\n", res);
     *plist = p->next; 
     free (p);
     return res;
