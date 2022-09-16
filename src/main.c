@@ -4,8 +4,8 @@ int main () {
  
     // s_lst->prioritet = 0;
     // s_lst->operator = '\0';
-    char *str = "2.8+(1.4/2-2*4.1)/3";
-    // char *str = "2.8-(3-2)";
+    char *str = "cos(1.4/2-2*4.1)";
+    // char *str = "2.8^2-sin(3+2)-1";
 //  реализовать запись строки в обратную сторону 
     // int len = strlen(str);
     // char invert[--len];
@@ -24,8 +24,6 @@ int main () {
         // printf("invert%s\n",str);
         pull_stack(str);
         // total(&list, &s_lst);
-    }
-
-    
+    } 
 }
  

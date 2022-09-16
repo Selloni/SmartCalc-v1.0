@@ -3,7 +3,7 @@
 int validation(char *value) {
     int err_flag = 1;
     int i = 0;
-    if (value[0] == 94 && value[0] == 46 && value[0] == 47 && value[0] == 42) {  //   ^./*
+    if (value[0] == 94 && value[0] == 46 && value[0] == 47 && value[0] == 42 && value[0] == 41) {  //   ^./*
         printf("err 1");
     } else {
         int len = strlen(value);
@@ -14,7 +14,7 @@ int validation(char *value) {
             // char *sing = '=+-()/*^';
             char *cos = "cosintaqrlg";
             if ((value[i] > 41 && value[i] < 47 || value[i] == 94) &&\
-            value[i+1] > 41 && value[i+1] < 47 || value[i+1] == 94 ) {  //  //  )*+,-./^
+            (value[i+1] > 41 && value[i+1] < 47 || value[i+1] == 94)) {  //  //  )*+,-./^
                 printf("err 2 %d---", i);
                 break;
             } else if (value[0] == 94 && value[0] == 45) {  // ^.

@@ -11,27 +11,26 @@
 typedef double Data;
 
 
-enum operator {
-    // score = 0.
-    plus_s = 1,
-    minus_s = 2,
-    mult_s = 3,
-    division_s = 4,
-    exp_s = 5,
-    mod_s = 6,
-    cos_s = 7,
-    sin_s = 8,
-    tan_s = 9,
-    acos_s = 10,
-    asin_s = 11,
-    atan_s = 12,
-    sqrt_s = 13,
-    ln_s = 14,
-    log_s = 15,
-    brack_op_s = 16,
-    brack_cl_s = 17,
-
-};
+// enum operator {
+//     // score = 0.
+//     // plus_s = 1,
+//     // minus_s = 2,
+//     // mult_s = 3,
+//     // division_s = 4,
+//     // exp_s = 5,
+//     mod_s = A,
+//     cos_s = B,
+//     sin_s = C,
+//     tan_s = D,
+//     acos_s = E,
+//     asin_s = F,
+//     atan_s = G,
+//     sqrt_s = H,
+//     ln_s = I,
+//     log_s = J,
+//     // brack_op_s = 16,
+//     // brack_cl_s = 17,
+// };
 
 
 
@@ -65,7 +64,7 @@ int is_emty(Node **list);
 Data pop(Node **plist);
 char pop_s(Node **plist);
 int pull_stack(char *value);
-int trigonometr(Node *s_lst, char *str);
+int trigonometr(Node **s_lst, char *str);
 int validation(char *value);
 int pars_sing(char val);
 int calc(Node **list, Node **s_list, int next_prior, char oper);
@@ -73,4 +72,5 @@ void print(Node *list);
 Data total(Node **list, Node **s_lst);
 Node *revers_steack(Node **list);
 Node *revers_steack_s(Node **list);
+Data calc_triginimetr(Data var, char stek_oper);
 // #endif

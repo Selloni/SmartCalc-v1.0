@@ -16,26 +16,34 @@ int calc(Node **list, Node **s_lst, int next_prior, char oper) {
             push(s_lst, 0, oper, next_prior);
             printf("op%c|pr%d\n", oper, next_prior);
         } else {  //  рекурсия или цикл что бы постоянно проверял условие
-            while (*s_lst != NULL && next_prior <= (**s_lst).prioritet /*|| oper == ')' || oper == '('*/) {
+            while (*s_lst != NULL && next_prior <= (**s_lst).prioritet) {
                 print(*s_lst);
+                print(*list);
                 stek_oper = pop_s(s_lst);
-                var1 = pop(list);
-                printf("1var%f\n", var1);
-                var2 = pop(list);
-                printf("2var%f\n", var2);
-                if (stek_oper == '+') {
-                    sum = var2 + var1;  
-                } else if (stek_oper == '-') {
-                    sum = var2 - var1;
-                } else if (stek_oper == '/') {
-                    sum = var2 / var1;
-                } else if (stek_oper == '*') {
-                    sum = var2 * var1;
-                } else if (stek_oper == '^') {
-                    sum = pow(var2, var1);
+                if(stek_oper < 75 && stek_oper > 65) {
+                    var1 = pop(list);
+                    sum = calc_triginimetr(var1, stek_oper);
+                    printf("summ-trigonometr%f\n", sum);
+                    push(list, sum, '0', 0);
+                } else {
+                    var1 = pop(list);
+                    printf("1var%f\n", var1);
+                    var2 = pop(list);
+                    printf("2var%f\n", var2);
+                    if (stek_oper == '+') {
+                        sum = var2 + var1;  
+                    } else if (stek_oper == '-') {
+                        sum = var2 - var1;
+                    } else if (stek_oper == '/') {
+                        sum = var2 / var1;
+                    } else if (stek_oper == '*') {
+                        sum = var2 * var1;
+                    } else if (stek_oper == '^') {
+                        sum = pow(var2, var1);
+                    }
+                    printf("sum%f\n", sum);
+                    push(list, sum, '0', 0);
                 }
-                printf("sum%f\n", sum);
-                push(list, sum, '0', 0);
             }
             printf("какой знак пушим%c\n", oper);
             push(s_lst, 0, oper, next_prior);    
@@ -56,46 +64,67 @@ Data total(Node **list, Node **s_lst) {
     char sign;
     int flag = 0;   
     while(*s_lst != NULL) {
-        printf ("totol sign%c\n", (**s_lst).operator);
         sign = pop_s(s_lst);
+        // printf ("totol sign%c\n", (**s_lst).operator);
         if (sign == '(') {
             flag = 1;
             printf("'('sum%f\n", sum);
-            // push(list, sum, '0', 0);
             break;
-        }
-        
-        var1 = pop(list);
-        var2 = pop(list);
-        if (sign == '+') {
-            sum = var2 + var1;  
-        } else if (sign == '-') {
-            sum = var2 - var1;
-        } else if (sign == '/') {
-            sum = var2 / var1;
-        } else if (sign == '*') {
-            sum = var2 * var1;
-        } else if (sign == '^') {
-            sum = pow(var2, var1);
         } 
-        // else if (sign == '(') {
-        //     flag = 1;
-        //     printf("'('sum%f\n", sum);
-        //     push(list, sum, '0', 0);
-        //     break;
-        // }
-        /// не пушит сумму 
-        printf("sum%f\n", sum);
+        if (sign > 65 && sign < 75) {
+            sum = calc_triginimetr(pop(list),sign);
+        } else {
+            var1 = pop(list);
+            var2 = pop(list);
+            if (sign == '+') {
+                sum = var2 + var1;  
+            } else if (sign == '-') {
+                sum = var2 - var1;
+            } else if (sign == '/') {
+                sum = var2 / var1;
+            } else if (sign == '*') {
+                sum = var2 * var1;
+            } else if (sign == '^') {
+                sum = pow(var2, var1);
+            } else if (sign == 'A') {
+                sum = fmod(var2, var1);
+            }
+            printf("sum%f\n", sum);
+        }
         push(list, sum, '0', 0);
     }
-    
     if (flag == 1) {
         total = sum;
-        printf("итого%f", total);
+        // printf("итого%f", total);
     } else {
         total = pop(list);
     }
     return(total);
+}
+
+Data calc_triginimetr(Data var, char stek_oper) {
+    Data res = 0;
+    if (stek_oper == 'B') {
+        res = cos(var);
+    } else if (stek_oper == 'C') {
+        res = sin(var);
+    } else if (stek_oper == 'D') {
+        res = tan(var);
+    } else if (stek_oper == 'E') {
+        res = acos(var);
+    } else if (stek_oper == 'F') {
+        res = asin(var);
+    } else if (stek_oper == 'G') {
+        res = atan(var);
+    } else if (stek_oper == 'H') {
+        res = sqrt(var);
+    // } else if (stek_oper == 'I') {
+    //     res = ln(var);
+    } else if (stek_oper == 'J') {
+        res = log(var);
+    }
+    return res;
+
 }
 
 int pars_sing(char val) {

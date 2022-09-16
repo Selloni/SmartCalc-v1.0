@@ -5,6 +5,7 @@ int pull_stack(char *value) {
     Node *s_lst = NULL;
     int err_flag = 0;  //  раскрыть флаг 
     int num_flag = 0;
+    int have_trg = 0;
     Data num;
     int i = 0;
     int j = 0;
@@ -26,7 +27,6 @@ int pull_stack(char *value) {
         //  } else if (value[i] == 'X') {  //   передовать переменную , которой пользователь будет присваивать х
          } else {  //  не цифры
             j = 0;  //////// касяк  
-            int have_trg = 0;
             if (num_flag) {
                 num = atof(str);
                 push(&list, num, '0', 0);
@@ -37,11 +37,15 @@ int pull_stack(char *value) {
                 str[k] = value[i]; 
                 have_trg = 1;  //   думал реализовать флаг, для контроля входа в цикл
                 k++;
-            } else if (!trigonometr(s_lst, str) && (have_trg)) {  //  проверить чательнее 
-                printf("err_trigonmetri");
-                break;
+            } else if (have_trg) {  //заходит в фунцию тригонометрия выполняет функцию, но не заходит в устловие if 
+                trigonometr(&s_lst, str);
+                have_trg = 0;
+                push(&s_lst, 0, '(', -1);  //  сразу после тригонометрии пушу скобку
+                memset(&str, '\0', 256);  //  зачистить статическую строку
+                // printf("err_trigonmetri");
+                // break;
             } else {
-                if (value[i] != '\0') {
+                if (value[i] != '\0') { // костыль
                 int prior = pars_sing(value[i]);
                 printf("списаок занков");
                 print(s_lst);
@@ -63,8 +67,8 @@ int pull_stack(char *value) {
     return (err_flag); 
 }
 
-int trigonometr(Node *s_lst, char *word) {
-    char str[5];
+int trigonometr(Node **s_lst, char *word) {
+    char str[5] = {'\0'};
     int err = 0;
     char tmp0[] = "cos";
     char tmp1[] = "sin";
@@ -72,43 +76,43 @@ int trigonometr(Node *s_lst, char *word) {
     char tmp3[] = "acos";
     char tmp4[] = "asin";
     char tmp5[] = "atan";
-    char tmp7[] = "sqrt";
-    char tmp8[] = "ln";
-    char tmp9[] = "log";
-    char tmp10[] = "mod";
+    char tmp6[] = "sqrt";
+    char tmp7[] = "ln";
+    char tmp8[] = "log";
+    char tmp9[] = "mod";
     for(int i = 0; word[i] != '\0'; i++){  //  отстой, спросить рекомендации как сдлеать лучше
         str[i] = word[i];
     }
-    if (!strcmp(str, tmp0)) {
+    if (!strcmp(str, tmp0)) {  //cos
         err = 1;
-        push(&s_lst, 0, cos_s, 4);
-    } else if (!strcmp(str, tmp1)) {
+        push(s_lst, 0, 'B', 4);
+    } else if (!strcmp(str, tmp1)) {  //sin
         err = 1;
-        push(&s_lst, 0, sin_s, 4);
-    } else if (!strcmp(str, tmp1)) {
+        push(s_lst, 0, 'C', 4);
+    } else if (!strcmp(str, tmp2)) {  // tan
         err = 1;
-        push(&s_lst, 0, tan_s, 4);
-    } else if (!strcmp(str, tmp2)) {
+        push(s_lst, 0, 'D', 4);
+    } else if (!strcmp(str, tmp3)) {  //acos
         err = 1;
-        push(&s_lst, 0, acos_s, 4);
-    } else if (!strcmp(str, tmp3)) {
+        push(s_lst, 0, 'E', 4);
+    } else if (!strcmp(str, tmp4)) {  //asin
         err = 1;
-        push(&s_lst, 0, asin_s, 4);
-    } else if (!strcmp(str, tmp4)) {
+        push(s_lst, 0, 'F', 4);
+    } else if (!strcmp(str, tmp5)) {   //atan
         err = 1;
-        push(&s_lst, 0, atan_s, 4);
-    } else if (!strcmp(str, tmp5)) {
+        push(s_lst, 0, 'G', 4);
+    } else if (!strcmp(str, tmp6)) {  //sqrt
         err = 1;
-        push(&s_lst, 0, sqrt_s, 4);
-    } else if (!strcmp(str, tmp8)) {
+        push(s_lst, 0, 'H', 4);
+    } else if (!strcmp(str, tmp7)) {  //ln
         err = 1;
-        push(&s_lst, 0, ln_s, 4);
-    } else if (!strcmp(str, tmp9)) {
+        push(s_lst, 0, 'I', 4);
+    } else if (!strcmp(str, tmp8)) {  //log
         err = 1;
-        push(&s_lst, 0, log_s, 4);
-    } else if (!strcmp(str, tmp10)) {
+        push(s_lst, 0, 'J', 4);
+    } else if (!strcmp(str, tmp9)) {  //mod
         err = 1;
-        push(&s_lst, 0, mod_s, 2);
+        push(s_lst, 0, 'A', 2);
     }
     return (err);
 }
