@@ -343,9 +343,9 @@ background-color: rgb(35, 74, 148);</string>
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>60</x>
+      <x>10</x>
       <y>20</y>
-      <width>291</width>
+      <width>241</width>
       <height>31</height>
      </rect>
     </property>
@@ -355,7 +355,7 @@ border-color: rgb(97, 53, 131);
 border: 2px;</string>
     </property>
     <property name="text">
-     <string>  0</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_log">
@@ -392,7 +392,7 @@ background-color: rgb(35, 74, 148);</string>
      <string>atan</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_C_2">
+   <widget class="QPushButton" name="pushButton_mod">
     <property name="geometry">
      <rect>
       <x>410</x>
@@ -477,23 +477,6 @@ background-color: rgb(35, 74, 148);</string>
      <string>asin</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_C_3">
-    <property name="geometry">
-     <rect>
-      <x>520</x>
-      <y>70</y>
-      <width>93</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">font: 700 10pt &quot;Bitstream Vera Sans&quot;;
-background-color: rgb(35, 74, 148);</string>
-    </property>
-    <property name="text">
-     <string>cos</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="pushButton_acos">
     <property name="geometry">
      <rect>
@@ -548,9 +531,9 @@ background-color: rgb(35, 74, 148);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>290</x>
       <y>20</y>
-      <width>91</width>
+      <width>61</width>
       <height>31</height>
      </rect>
     </property>
@@ -559,20 +542,71 @@ background-color: rgb(35, 74, 148);</string>
 background-color: rgb(61, 56, 70);</string>
     </property>
     <property name="text">
-     <string> 0</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="xlab">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>250</x>
       <y>20</y>
-      <width>61</width>
+      <width>41</width>
       <height>31</height>
      </rect>
     </property>
     <property name="text">
-     <string>&lt; = &gt;</string>
+     <string>&lt; || &gt;</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_ln">
+    <property name="geometry">
+     <rect>
+      <x>520</x>
+      <y>70</y>
+      <width>93</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 10pt &quot;Bitstream Vera Sans&quot;;
+background-color: rgb(35, 74, 148);</string>
+    </property>
+    <property name="text">
+     <string>ln</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_cos_3">
+    <property name="geometry">
+     <rect>
+      <x>350</x>
+      <y>20</y>
+      <width>31</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 10pt &quot;Bitstream Vera Sans&quot;;
+background-color: rgb(35, 74, 148);</string>
+    </property>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_back">
+    <property name="geometry">
+     <rect>
+      <x>410</x>
+      <y>20</y>
+      <width>93</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 700 10pt &quot;Bitstream Vera Sans&quot;;
+background-color: rgb(35, 74, 148);</string>
+    </property>
+    <property name="text">
+     <string>backspase</string>
     </property>
    </widget>
   </widget>

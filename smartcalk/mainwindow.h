@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include <QLabel>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -17,15 +18,17 @@ public:
 
 private:
     Ui::MainWindow *ui;
-    QLabel *aabc;
+    QLabel *actWindow;
 
 private slots:
     void number_for_calc();
     void on_pushButton_point_clicked();
-    void operations();
+//    void operations();
     void on_pushButton_C_clicked();
 //    void on_label_2_linkActivated(const QString &link);
 //    void on_setX_clicked();
     void on_xlab_clicked();
+//    void on_pushButton_qverty_clicked();
+    void on_pushButton_back_clicked();
 };
 #endif // MAINWINDOW_H
