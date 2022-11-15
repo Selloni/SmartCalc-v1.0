@@ -575,7 +575,7 @@ background-color: rgb(35, 74, 148);</string>
      <string>ln</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_cos_3">
+   <widget class="QPushButton" name="pushButton_X">
     <property name="geometry">
      <rect>
       <x>350</x>

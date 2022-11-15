@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->label_2->setText("");
 //    ui->label->setReadOnly(true);
     ui->label->setAlignment(Qt::AlignRight); // для вывода цифр с права
+    ui->label_2->setAlignment(Qt::AlignRight); // для вывода цифр с права
     this->actWindow = ui->label;
     connect(ui->pushButton_0,SIGNAL(clicked()),this,SLOT(number_for_calc()));
     connect(ui->pushButton_1,SIGNAL(clicked()),this,SLOT(number_for_calc()));
@@ -56,7 +57,6 @@ void MainWindow::number_for_calc()
 
 //  sender-создает соединение типа по сигналу
     QPushButton *button = (QPushButton *)sender();
-    qDebug () << "jj";
         if (this->actWindow->text()=="0") { // если в строчке только 0, заменяем его
             this->actWindow->setText(button->text());
         } else {
@@ -104,14 +104,19 @@ void MainWindow::on_xlab_clicked()
 
 void MainWindow::on_pushButton_qverty_clicked()
 {
-    //QString mystr= (ui->label->text());
-    //ui->label->text();
-//    qDebug() << "вывод строки" << mystr;
+    double total;
     QTextStream cout(stdout);
     QString tmp = ui->label->text();
-    QByteArray ba = tmp.toLocal8Bit();
+    QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
     char *c_tmp = ba.data();
-    validation(c_tmp);
+    if (!validation(c_tmp)) {
+        total = pull_stack(c_tmp);
+        QString str_total = QString::number(total);
+//        ui->label->setText(total).toDouble();
+        ui->label->setText(str_total);
+    } else {
+        ui->label->setText("Error");
+    }
 }
 
 
@@ -119,5 +124,12 @@ void MainWindow::on_pushButton_back_clicked()
 {
     QString text = this->actWindow->text();
     text.chop(1);
+}
+
+
+void MainWindow::on_pushButton_X_clicked()
+{
+    this->actWindow = ui->label;
+    ui->label->setText(actWindow->text().append(ui->label_2->text()));
 }
 

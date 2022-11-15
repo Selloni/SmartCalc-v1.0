@@ -8,7 +8,7 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
-extern "C" {
+extern "C" { // внешнее подключение
     #include "s21_calc.h"
 }
 
@@ -34,5 +34,6 @@ private slots:
     void on_xlab_clicked();
     void on_pushButton_qverty_clicked();
     void on_pushButton_back_clicked();
+    void on_pushButton_X_clicked();
 };
 #endif // MAINWINDOW_H

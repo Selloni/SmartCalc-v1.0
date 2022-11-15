@@ -55,7 +55,7 @@ public:
     QLabel *label_2;
     QPushButton *xlab;
     QPushButton *pushButton_ln;
-    QPushButton *pushButton_cos_3;
+    QPushButton *pushButton_X;
     QPushButton *pushButton_back;
 
     void setupUi(QMainWindow *MainWindow)
@@ -230,10 +230,10 @@ public:
         pushButton_ln->setGeometry(QRect(520, 70, 93, 24));
         pushButton_ln->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
 "background-color: rgb(35, 74, 148);"));
-        pushButton_cos_3 = new QPushButton(centralwidget);
-        pushButton_cos_3->setObjectName(QString::fromUtf8("pushButton_cos_3"));
-        pushButton_cos_3->setGeometry(QRect(350, 20, 31, 31));
-        pushButton_cos_3->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
+        pushButton_X = new QPushButton(centralwidget);
+        pushButton_X->setObjectName(QString::fromUtf8("pushButton_X"));
+        pushButton_X->setGeometry(QRect(350, 20, 31, 31));
+        pushButton_X->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
 "background-color: rgb(35, 74, 148);"));
         pushButton_back = new QPushButton(centralwidget);
         pushButton_back->setObjectName(QString::fromUtf8("pushButton_back"));
@@ -283,7 +283,7 @@ public:
         label_2->setText(QString());
         xlab->setText(QCoreApplication::translate("MainWindow", "< || >", nullptr));
         pushButton_ln->setText(QCoreApplication::translate("MainWindow", "ln", nullptr));
-        pushButton_cos_3->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
+        pushButton_X->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         pushButton_back->setText(QCoreApplication::translate("MainWindow", "backspase", nullptr));
     } // retranslateUi
 

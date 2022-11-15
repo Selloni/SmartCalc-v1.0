@@ -1,9 +1,9 @@
 #include "s21_calc.h"
-//  нужно добавить if-х, после разбора qt 
-int pull_stack(char *value) {
+//  нужно добавить if-х, после разбора qt
+double pull_stack(char *value) {
     Node *list = NULL;
     Node *s_lst = NULL;
-    int err_flag = 0;  //  раскрыть флаг 
+    Data err_flag = 0;  //  раскрыть флаг
     int num_flag = 0;
     int have_trg = 0;
     Data num;
@@ -23,10 +23,10 @@ int pull_stack(char *value) {
             str[j] = value[i];
             num_flag = 1;
             j++;
-         /////////// заупстить тригонометрическую функцию 
+         /////////// заупстить тригонометрическую функцию
         //  } else if (value[i] == 'X') {  //   передовать переменную , которой пользователь будет присваивать х
          } else {  //  не цифры
-            j = 0;  //////// касяк  
+            j = 0;  //////// касяк
             if (num_flag) {
                 num = atof(str);
                 push(&list, num, '0', 0);
@@ -34,10 +34,10 @@ int pull_stack(char *value) {
             }
             num_flag = 0;
             if (value[i] > 96 && value[i] < 123) {  // alphabet
-                str[k] = value[i]; 
+                str[k] = value[i];
                 have_trg = 1;  //   думал реализовать флаг, для контроля входа в цикл
                 k++;
-            } else if (have_trg) {  //заходит в фунцию тригонометрия выполняет функцию, но не заходит в устловие if 
+            } else if (have_trg) {  //заходит в фунцию тригонометрия выполняет функцию, но не заходит в устловие if
                 trigonometr(&s_lst, str);
                 have_trg = 0;
                 push(&s_lst, 0, '(', -1);  //  сразу после тригонометрии пушу скобку
@@ -63,8 +63,8 @@ int pull_stack(char *value) {
     // s_lst = revers_steack_s(&s_lst);
     print(s_lst);
     print(list);
-    total(&list, &s_lst);
-    return (err_flag); 
+    err_flag = total(&list, &s_lst);
+    return (err_flag);
 }
 
 int trigonometr(Node **s_lst, char *word) {
@@ -138,7 +138,7 @@ Node *revers_steack_s(Node **list) {
 Data pop(Node **plist) {
     Node *p = *plist;
     Data res = p->data;
-    *plist = p->next; 
+    *plist = p->next;
     free (p);
     return res;
 }
@@ -168,7 +168,7 @@ int is_emty(Node **list) {
 char pop_s(Node **plist) {
     Node *p = *plist;
     char res = p->oper;
-    *plist = p->next; 
+    *plist = p->next;
     free (p);
     return res;
 }
