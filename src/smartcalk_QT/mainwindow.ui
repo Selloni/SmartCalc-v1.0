@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>618</width>
-    <height>299</height>
+    <height>294</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -352,7 +352,9 @@ background-color: rgb(35, 74, 148);</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(61, 56, 70);
 border-color: rgb(97, 53, 131);
-border: 2px;</string>
+border: 2px;
+font-size: 16px;
+align-itrms: center;</string>
     </property>
     <property name="text">
      <string/>
@@ -531,15 +533,18 @@ background-color: rgb(35, 74, 148);</string>
    <widget class="QLabel" name="label_2">
     <property name="geometry">
      <rect>
-      <x>290</x>
+      <x>410</x>
       <y>20</y>
       <width>61</width>
       <height>31</height>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">
-background-color: rgb(61, 56, 70);</string>
+     <string notr="true">background-color: rgb(61, 56, 70);
+border-color: rgb(97, 53, 131);
+border: 2px;
+font-size: 16;
+</string>
     </property>
     <property name="text">
      <string/>
@@ -548,14 +553,19 @@ background-color: rgb(61, 56, 70);</string>
    <widget class="QPushButton" name="xlab">
     <property name="geometry">
      <rect>
-      <x>250</x>
+      <x>410</x>
       <y>20</y>
-      <width>41</width>
+      <width>61</width>
       <height>31</height>
      </rect>
     </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+border: none;
+</string>
+    </property>
     <property name="text">
-     <string>&lt; || &gt;</string>
+     <string/>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_ln">
@@ -578,7 +588,7 @@ background-color: rgb(35, 74, 148);</string>
    <widget class="QPushButton" name="pushButton_X">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>470</x>
       <y>20</y>
       <width>31</width>
       <height>31</height>
@@ -595,7 +605,7 @@ background-color: rgb(35, 74, 148);</string>
    <widget class="QPushButton" name="pushButton_back">
     <property name="geometry">
      <rect>
-      <x>410</x>
+      <x>280</x>
       <y>20</y>
       <width>93</width>
       <height>24</height>
@@ -609,6 +619,60 @@ background-color: rgb(35, 74, 148);</string>
      <string>backspase</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="main_lab">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>20</y>
+      <width>241</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);
+border: none;
+</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
+   </widget>
+   <zorder>pushButton_6_</zorder>
+   <zorder>pushButton_div</zorder>
+   <zorder>pushButton_5_</zorder>
+   <zorder>pushButton_open_</zorder>
+   <zorder>pushButton_8</zorder>
+   <zorder>pushButton_3</zorder>
+   <zorder>pushButton_mult</zorder>
+   <zorder>pushButton_point</zorder>
+   <zorder>pushButton_7</zorder>
+   <zorder>pushButton_close_</zorder>
+   <zorder>pushButton_qverty</zorder>
+   <zorder>pushButton_1</zorder>
+   <zorder>pushButton_4_</zorder>
+   <zorder>pushButton_minus</zorder>
+   <zorder>pushButton_2_</zorder>
+   <zorder>pushButton_0</zorder>
+   <zorder>pushButton_C</zorder>
+   <zorder>pushButton_9</zorder>
+   <zorder>pushButton_plus</zorder>
+   <zorder>label</zorder>
+   <zorder>pushButton_log</zorder>
+   <zorder>pushButton_atan</zorder>
+   <zorder>pushButton_mod</zorder>
+   <zorder>pushButton_sqrt</zorder>
+   <zorder>pushButton_pow</zorder>
+   <zorder>pushButton_tan</zorder>
+   <zorder>pushButton_asin</zorder>
+   <zorder>pushButton_acos</zorder>
+   <zorder>pushButton_sin</zorder>
+   <zorder>pushButton_cos</zorder>
+   <zorder>label_2</zorder>
+   <zorder>pushButton_ln</zorder>
+   <zorder>pushButton_X</zorder>
+   <zorder>pushButton_back</zorder>
+   <zorder>xlab</zorder>
+   <zorder>main_lab</zorder>
   </widget>
  </widget>
  <resources/>

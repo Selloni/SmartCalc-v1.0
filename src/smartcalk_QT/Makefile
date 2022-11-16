@@ -56,12 +56,14 @@ SOURCES       = main.cpp \
 		mainwindow.cpp \
 		s21_calc.c \
 		s21_steck.c \
-		s21_validation.c moc_mainwindow.cpp
+		s21_validation.c qrc_style.cpp \
+		moc_mainwindow.cpp
 OBJECTS       = main.o \
 		mainwindow.o \
 		s21_calc.o \
 		s21_steck.o \
 		s21_validation.o \
+		qrc_style.o \
 		moc_mainwindow.o
 DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/common/unix.conf \
@@ -252,7 +254,8 @@ Makefile: smartcalk.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		smartcalk.pro
+		smartcalk.pro \
+		style.qrc
 	$(QMAKE) -o Makefile smartcalk.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 /usr/lib/qt/mkspecs/features/spec_pre.prf:
 /usr/lib/qt/mkspecs/common/unix.conf:
@@ -341,6 +344,7 @@ Makefile: smartcalk.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mks
 /usr/lib/qt/mkspecs/features/yacc.prf:
 /usr/lib/qt/mkspecs/features/lex.prf:
 smartcalk.pro:
+style.qrc:
 qmake: FORCE
 	@$(QMAKE) -o Makefile smartcalk.pro -spec linux-g++ CONFIG+=debug CONFIG+=qml_debug
 
@@ -355,6 +359,7 @@ dist: distdir FORCE
 distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
+	$(COPY_FILE) --parents style.qrc $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
 	$(COPY_FILE) --parents mainwindow.h s21_calc.h $(DISTDIR)/
 	$(COPY_FILE) --parents main.cpp mainwindow.cpp s21_calc.c s21_steck.c s21_validation.c $(DISTDIR)/
@@ -382,8 +387,14 @@ check: first
 
 benchmark: first
 
-compiler_rcc_make_all:
+compiler_rcc_make_all: qrc_style.cpp
 compiler_rcc_clean:
+	-$(DEL_FILE) qrc_style.cpp
+qrc_style.cpp: style.qrc \
+		/usr/bin/rcc \
+		style.css
+	/usr/bin/rcc -name style style.qrc -o qrc_style.cpp
+
 compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
@@ -416,7 +427,7 @@ compiler_yacc_impl_make_all:
 compiler_yacc_impl_clean:
 compiler_lex_make_all:
 compiler_lex_clean:
-compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
+compiler_clean: compiler_rcc_clean compiler_moc_predefs_clean compiler_moc_header_clean compiler_uic_clean 
 
 ####### Compile
 
@@ -437,6 +448,9 @@ s21_steck.o: s21_steck.c s21_calc.h
 
 s21_validation.o: s21_validation.c s21_calc.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_validation.o s21_validation.c
+
+qrc_style.o: qrc_style.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o qrc_style.o qrc_style.cpp
 
 moc_mainwindow.o: moc_mainwindow.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_mainwindow.o moc_mainwindow.cpp

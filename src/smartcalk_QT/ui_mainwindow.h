@@ -57,12 +57,13 @@ public:
     QPushButton *pushButton_ln;
     QPushButton *pushButton_X;
     QPushButton *pushButton_back;
+    QPushButton *main_lab;
 
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(618, 299);
+        MainWindow->resize(618, 294);
         MainWindow->setStyleSheet(QString::fromUtf8("background-color: grey"));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
@@ -166,7 +167,9 @@ public:
         label->setGeometry(QRect(10, 20, 241, 31));
         label->setStyleSheet(QString::fromUtf8("background-color: rgb(61, 56, 70);\n"
 "border-color: rgb(97, 53, 131);\n"
-"border: 2px;"));
+"border: 2px;\n"
+"font-size: 16px;\n"
+"align-itrms: center;"));
         pushButton_log = new QPushButton(centralwidget);
         pushButton_log->setObjectName(QString::fromUtf8("pushButton_log"));
         pushButton_log->setGeometry(QRect(410, 164, 93, 24));
@@ -219,12 +222,18 @@ public:
 "background-color: rgb(35, 74, 148);"));
         label_2 = new QLabel(centralwidget);
         label_2->setObjectName(QString::fromUtf8("label_2"));
-        label_2->setGeometry(QRect(290, 20, 61, 31));
-        label_2->setStyleSheet(QString::fromUtf8("\n"
-"background-color: rgb(61, 56, 70);"));
+        label_2->setGeometry(QRect(410, 20, 61, 31));
+        label_2->setStyleSheet(QString::fromUtf8("background-color: rgb(61, 56, 70);\n"
+"border-color: rgb(97, 53, 131);\n"
+"border: 2px;\n"
+"font-size: 16;\n"
+""));
         xlab = new QPushButton(centralwidget);
         xlab->setObjectName(QString::fromUtf8("xlab"));
-        xlab->setGeometry(QRect(250, 20, 41, 31));
+        xlab->setGeometry(QRect(410, 20, 61, 31));
+        xlab->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255, 0);\n"
+"border: none;\n"
+""));
         pushButton_ln = new QPushButton(centralwidget);
         pushButton_ln->setObjectName(QString::fromUtf8("pushButton_ln"));
         pushButton_ln->setGeometry(QRect(520, 70, 93, 24));
@@ -232,15 +241,57 @@ public:
 "background-color: rgb(35, 74, 148);"));
         pushButton_X = new QPushButton(centralwidget);
         pushButton_X->setObjectName(QString::fromUtf8("pushButton_X"));
-        pushButton_X->setGeometry(QRect(350, 20, 31, 31));
+        pushButton_X->setGeometry(QRect(470, 20, 31, 31));
         pushButton_X->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
 "background-color: rgb(35, 74, 148);"));
         pushButton_back = new QPushButton(centralwidget);
         pushButton_back->setObjectName(QString::fromUtf8("pushButton_back"));
-        pushButton_back->setGeometry(QRect(410, 20, 93, 24));
+        pushButton_back->setGeometry(QRect(280, 20, 93, 24));
         pushButton_back->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
 "background-color: rgb(35, 74, 148);"));
+        main_lab = new QPushButton(centralwidget);
+        main_lab->setObjectName(QString::fromUtf8("main_lab"));
+        main_lab->setGeometry(QRect(10, 20, 241, 31));
+        main_lab->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255, 0);\n"
+"border: none;\n"
+""));
         MainWindow->setCentralWidget(centralwidget);
+        pushButton_6_->raise();
+        pushButton_div->raise();
+        pushButton_5_->raise();
+        pushButton_open_->raise();
+        pushButton_8->raise();
+        pushButton_3->raise();
+        pushButton_mult->raise();
+        pushButton_point->raise();
+        pushButton_7->raise();
+        pushButton_close_->raise();
+        pushButton_qverty->raise();
+        pushButton_1->raise();
+        pushButton_4_->raise();
+        pushButton_minus->raise();
+        pushButton_2_->raise();
+        pushButton_0->raise();
+        pushButton_C->raise();
+        pushButton_9->raise();
+        pushButton_plus->raise();
+        label->raise();
+        pushButton_log->raise();
+        pushButton_atan->raise();
+        pushButton_mod->raise();
+        pushButton_sqrt->raise();
+        pushButton_pow->raise();
+        pushButton_tan->raise();
+        pushButton_asin->raise();
+        pushButton_acos->raise();
+        pushButton_sin->raise();
+        pushButton_cos->raise();
+        label_2->raise();
+        pushButton_ln->raise();
+        pushButton_X->raise();
+        pushButton_back->raise();
+        xlab->raise();
+        main_lab->raise();
 
         retranslateUi(MainWindow);
 
@@ -281,10 +332,11 @@ public:
         pushButton_sin->setText(QCoreApplication::translate("MainWindow", "sin", nullptr));
         pushButton_cos->setText(QCoreApplication::translate("MainWindow", "cos", nullptr));
         label_2->setText(QString());
-        xlab->setText(QCoreApplication::translate("MainWindow", "< || >", nullptr));
+        xlab->setText(QString());
         pushButton_ln->setText(QCoreApplication::translate("MainWindow", "ln", nullptr));
         pushButton_X->setText(QCoreApplication::translate("MainWindow", "X", nullptr));
         pushButton_back->setText(QCoreApplication::translate("MainWindow", "backspase", nullptr));
+        main_lab->setText(QString());
     } // retranslateUi
 
 };

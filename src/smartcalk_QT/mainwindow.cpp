@@ -25,23 +25,23 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_7,SIGNAL(clicked()),this,SLOT(number_for_calc()));
     connect(ui->pushButton_8,SIGNAL(clicked()),this,SLOT(number_for_calc()));
     connect(ui->pushButton_9,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_close_,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_open_,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_div,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_minus,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_mult,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_sin,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_cos,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_tan,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_acos,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_asin,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_atan,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_log,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_plus,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_ln,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_pow,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_mod,SIGNAL(clicked()),this,SLOT(number_for_calc()));
-    connect(ui->pushButton_sqrt,SIGNAL(clicked()),this,SLOT(number_for_calc()));
+    connect(ui->pushButton_close_,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_open_,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_div,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_minus,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_mult,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_sin,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_cos,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_tan,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_acos,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_asin,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_atan,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_log,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_plus,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_ln,SIGNAL(clicked()),this,SLOT(trigonometr()));
+    connect(ui->pushButton_pow,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_mod,SIGNAL(clicked()),this,SLOT(operations()));
+    connect(ui->pushButton_sqrt,SIGNAL(clicked()),this,SLOT(trigonometr()));
 
 
 
@@ -54,7 +54,6 @@ MainWindow::~MainWindow()
 
 void MainWindow::number_for_calc()
 {
-
 //  sender-создает соединение типа по сигналу
     QPushButton *button = (QPushButton *)sender();
         if (this->actWindow->text()=="0") { // если в строчке только 0, заменяем его
@@ -65,12 +64,23 @@ void MainWindow::number_for_calc()
         }
 }
 
-//void MainWindow::operations()
-//{
-//    QPushButton *button = (QPushButton *)sender();
-//    ui->label->setText(ui->label->text()+(button->text()));
+void MainWindow::trigonometr()
+{
+    this->actWindow = ui->label;
+    QPushButton *button = (QPushButton *)sender();
+        if (this->actWindow->text()=="0") { // если в строчке только 0, заменяем его
+            this->actWindow->setText(button->text());
+        } else {
+            ui->label->setText(ui->label->text().append(button->text()+"("));
+        }
+}
 
-//}
+void MainWindow::operations()
+{
+    this->actWindow = ui->label;
+    QPushButton *button = (QPushButton *)sender();
+    ui->label->setText(ui->label->text()+(button->text()));
+}
 
 void MainWindow::on_pushButton_point_clicked()
 {
@@ -81,6 +91,7 @@ void MainWindow::on_pushButton_point_clicked()
         }
     }
 }
+
 
 
 
@@ -98,9 +109,13 @@ void MainWindow::on_pushButton_C_clicked()
 
 void MainWindow::on_xlab_clicked()
 {
-    this->actWindow = this->actWindow == ui->label ? ui->label_2 : ui->label;
+    this->actWindow = ui->label_2;
 }
 
+void MainWindow::on_main_lab_clicked()
+{
+   this->actWindow = ui->label;
+}
 
 void MainWindow::on_pushButton_qverty_clicked()
 {
@@ -124,12 +139,16 @@ void MainWindow::on_pushButton_back_clicked()
 {
     QString text = this->actWindow->text();
     text.chop(1);
+    actWindow->setText(text);
 }
 
 
 void MainWindow::on_pushButton_X_clicked()
 {
     this->actWindow = ui->label;
-    ui->label->setText(actWindow->text().append(ui->label_2->text()));
+    ui->label->setText(actWindow->text().append("X"));
 }
+
+
+
 
