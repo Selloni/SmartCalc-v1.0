@@ -1,9 +1,9 @@
 #include "s21_calc.h"
 //  нужно добавить if-х, после разбора qt
-double pull_stack(char *value) {
+Data pull_stack(char *value, Data value_x) {
     Node *list = NULL;
     Node *s_lst = NULL;
-    Data err_flag = 0;  //  раскрыть флаг
+    Data itog = 0;  //  раскрыть флаг
     int num_flag = 0;
     int have_trg = 0;
     Data num;
@@ -24,7 +24,9 @@ double pull_stack(char *value) {
             num_flag = 1;
             j++;
          /////////// заупстить тригонометрическую функцию
-        //  } else if (value[i] == 'X') {  //   передовать переменную , которой пользователь будет присваивать х
+         } else if (value[i] == 'X') {
+            Data int_x;
+            push(&list, value_x, '0', 0); //   передовать переменную , которой пользователь будет присваивать х
          } else {  //  не цифры
             j = 0;  //////// касяк
             if (num_flag) {
@@ -63,8 +65,8 @@ double pull_stack(char *value) {
     // s_lst = revers_steack_s(&s_lst);
     print(s_lst);
     print(list);
-    err_flag = total(&list, &s_lst);
-    return (err_flag);
+    itog = total(&list, &s_lst);
+    return (itog);
 }
 
 int trigonometr(Node **s_lst, char *word) {

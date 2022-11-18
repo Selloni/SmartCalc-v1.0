@@ -14,7 +14,8 @@
    <string>MainWindow</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: grey</string>
+   <string notr="true">background-color: grey;
+</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton_6_">
@@ -187,7 +188,7 @@ background-color: rgb(35, 74, 148);</string>
      <string>)</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_qverty">
+   <widget class="QPushButton" name="pushButton_equel">
     <property name="geometry">
      <rect>
       <x>200</x>
@@ -349,15 +350,25 @@ background-color: rgb(35, 74, 148);</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
+    <property name="layoutDirection">
+     <enum>Qt::LeftToRight</enum>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(61, 56, 70);
 border-color: rgb(97, 53, 131);
 border: 2px;
-font-size: 16px;
-align-itrms: center;</string>
+font-size: 20px;
+align-itrms: center;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string/>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_log">
@@ -539,15 +550,22 @@ background-color: rgb(35, 74, 148);</string>
       <height>31</height>
      </rect>
     </property>
+    <property name="toolTip">
+     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;center&quot;&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+    </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(61, 56, 70);
 border-color: rgb(97, 53, 131);
 border: 2px;
-font-size: 16;
-</string>
+font-size: 16px;
+align-itrms: center;
+color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string/>
+     <string>0</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="xlab">
@@ -631,7 +649,7 @@ background-color: rgb(35, 74, 148);</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgba(255, 255, 255, 0);
 border: none;
-</string>
+text-align: center</string>
     </property>
     <property name="text">
      <string/>
@@ -647,7 +665,7 @@ border: none;
    <zorder>pushButton_point</zorder>
    <zorder>pushButton_7</zorder>
    <zorder>pushButton_close_</zorder>
-   <zorder>pushButton_qverty</zorder>
+   <zorder>pushButton_equel</zorder>
    <zorder>pushButton_1</zorder>
    <zorder>pushButton_4_</zorder>
    <zorder>pushButton_minus</zorder>

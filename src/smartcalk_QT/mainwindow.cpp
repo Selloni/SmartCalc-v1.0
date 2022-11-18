@@ -2,6 +2,8 @@
 #include "ui_mainwindow.h"
 #include <QDebug>
 #include <QTextStream>
+//#include <QVector>
+
 
 
 MainWindow::MainWindow(QWidget *parent)
@@ -13,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->label_2->setText("");
 //    ui->label->setReadOnly(true);
     ui->label->setAlignment(Qt::AlignRight); // для вывода цифр с права
+    ui->label_2->setText("0");
     ui->label_2->setAlignment(Qt::AlignRight); // для вывода цифр с права
     this->actWindow = ui->label;
     connect(ui->pushButton_0,SIGNAL(clicked()),this,SLOT(number_for_calc()));
@@ -77,10 +80,32 @@ void MainWindow::trigonometr()
 
 void MainWindow::operations()
 {
+    int flag_br = 0;
     this->actWindow = ui->label;
     QPushButton *button = (QPushButton *)sender();
-    ui->label->setText(ui->label->text()+(button->text()));
+    if (ui->pushButton_open_) {
+        flag_br++;
+        ui->label->setText(ui->label->text()+("("));
+    }
+    if (ui->pushButton_close_) {
+        if (flag_br > 0) {
+            flag_br--;
+            ui->label->setText(ui->label->text()+(")"));
+        } else {
+            flag_br++;
+            ui->label->setText(ui->label->text()+("("));
+        }
+    } else {
+        ui->label->setText(ui->label->text()+(button->text()));
+    }
 }
+
+//void MainWindow::bracked()
+//{
+//    int flag = 0;
+//    if (ui->pushButton_open_) flag+1;
+//    if (ui->pushButton_close_) flag-1;
+//}
 
 void MainWindow::on_pushButton_point_clicked()
 {
@@ -98,6 +123,7 @@ void MainWindow::on_pushButton_point_clicked()
 void MainWindow::on_pushButton_C_clicked()
 {
     this->actWindow->setText("");
+    ui->label_2->setText("0");
 }
 
 
@@ -117,17 +143,20 @@ void MainWindow::on_main_lab_clicked()
    this->actWindow = ui->label;
 }
 
-void MainWindow::on_pushButton_qverty_clicked()
+void MainWindow::on_pushButton_equel_clicked()
 {
     double total;
     QTextStream cout(stdout);
     QString tmp = ui->label->text();
+    double qt_x = ui->label_2->text().toDouble();
     QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
     char *c_tmp = ba.data();
+//    char *c_x = ba.data();
+
     if (!validation(c_tmp)) {
-        total = pull_stack(c_tmp);
+        total = pull_stack(c_tmp, qt_x);
         QString str_total = QString::number(total);
-//        ui->label->setText(total).toDouble();
+//        ui->label->setText(str_total).toDouble();
         ui->label->setText(str_total);
     } else {
         ui->label->setText("Error");
@@ -140,6 +169,7 @@ void MainWindow::on_pushButton_back_clicked()
     QString text = this->actWindow->text();
     text.chop(1);
     actWindow->setText(text);
+    if (ui->label_2->text() == "") ui->label_2->setText("0");
 }
 
 

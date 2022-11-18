@@ -32,7 +32,7 @@ public:
     QPushButton *pushButton_point;
     QPushButton *pushButton_7;
     QPushButton *pushButton_close_;
-    QPushButton *pushButton_qverty;
+    QPushButton *pushButton_equel;
     QPushButton *pushButton_1;
     QPushButton *pushButton_4_;
     QPushButton *pushButton_minus;
@@ -64,7 +64,8 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(618, 294);
-        MainWindow->setStyleSheet(QString::fromUtf8("background-color: grey"));
+        MainWindow->setStyleSheet(QString::fromUtf8("background-color: grey;\n"
+""));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         pushButton_6_ = new QPushButton(centralwidget);
@@ -117,10 +118,10 @@ public:
         pushButton_close_->setGeometry(QRect(202, 70, 92, 24));
         pushButton_close_->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
 "background-color: rgb(35, 74, 148);"));
-        pushButton_qverty = new QPushButton(centralwidget);
-        pushButton_qverty->setObjectName(QString::fromUtf8("pushButton_qverty"));
-        pushButton_qverty->setGeometry(QRect(200, 243, 191, 41));
-        pushButton_qverty->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
+        pushButton_equel = new QPushButton(centralwidget);
+        pushButton_equel->setObjectName(QString::fromUtf8("pushButton_equel"));
+        pushButton_equel->setGeometry(QRect(200, 243, 191, 41));
+        pushButton_equel->setStyleSheet(QString::fromUtf8("font: 700 10pt \"Bitstream Vera Sans\";\n"
 "background-color: rgb(35, 74, 148);"));
         pushButton_1 = new QPushButton(centralwidget);
         pushButton_1->setObjectName(QString::fromUtf8("pushButton_1"));
@@ -165,11 +166,14 @@ public:
         label = new QLabel(centralwidget);
         label->setObjectName(QString::fromUtf8("label"));
         label->setGeometry(QRect(10, 20, 241, 31));
+        label->setLayoutDirection(Qt::LeftToRight);
         label->setStyleSheet(QString::fromUtf8("background-color: rgb(61, 56, 70);\n"
 "border-color: rgb(97, 53, 131);\n"
 "border: 2px;\n"
-"font-size: 16px;\n"
-"align-itrms: center;"));
+"font-size: 20px;\n"
+"align-itrms: center;\n"
+"color: rgb(255, 255, 255);"));
+        label->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         pushButton_log = new QPushButton(centralwidget);
         pushButton_log->setObjectName(QString::fromUtf8("pushButton_log"));
         pushButton_log->setGeometry(QRect(410, 164, 93, 24));
@@ -226,8 +230,10 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("background-color: rgb(61, 56, 70);\n"
 "border-color: rgb(97, 53, 131);\n"
 "border: 2px;\n"
-"font-size: 16;\n"
-""));
+"font-size: 16px;\n"
+"align-itrms: center;\n"
+"color: rgb(255, 255, 255);"));
+        label_2->setAlignment(Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter);
         xlab = new QPushButton(centralwidget);
         xlab->setObjectName(QString::fromUtf8("xlab"));
         xlab->setGeometry(QRect(410, 20, 61, 31));
@@ -254,7 +260,7 @@ public:
         main_lab->setGeometry(QRect(10, 20, 241, 31));
         main_lab->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255, 0);\n"
 "border: none;\n"
-""));
+"text-align: center"));
         MainWindow->setCentralWidget(centralwidget);
         pushButton_6_->raise();
         pushButton_div->raise();
@@ -266,7 +272,7 @@ public:
         pushButton_point->raise();
         pushButton_7->raise();
         pushButton_close_->raise();
-        pushButton_qverty->raise();
+        pushButton_equel->raise();
         pushButton_1->raise();
         pushButton_4_->raise();
         pushButton_minus->raise();
@@ -311,7 +317,7 @@ public:
         pushButton_point->setText(QCoreApplication::translate("MainWindow", ".", nullptr));
         pushButton_7->setText(QCoreApplication::translate("MainWindow", "7", nullptr));
         pushButton_close_->setText(QCoreApplication::translate("MainWindow", ")", nullptr));
-        pushButton_qverty->setText(QCoreApplication::translate("MainWindow", "=", nullptr));
+        pushButton_equel->setText(QCoreApplication::translate("MainWindow", "=", nullptr));
         pushButton_1->setText(QCoreApplication::translate("MainWindow", "1", nullptr));
         pushButton_4_->setText(QCoreApplication::translate("MainWindow", "4", nullptr));
         pushButton_minus->setText(QCoreApplication::translate("MainWindow", "-", nullptr));
@@ -320,6 +326,9 @@ public:
         pushButton_C->setText(QCoreApplication::translate("MainWindow", "Clean", nullptr));
         pushButton_9->setText(QCoreApplication::translate("MainWindow", "9", nullptr));
         pushButton_plus->setText(QCoreApplication::translate("MainWindow", "+", nullptr));
+#if QT_CONFIG(tooltip)
+        label->setToolTip(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
         label->setText(QString());
         pushButton_log->setText(QCoreApplication::translate("MainWindow", "log", nullptr));
         pushButton_atan->setText(QCoreApplication::translate("MainWindow", "atan", nullptr));
@@ -331,7 +340,10 @@ public:
         pushButton_acos->setText(QCoreApplication::translate("MainWindow", "acos", nullptr));
         pushButton_sin->setText(QCoreApplication::translate("MainWindow", "sin", nullptr));
         pushButton_cos->setText(QCoreApplication::translate("MainWindow", "cos", nullptr));
-        label_2->setText(QString());
+#if QT_CONFIG(tooltip)
+        label_2->setToolTip(QCoreApplication::translate("MainWindow", "<html><head/><body><p align=\"center\"><br/></p></body></html>", nullptr));
+#endif // QT_CONFIG(tooltip)
+        label_2->setText(QCoreApplication::translate("MainWindow", "0", nullptr));
         xlab->setText(QString());
         pushButton_ln->setText(QCoreApplication::translate("MainWindow", "ln", nullptr));
         pushButton_X->setText(QCoreApplication::translate("MainWindow", "X", nullptr));

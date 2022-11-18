@@ -5,6 +5,7 @@
 #include <QLabel>
 #include <QLineEdit>
 
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -34,7 +35,7 @@ private slots:
 //    void on_label_2_linkActivated(const QString &link);
 //    void on_setX_clicked();
     void on_xlab_clicked();
-    void on_pushButton_qverty_clicked();
+    void on_pushButton_equel_clicked();
     void on_pushButton_back_clicked();
     void on_pushButton_X_clicked();
     void on_main_lab_clicked();

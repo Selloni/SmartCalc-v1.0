@@ -23,7 +23,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[12];
-    char stringdata0[219];
+    char stringdata0[218];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -40,16 +40,16 @@ QT_MOC_LITERAL(4, 56, 10), // "operations"
 QT_MOC_LITERAL(5, 67, 11), // "trigonometr"
 QT_MOC_LITERAL(6, 79, 23), // "on_pushButton_C_clicked"
 QT_MOC_LITERAL(7, 103, 15), // "on_xlab_clicked"
-QT_MOC_LITERAL(8, 119, 28), // "on_pushButton_qverty_clicked"
-QT_MOC_LITERAL(9, 148, 26), // "on_pushButton_back_clicked"
-QT_MOC_LITERAL(10, 175, 23), // "on_pushButton_X_clicked"
-QT_MOC_LITERAL(11, 199, 19) // "on_main_lab_clicked"
+QT_MOC_LITERAL(8, 119, 27), // "on_pushButton_equel_clicked"
+QT_MOC_LITERAL(9, 147, 26), // "on_pushButton_back_clicked"
+QT_MOC_LITERAL(10, 174, 23), // "on_pushButton_X_clicked"
+QT_MOC_LITERAL(11, 198, 19) // "on_main_lab_clicked"
 
     },
     "MainWindow\0number_for_calc\0\0"
     "on_pushButton_point_clicked\0operations\0"
     "trigonometr\0on_pushButton_C_clicked\0"
-    "on_xlab_clicked\0on_pushButton_qverty_clicked\0"
+    "on_xlab_clicked\0on_pushButton_equel_clicked\0"
     "on_pushButton_back_clicked\0"
     "on_pushButton_X_clicked\0on_main_lab_clicked"
 };
@@ -107,7 +107,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->trigonometr(); break;
         case 4: _t->on_pushButton_C_clicked(); break;
         case 5: _t->on_xlab_clicked(); break;
-        case 6: _t->on_pushButton_qverty_clicked(); break;
+        case 6: _t->on_pushButton_equel_clicked(); break;
         case 7: _t->on_pushButton_back_clicked(); break;
         case 8: _t->on_pushButton_X_clicked(); break;
         case 9: _t->on_main_lab_clicked(); break;

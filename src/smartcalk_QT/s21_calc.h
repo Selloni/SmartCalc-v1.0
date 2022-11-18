@@ -63,7 +63,7 @@ void push(Node **plist, Data value, char oper, int prior);
 int is_emty(Node **list);
 Data pop(Node **plist);
 char pop_s(Node **plist);
-double pull_stack(char *value);
+double pull_stack(char *value, Data value_x);
 int trigonometr(Node **s_lst, char *str);
 int validation(char *value);
 int pars_sing(char val);

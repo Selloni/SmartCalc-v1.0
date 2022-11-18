@@ -22,7 +22,8 @@ int main () {
         printf("\n%dvalid\n", err);
     } else {
         // printf("invert%s\n",str);
-        pull_stack(str);
+        double var_x = 8;
+        pull_stack(str, var_x);
         // total(&list, &s_lst);
     } 
 }
