@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "form.h"
 #include <QDebug>
 #include <QTextStream>
 //#include <QVector>
@@ -167,28 +168,32 @@ void MainWindow::on_pushButton_X_clicked()
 
 void MainWindow::on_pushButton_Bgrav_clicked()
 {
-    double xBegin = -20, xEnd = 20, h = 0.1, X, Y;  // высота
-    int N;  // количество точек
-    QVector<double> x,y;
-    h = 0.1;
-    xBegin = -20;
-    xEnd = 20;
+    double qt_x = ui->label_2->text().toDouble();
+    double Y = on_pushButton_equel_clicked();
+     form.show();
+    form.paintGraph(qt_x, Y);
+//    double xBegin = -20, xEnd = 20, h = 0.1, X, Y;  // высота
+//    int N;  // количество точек
+//    QVector<double> x,y;
+//    h = 0.1;
+//    xBegin = -20;
+//    xEnd = 20;
 
-    ui->widget->yAxis->setRange(-20, 20);
-    ui->widget->xAxis->setRange(-20, 20);
+//    ui->widget->yAxis->setRange(-20, 20);
+//    ui->widget->xAxis->setRange(-20, 20);
 
-    N = (xEnd - xBegin)/h+2;
+//    N = (xEnd - xBegin)/h+2;
 
-    for(X = xBegin; X <= xEnd; X += h)
-    {
-        x.push_back(X);
-        Y = on_pushButton_equel_clicked();
-        printf("%f-hehe", Y);
-        y.push_back(Y);
-    }
-    ui->widget->clearGraphs();
-    ui->widget->addGraph();
-    ui->widget->graph(0)->addData(x,y);
-    ui->widget->replot();
+//    for(X = xBegin; X <= xEnd; X += h)
+//    {
+//        x.push_back(X);
+//        Y = on_pushButton_equel_clicked();
+//        printf("%f-hehe", Y);
+//        y.push_back(Y);
+//    }
+//    ui->widget->clearGraphs();
+//    ui->widget->addGraph();
+//    ui->widget->graph(0)->addData(x,y);
+//    ui->widget->replot();
 }
 

@@ -672,16 +672,6 @@ color: rgb(0, 0, 0);</string>
      <string>Постоить график</string>
     </property>
    </widget>
-   <widget class="QCustomPlot" name="widget" native="true">
-    <property name="geometry">
-     <rect>
-      <x>170</x>
-      <y>289</y>
-      <width>151</width>
-      <height>91</height>
-     </rect>
-    </property>
-   </widget>
    <zorder>pushButton_6_</zorder>
    <zorder>pushButton_div</zorder>
    <zorder>pushButton_5_</zorder>
@@ -719,17 +709,8 @@ color: rgb(0, 0, 0);</string>
    <zorder>xlab</zorder>
    <zorder>main_lab</zorder>
    <zorder>pushButton_Bgrav</zorder>
-   <zorder>widget</zorder>
   </widget>
  </widget>
- <customwidgets>
-  <customwidget>
-   <class>QCustomPlot</class>
-   <extends>QWidget</extends>
-   <header>qcustomplot.h</header>
-   <container>1</container>
-  </customwidget>
- </customwidgets>
  <resources/>
  <connections/>
 </ui>

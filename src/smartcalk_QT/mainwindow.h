@@ -6,6 +6,7 @@
 #include <QLineEdit>
 #include <QVector>
 #include <qcustomplot.h>
+#include <form.h>
 
 
 QT_BEGIN_NAMESPACE
@@ -26,7 +27,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
-
+    Form form;
     QLabel *actWindow;
 
 private slots:
