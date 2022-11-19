@@ -3,8 +3,12 @@
 #include <QDebug>
 #include <QTextStream>
 //#include <QVector>
+#include <QMessageBox>
 
-
+// отчистить график
+// открывать график в ссоеднем окне
+// убрать бак со скобками
+// пердавать в график тригонометрию
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -45,15 +49,14 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_pow,SIGNAL(clicked()),this,SLOT(operations()));
     connect(ui->pushButton_mod,SIGNAL(clicked()),this,SLOT(operations()));
     connect(ui->pushButton_sqrt,SIGNAL(clicked()),this,SLOT(trigonometr()));
-
-
-
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+int flag_br = 0;  // глобальная переменная
 
 void MainWindow::number_for_calc()
 {
@@ -70,24 +73,25 @@ void MainWindow::number_for_calc()
 void MainWindow::trigonometr()
 {
     this->actWindow = ui->label;
+
     QPushButton *button = (QPushButton *)sender();
-        if (this->actWindow->text()=="0") { // если в строчке только 0, заменяем его
-            this->actWindow->setText(button->text());
-        } else {
-            ui->label->setText(ui->label->text().append(button->text()+"("));
-        }
+    flag_br++;
+   if (this->actWindow->text()=="0") { // если в строчке только 0, заменяем его
+        this->actWindow->setText(button->text());
+    } else {
+        ui->label->setText(ui->label->text().append(button->text()+"("));
+
+    }
 }
 
 void MainWindow::operations()
 {
-    int flag_br = 0;
     this->actWindow = ui->label;
-    QPushButton *button = (QPushButton *)sender();
-    if (ui->pushButton_open_) {
+    QPushButton *button = (QPushButton *)sender(); 
+    if (button == ui->pushButton_open_) {
         flag_br++;
         ui->label->setText(ui->label->text()+("("));
-    }
-    if (ui->pushButton_close_) {
+    } else if (button == ui->pushButton_close_) {
         if (flag_br > 0) {
             flag_br--;
             ui->label->setText(ui->label->text()+(")"));
@@ -100,13 +104,6 @@ void MainWindow::operations()
     }
 }
 
-//void MainWindow::bracked()
-//{
-//    int flag = 0;
-//    if (ui->pushButton_open_) flag+1;
-//    if (ui->pushButton_close_) flag-1;
-//}
-
 void MainWindow::on_pushButton_point_clicked()
 {
     if(!(this->actWindow->text().contains('.'))) {
@@ -117,21 +114,12 @@ void MainWindow::on_pushButton_point_clicked()
     }
 }
 
-
-
-
 void MainWindow::on_pushButton_C_clicked()
 {
     this->actWindow->setText("");
     ui->label_2->setText("0");
+    flag_br = 0;
 }
-
-
-//void MainWindow::on_setX_clicked()
-//{
-//    this->activeLabel = ui->label_2;
-//}
-
 
 void MainWindow::on_xlab_clicked()
 {
@@ -143,16 +131,15 @@ void MainWindow::on_main_lab_clicked()
    this->actWindow = ui->label;
 }
 
-void MainWindow::on_pushButton_equel_clicked()
+double MainWindow::on_pushButton_equel_clicked()
 {
     double total;
+//    if (ui->label->text()== "()") ui->label->setText("Error");  //  cruch
     QTextStream cout(stdout);
     QString tmp = ui->label->text();
     double qt_x = ui->label_2->text().toDouble();
     QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
     char *c_tmp = ba.data();
-//    char *c_x = ba.data();
-
     if (!validation(c_tmp)) {
         total = pull_stack(c_tmp, qt_x);
         QString str_total = QString::number(total);
@@ -161,8 +148,8 @@ void MainWindow::on_pushButton_equel_clicked()
     } else {
         ui->label->setText("Error");
     }
+    return total;
 }
-
 
 void MainWindow::on_pushButton_back_clicked()
 {
@@ -172,13 +159,36 @@ void MainWindow::on_pushButton_back_clicked()
     if (ui->label_2->text() == "") ui->label_2->setText("0");
 }
 
-
 void MainWindow::on_pushButton_X_clicked()
 {
     this->actWindow = ui->label;
     ui->label->setText(actWindow->text().append("X"));
 }
 
+void MainWindow::on_pushButton_Bgrav_clicked()
+{
+    double xBegin = -20, xEnd = 20, h = 0.1, X, Y;  // высота
+    int N;  // количество точек
+    QVector<double> x,y;
+    h = 0.1;
+    xBegin = -20;
+    xEnd = 20;
 
+    ui->widget->yAxis->setRange(-20, 20);
+    ui->widget->xAxis->setRange(-20, 20);
 
+    N = (xEnd - xBegin)/h+2;
+
+    for(X = xBegin; X <= xEnd; X += h)
+    {
+        x.push_back(X);
+        Y = on_pushButton_equel_clicked();
+        printf("%f-hehe", Y);
+        y.push_back(Y);
+    }
+    ui->widget->clearGraphs();
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x,y);
+    ui->widget->replot();
+}
 

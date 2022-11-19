@@ -7,10 +7,11 @@ int validation(char *value) {
         printf("err 1");
     } else {
         int len = strlen(value);
+        int bracket = 0;
         while (value[i] != '\0') {
             // int err_flag = 0;
             int point = 0;
-            int bracket = 0;
+
             // char *sing = '=+-()/*^';
             char *cos = "cosintaqrlg";
             if ((value[i] > 41 && value[i] < 47 || value[i] == 94) &&\
@@ -23,22 +24,25 @@ int validation(char *value) {
             } else if (value[i] == 46 && point == 0) {  // .
                 point++;
                 if (point > 1) {
-                    bracket;
+                    break;
                     printf("err_point4");
                 }
-            } else if (value[i] == '(') {  // (
+            } else if (value[i] == '(') {
                 bracket++;
-            } else if (value[i] == ')') {  // )
-                if (bracket < 0) {
-                    break;
-                    printf("err_bracket5");
-                } else {
+                printf("%dbracked-close\n", bracket);
+            } else if (value[i] == ')') {
+                printf("%dbracked-close\n", bracket);
+                if (bracket > 0) {
                     bracket--;
+                } else {
+                     printf("err_bracket5");
+                    break;
+
                 }
             }
             // printf("%d", i);
             i++;
-            if (i == len) err_flag = 0;
+            if (i == len && bracket == 0) err_flag = 0;
         }
     }
     return(err_flag);  // 0 not error

@@ -4,6 +4,8 @@
 #include <QMainWindow>
 #include <QLabel>
 #include <QLineEdit>
+#include <QVector>
+#include <qcustomplot.h>
 
 
 QT_BEGIN_NAMESPACE
@@ -24,6 +26,7 @@ public:
 
 private:
     Ui::MainWindow *ui;
+
     QLabel *actWindow;
 
 private slots:
@@ -35,9 +38,10 @@ private slots:
 //    void on_label_2_linkActivated(const QString &link);
 //    void on_setX_clicked();
     void on_xlab_clicked();
-    void on_pushButton_equel_clicked();
+    double on_pushButton_equel_clicked();
     void on_pushButton_back_clicked();
     void on_pushButton_X_clicked();
     void on_main_lab_clicked();
+    void on_pushButton_Bgrav_clicked();
 };
 #endif // MAINWINDOW_H

@@ -96,10 +96,11 @@ Data total(Node **list, Node **s_lst) {
     }
     if (flag == 1) {
         total = sum;
-        // printf("итого%f", total);
+
     } else {
         total = pop(list);
     }
+    printf("итого%f", total);
     return(total);
 }
 

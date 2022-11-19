@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>618</width>
-    <height>294</height>
+    <width>625</width>
+    <height>405</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -655,6 +655,33 @@ text-align: center</string>
      <string/>
     </property>
    </widget>
+   <widget class="QPushButton" name="pushButton_Bgrav">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>300</y>
+      <width>181</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(144, 162, 235);
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Постоить график</string>
+    </property>
+   </widget>
+   <widget class="QCustomPlot" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>289</y>
+      <width>151</width>
+      <height>91</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>pushButton_6_</zorder>
    <zorder>pushButton_div</zorder>
    <zorder>pushButton_5_</zorder>
@@ -691,8 +718,18 @@ text-align: center</string>
    <zorder>pushButton_back</zorder>
    <zorder>xlab</zorder>
    <zorder>main_lab</zorder>
+   <zorder>pushButton_Bgrav</zorder>
+   <zorder>widget</zorder>
   </widget>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QCustomPlot</class>
+   <extends>QWidget</extends>
+   <header>qcustomplot.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>
