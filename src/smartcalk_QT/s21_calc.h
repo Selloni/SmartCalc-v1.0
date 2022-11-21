@@ -11,30 +11,6 @@
 typedef double Data;
 
 
-// enum operator {
-//     // score = 0.
-//     // plus_s = 1,
-//     // minus_s = 2,
-//     // mult_s = 3,
-//     // division_s = 4,
-//     // exp_s = 5,
-//     mod_s = A,
-//     cos_s = B,
-//     sin_s = C,
-//     tan_s = D,
-//     acos_s = E,
-//     asin_s = F,
-//     atan_s = G,
-//     sqrt_s = H,
-//     ln_s = I,
-//     log_s = J,
-//     // brack_op_s = 16,
-//     // brack_cl_s = 17,
-// };
-
-
-
-
 // структура элемента списка
 typedef struct Node {
     Data data; // по этому указателю мы храним какие-то данные

@@ -23,19 +23,6 @@
     </rect>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
-   <property name="geometry">
-    <rect>
-     <x>120</x>
-     <y>310</y>
-     <width>83</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>PushButton</string>
-   </property>
-  </widget>
  </widget>
  <customwidgets>
   <customwidget>

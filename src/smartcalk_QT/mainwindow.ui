@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>625</width>
+    <width>1097</width>
     <height>405</height>
    </rect>
   </property>
@@ -672,6 +672,16 @@ color: rgb(0, 0, 0);</string>
      <string>Постоить график</string>
     </property>
    </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>639</x>
+      <y>19</y>
+      <width>451</width>
+      <height>331</height>
+     </rect>
+    </property>
+   </widget>
    <zorder>pushButton_6_</zorder>
    <zorder>pushButton_div</zorder>
    <zorder>pushButton_5_</zorder>
@@ -709,6 +719,7 @@ color: rgb(0, 0, 0);</string>
    <zorder>xlab</zorder>
    <zorder>main_lab</zorder>
    <zorder>pushButton_Bgrav</zorder>
+   <zorder>widget</zorder>
   </widget>
  </widget>
  <resources/>

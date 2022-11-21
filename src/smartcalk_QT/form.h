@@ -3,6 +3,10 @@
 
 #include <QWidget>
 
+extern "C" { // внешнее подключение
+    #include "./s21_calc.h"
+}
+
 namespace Ui {
 class Form;
 }
@@ -13,11 +17,10 @@ class Form : public QWidget
 
 public:
     explicit Form(QWidget *parent = nullptr);
-    void paintGraph(double X1,  double Y1);
+    void paintGraph(char Y1, double X1);
     ~Form();
 
 private slots:
-    void on_pushButton_clicked();
 
 
 private:

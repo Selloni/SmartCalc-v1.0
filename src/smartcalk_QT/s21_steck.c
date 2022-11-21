@@ -42,7 +42,7 @@ Data pull_stack(char *value, Data value_x) {
             } else if (have_trg) {  //заходит в фунцию тригонометрия выполняет функцию, но не заходит в устловие if
                 trigonometr(&s_lst, str);
                 have_trg = 0;
-                push(&s_lst, 0, '(', -1);  //  сразу после тригонометрии пушу скобку
+//                push(&s_lst, 0, '(', -1);  //  сразу после тригонометрии пушу скобку
                 memset(&str, '\0', 256);  //  зачистить статическую строку
                 // printf("err_trigonmetri");
                 // break;

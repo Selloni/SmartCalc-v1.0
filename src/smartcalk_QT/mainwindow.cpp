@@ -1,14 +1,11 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "form.h"
-#include <QDebug>
+//#include "form.h"
 #include <QTextStream>
-//#include <QVector>
-#include <QMessageBox>
 
-// отчистить график
-// открывать график в ссоеднем окне
-// убрать бак со скобками
+// убрать баг со скобками
+// добвить кредитынй калькулятор
+// подчключить с файл к проект в форм
 // пердавать в график тригонометрию
 
 MainWindow::MainWindow(QWidget *parent)
@@ -132,9 +129,10 @@ void MainWindow::on_main_lab_clicked()
    this->actWindow = ui->label;
 }
 
-double MainWindow::on_pushButton_equel_clicked()
+void MainWindow::on_pushButton_equel_clicked()
 {
     double total;
+    printf("debug/n");
 //    if (ui->label->text()== "()") ui->label->setText("Error");  //  cruch
     QTextStream cout(stdout);
     QString tmp = ui->label->text();
@@ -149,7 +147,7 @@ double MainWindow::on_pushButton_equel_clicked()
     } else {
         ui->label->setText("Error");
     }
-    return total;
+//    return total;
 }
 
 void MainWindow::on_pushButton_back_clicked()
@@ -169,9 +167,14 @@ void MainWindow::on_pushButton_X_clicked()
 void MainWindow::on_pushButton_Bgrav_clicked()
 {
     double qt_x = ui->label_2->text().toDouble();
-    double Y = on_pushButton_equel_clicked();
-     form.show();
-    form.paintGraph(qt_x, Y);
+    QString tmp = ui->label->text();
+    QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
+    char *c_tmp = ba.data();
+    if (!validation(c_tmp)) {
+//    double Y = on_pushButton_equel_clicked();
+    form.show();
+    form.paintGraph(*c_tmp, qt_x);
+    }
 //    double xBegin = -20, xEnd = 20, h = 0.1, X, Y;  // высота
 //    int N;  // количество точек
 //    QVector<double> x,y;
@@ -195,5 +198,34 @@ void MainWindow::on_pushButton_Bgrav_clicked()
 //    ui->widget->addGraph();
 //    ui->widget->graph(0)->addData(x,y);
 //    ui->widget->replot();
+//        {
+//            printf("che ne tack ?");
+//            ui->widget->clearGraphs();
+//            double xBegin = 20, xEnd = 20, h = 0.1, Y;  // высота
+//            QVector<double> x,y;
+//            ui->widget->yAxis->setRange(-20, 20);
+//            ui->widget->xAxis->setRange(-20, 20);
+//        //        int N = (xEnd - xBegin)/h+2;
+//            if (X1 == 0) {
+//                x.push_back(X1);
+//                Y = pull_stack(&Y1, X1);
+//                printf("%f-hehe", X1);
+//                y.push_back(Y);
+//            } else {
+//                for(X1 = xBegin; X1 <= xEnd; X1 += h)
+//                {
+//                    x.push_back(X1);
+//                    Y = pull_stack(&Y1, X1);
+//                    printf("%f-hehe", X1);
+//                    printf("%s-YEYEYEY", Y1);
+//                    y.push_back(Y);
+//                }
+//            }
+//            ui->widget->addGraph();
+//            ui->widget->graph(0)->addData(x,y);
+//            ui->widget->replot();
+//            x.clear();
+//            y.clear();
+//        }
 }
 
