@@ -2,6 +2,7 @@
 ///////// проверить на масимально допустимое число
 int validation(char *value) {
     int err_flag = 1;
+    int num_flag = 1;
     int i = 0;
     if (value[0] == 94 && value[0] == 46 && value[0] == 47 && value[0] == 42 && value[0] == 41) {  //   ^./*
         printf("err 1");
@@ -37,12 +38,13 @@ int validation(char *value) {
                 } else {
                      printf("err_bracket5");
                     break;
-
                 }
+            } else if (value[i] >= '0' && value[i] <= '9') {
+                num_flag = 0;
             }
             // printf("%d", i);
             i++;
-            if (i == len && bracket == 0) err_flag = 0;
+            if (i == len && bracket == 0 && num_flag == 0) err_flag = 0;
         }
     }
     return(err_flag);  // 0 not error

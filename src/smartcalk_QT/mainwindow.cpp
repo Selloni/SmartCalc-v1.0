@@ -173,7 +173,7 @@ void MainWindow::on_pushButton_Bgrav_clicked()
     if (!validation(c_tmp)) {
 //    double Y = on_pushButton_equel_clicked();
     form.show();
-    form.paintGraph(*c_tmp, qt_x);
+    form.paintGraph(&(*c_tmp), qt_x);
     }
 //    double xBegin = -20, xEnd = 20, h = 0.1, X, Y;  // высота
 //    int N;  // количество точек

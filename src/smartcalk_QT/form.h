@@ -17,7 +17,7 @@ class Form : public QWidget
 
 public:
     explicit Form(QWidget *parent = nullptr);
-    void paintGraph(char Y1, double X1);
+    void paintGraph(char *Y1, double X1);
     ~Form();
 
 private slots:
