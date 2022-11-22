@@ -40,9 +40,13 @@ int validation(char *value) {
                     break;
                 }
             }
-            // printf("%d", i);
+            else if ((value[i] > 47 && value[i] < 58) || value[i] == 'X') {
+                num_flag = 0;
+            }
             i++;
-            if (i == len && bracket == 0) err_flag = 0;
+            if (i == len && bracket == 0  && num_flag == 0) {
+                err_flag = 0;
+            }
         }
     }
     return(err_flag);  // 0 not error
