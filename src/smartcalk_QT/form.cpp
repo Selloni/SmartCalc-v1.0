@@ -21,20 +21,20 @@ Form::~Form()
 
 void Form::paintGraph(char *Y1, double X1)
 {
-    double xBegin = 20, xEnd = X1+20, h = 0.1, Y;  // высота
+    double xBegin = -20, xEnd = 20, h = 0.1, Y;  // высота
        QVector<double> x,y;
 
         ui->widget->clearGraphs();
 
-            h = 0.1;
-            xBegin = -10;
-            xEnd = 10;
 
-            ui->widget->xAxis->setRange(-10, 10);
-            ui->widget->yAxis->setRange(-10, 10);
+
+            ui->widget->xAxis->setRange(-20, 20);
+            ui->widget->yAxis->setRange(-20, 20);
+
+//            N = (xEnd-xBegin)/h + 2;
 
             for (X1 = xBegin; X1 <= xEnd; X1 += h) {
-                 Y = pull_stack(Y1, X1);
+                Y = pull_stack(Y1, X1);
                 x.push_back(X1);
                 y.push_back(Y);
             }
@@ -44,5 +44,7 @@ void Form::paintGraph(char *Y1, double X1)
             ui->widget->replot();
             x.clear();
             y.clear();
+////    printf("che ne tack ?");
+
 }
 

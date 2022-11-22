@@ -16,7 +16,7 @@ int validation(char *value) {
             // char *sing = '=+-()/*^';
             char *cos = "cosintaqrlg";
             if ((value[i] > 41 && value[i] < 47 || value[i] == 94) &&\
-            (value[i+1] > 41 && value[i+1] < 47 || value[i+1] == 94)) {  //  //  )*+,-./^
+                    ((value[i+1] > 41 && value[i+1] < 47) || value[i+1] == 94)) {  //  //  )*+,-./^
                 printf("err 2 %d---", i);
                 break;
             } else if (value[0] == 94 && value[0] == 45) {  // ^.
@@ -39,12 +39,10 @@ int validation(char *value) {
                      printf("err_bracket5");
                     break;
                 }
-            } else if (value[i] >= '0' && value[i] <= '9') {
-                num_flag = 0;
             }
             // printf("%d", i);
             i++;
-            if (i == len && bracket == 0 && num_flag == 0) err_flag = 0;
+            if (i == len && bracket == 0) err_flag = 0;
         }
     }
     return(err_flag);  // 0 not error

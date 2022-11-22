@@ -133,8 +133,7 @@ void MainWindow::on_pushButton_equel_clicked()
 {
     double total;
     printf("debug/n");
-//    if (ui->label->text()== "()") ui->label->setText("Error");  //  cruch
-    QTextStream cout(stdout);
+//    QTextStream cout(stdout);
     QString tmp = ui->label->text();
     double qt_x = ui->label_2->text().toDouble();
     QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
@@ -142,12 +141,10 @@ void MainWindow::on_pushButton_equel_clicked()
     if (!validation(c_tmp)) {
         total = pull_stack(c_tmp, qt_x);
         QString str_total = QString::number(total);
-//        ui->label->setText(str_total).toDouble();
         ui->label->setText(str_total);
     } else {
         ui->label->setText("Error");
     }
-//    return total;
 }
 
 void MainWindow::on_pushButton_back_clicked()
@@ -171,61 +168,29 @@ void MainWindow::on_pushButton_Bgrav_clicked()
     QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
     char *c_tmp = ba.data();
     if (!validation(c_tmp)) {
-//    double Y = on_pushButton_equel_clicked();
-    form.show();
-    form.paintGraph(&(*c_tmp), qt_x);
-    }
-//    double xBegin = -20, xEnd = 20, h = 0.1, X, Y;  // высота
-//    int N;  // количество точек
-//    QVector<double> x,y;
-//    h = 0.1;
-//    xBegin = -20;
-//    xEnd = 20;
+        form.show();
+        form.paintGraph(&(*c_tmp), qt_x);
 
-//    ui->widget->yAxis->setRange(-20, 20);
-//    ui->widget->xAxis->setRange(-20, 20);
+//    double xBegin = 20, xEnd = qt_x+20, h = 0.1, Y;  // высота
+//       QVector<double> x,y;
 
-//    N = (xEnd - xBegin)/h+2;
+//        ui->widget->clearGraphs();
 
-//    for(X = xBegin; X <= xEnd; X += h)
-//    {
-//        x.push_back(X);
-//        Y = on_pushButton_equel_clicked();
-//        printf("%f-hehe", Y);
-//        y.push_back(Y);
-//    }
-//    ui->widget->clearGraphs();
-//    ui->widget->addGraph();
-//    ui->widget->graph(0)->addData(x,y);
-//    ui->widget->replot();
-//        {
-//            printf("che ne tack ?");
-//            ui->widget->clearGraphs();
-//            double xBegin = 20, xEnd = 20, h = 0.1, Y;  // высота
-//            QVector<double> x,y;
-//            ui->widget->yAxis->setRange(-20, 20);
-//            ui->widget->xAxis->setRange(-20, 20);
-//        //        int N = (xEnd - xBegin)/h+2;
-//            if (X1 == 0) {
-//                x.push_back(X1);
-//                Y = pull_stack(&Y1, X1);
-//                printf("%f-hehe", X1);
+
+//            ui->widget->xAxis->setRange(-10, 10);
+//            ui->widget->yAxis->setRange(-10, 10);
+
+//            for (qt_x = xBegin; qt_x <= xEnd; qt_x += h) {
+//                Y = pull_stack(c_tmp, qt_x);
+//                x.push_back(qt_x);
 //                y.push_back(Y);
-//            } else {
-//                for(X1 = xBegin; X1 <= xEnd; X1 += h)
-//                {
-//                    x.push_back(X1);
-//                    Y = pull_stack(&Y1, X1);
-//                    printf("%f-hehe", X1);
-//                    printf("%s-YEYEYEY", Y1);
-//                    y.push_back(Y);
-//                }
 //            }
+
 //            ui->widget->addGraph();
-//            ui->widget->graph(0)->addData(x,y);
+//            ui->widget->graph(0)->addData(x, y);
 //            ui->widget->replot();
 //            x.clear();
 //            y.clear();
-//        }
+    }
 }
 

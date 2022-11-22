@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1097</width>
-    <height>405</height>
+    <width>621</width>
+    <height>338</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -672,14 +672,38 @@ color: rgb(0, 0, 0);</string>
      <string>Постоить график</string>
     </property>
    </widget>
-   <widget class="QWidget" name="widget" native="true">
+   <widget class="QPushButton" name="pushButton_Bgrav_2">
     <property name="geometry">
      <rect>
-      <x>639</x>
-      <y>19</y>
-      <width>451</width>
-      <height>331</height>
+      <x>220</x>
+      <y>300</y>
+      <width>181</width>
+      <height>24</height>
      </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(144, 162, 235);
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Кредитное рабство</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="pushButton_Bgrav_3">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>300</y>
+      <width>181</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(144, 162, 235);
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>Депозитное богатство</string>
     </property>
    </widget>
    <zorder>pushButton_6_</zorder>
@@ -719,7 +743,8 @@ color: rgb(0, 0, 0);</string>
    <zorder>xlab</zorder>
    <zorder>main_lab</zorder>
    <zorder>pushButton_Bgrav</zorder>
-   <zorder>widget</zorder>
+   <zorder>pushButton_Bgrav_2</zorder>
+   <zorder>pushButton_Bgrav_3</zorder>
   </widget>
  </widget>
  <resources/>
