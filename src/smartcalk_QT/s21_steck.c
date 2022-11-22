@@ -44,8 +44,6 @@ Data pull_stack(char *value, Data value_x) {
                 have_trg = 0;
                 push(&s_lst, 0, '(', -1);  //  сразу после тригонометрии пушу скобку
                 memset(&str, '\0', 256);  //  зачистить статическую строку
-                // printf("err_trigonmetri");
-                // break;
             } else {
                 if (value[i] != '\0') { // костыль
                 int prior = pars_sing(value[i]);

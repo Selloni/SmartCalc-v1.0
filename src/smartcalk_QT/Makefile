@@ -498,5 +498,8 @@ install: install_target  FORCE
 
 uninstall: uninstall_target  FORCE
 
+cfile:
+	$(CC) -Wall -Werror -Wextra main.c s21_calc.c s21_steck.c s21_validation.c
+
 FORCE:
 

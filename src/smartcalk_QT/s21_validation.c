@@ -3,6 +3,7 @@
 int validation(char *value) {
     int err_flag = 1;
     int i = 0;
+    int flag_num = 1; // костыль для проверки пустых скобок и занков
     if (value[0] == 94 && value[0] == 46 && value[0] == 47 && value[0] == 42 && value[0] == 41) {  //   ^./*
         printf("err 1");
     } else {
@@ -39,10 +40,12 @@ int validation(char *value) {
                     break;
 
                 }
+            } else if (value[i] >= '0' && value[i] <= '9') {
+                flag_num == 1;
             }
             // printf("%d", i);
             i++;
-            if (i == len && bracket == 0) err_flag = 0;
+            if (i == len && bracket == 0 && flag_num == 0) err_flag = 0;
         }
     }
     return(err_flag);  // 0 not error
