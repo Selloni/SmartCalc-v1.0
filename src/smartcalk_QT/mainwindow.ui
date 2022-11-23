@@ -672,7 +672,7 @@ color: rgb(0, 0, 0);</string>
      <string>Постоить график</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_Bgrav_2">
+   <widget class="QPushButton" name="credit">
     <property name="geometry">
      <rect>
       <x>220</x>
@@ -689,7 +689,7 @@ color: rgb(0, 0, 0);</string>
      <string>Кредитное рабство</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_Bgrav_3">
+   <widget class="QPushButton" name="deposit">
     <property name="geometry">
      <rect>
       <x>20</x>
@@ -743,8 +743,8 @@ color: rgb(0, 0, 0);</string>
    <zorder>xlab</zorder>
    <zorder>main_lab</zorder>
    <zorder>pushButton_Bgrav</zorder>
-   <zorder>pushButton_Bgrav_2</zorder>
-   <zorder>pushButton_Bgrav_3</zorder>
+   <zorder>credit</zorder>
+   <zorder>deposit</zorder>
   </widget>
  </widget>
  <resources/>

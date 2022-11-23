@@ -9,6 +9,7 @@ CONFIG += c++17
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    credit.cpp \
     form.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -18,12 +19,14 @@ SOURCES += \
     s21_validation.c
 
 HEADERS += \
+    credit.h \
     form.h \
     mainwindow.h \
     qcustomplot.h \
     s21_calc.h
 
 FORMS += \
+    credit.ui \
     form.ui \
     mainwindow.ui
 

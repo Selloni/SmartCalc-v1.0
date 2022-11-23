@@ -52,22 +52,26 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = form.cpp \
+SOURCES       = credit.cpp \
+		form.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		qcustomplot.cpp \
 		s21_calc.c \
 		s21_steck.c \
-		s21_validation.c moc_form.cpp \
+		s21_validation.c moc_credit.cpp \
+		moc_form.cpp \
 		moc_mainwindow.cpp \
 		moc_qcustomplot.cpp
-OBJECTS       = form.o \
+OBJECTS       = credit.o \
+		form.o \
 		main.o \
 		mainwindow.o \
 		qcustomplot.o \
 		s21_calc.o \
 		s21_steck.o \
 		s21_validation.o \
+		moc_credit.o \
 		moc_form.o \
 		moc_mainwindow.o \
 		moc_qcustomplot.o
@@ -157,10 +161,12 @@ DIST          = /usr/lib/qt/mkspecs/features/spec_pre.prf \
 		/usr/lib/qt/mkspecs/features/exceptions.prf \
 		/usr/lib/qt/mkspecs/features/yacc.prf \
 		/usr/lib/qt/mkspecs/features/lex.prf \
-		smartcalk.pro form.h \
+		smartcalk.pro credit.h \
+		form.h \
 		mainwindow.h \
 		qcustomplot.h \
-		s21_calc.h form.cpp \
+		s21_calc.h credit.cpp \
+		form.cpp \
 		main.cpp \
 		mainwindow.cpp \
 		qcustomplot.cpp \
@@ -175,7 +181,7 @@ TARGET        = smartcalk
 first: all
 ####### Build rules
 
-smartcalk: ui_form.h ui_mainwindow.h $(OBJECTS)  
+smartcalk: ui_credit.h ui_form.h ui_mainwindow.h $(OBJECTS)  
 	$(LINK) $(LFLAGS) -o $(TARGET) $(OBJECTS) $(OBJCOMP) $(LIBS)
 
 Makefile: smartcalk.pro /usr/lib/qt/mkspecs/linux-g++/qmake.conf /usr/lib/qt/mkspecs/features/spec_pre.prf \
@@ -368,9 +374,9 @@ distdir: FORCE
 	@test -d $(DISTDIR) || mkdir -p $(DISTDIR)
 	$(COPY_FILE) --parents $(DIST) $(DISTDIR)/
 	$(COPY_FILE) --parents /usr/lib/qt/mkspecs/features/data/dummy.cpp $(DISTDIR)/
-	$(COPY_FILE) --parents form.h mainwindow.h qcustomplot.h s21_calc.h $(DISTDIR)/
-	$(COPY_FILE) --parents form.cpp main.cpp mainwindow.cpp qcustomplot.cpp s21_calc.c s21_steck.c s21_validation.c $(DISTDIR)/
-	$(COPY_FILE) --parents form.ui mainwindow.ui $(DISTDIR)/
+	$(COPY_FILE) --parents credit.h form.h mainwindow.h qcustomplot.h s21_calc.h $(DISTDIR)/
+	$(COPY_FILE) --parents credit.cpp form.cpp main.cpp mainwindow.cpp qcustomplot.cpp s21_calc.c s21_steck.c s21_validation.c $(DISTDIR)/
+	$(COPY_FILE) --parents credit.ui form.ui mainwindow.ui $(DISTDIR)/
 
 
 clean: compiler_clean 
@@ -402,17 +408,25 @@ compiler_moc_predefs_clean:
 moc_predefs.h: /usr/lib/qt/mkspecs/features/data/dummy.cpp
 	g++ -pipe -g -std=gnu++1z -Wall -Wextra -dM -E -o moc_predefs.h /usr/lib/qt/mkspecs/features/data/dummy.cpp
 
-compiler_moc_header_make_all: moc_form.cpp moc_mainwindow.cpp moc_qcustomplot.cpp
+compiler_moc_header_make_all: moc_credit.cpp moc_form.cpp moc_mainwindow.cpp moc_qcustomplot.cpp
 compiler_moc_header_clean:
-	-$(DEL_FILE) moc_form.cpp moc_mainwindow.cpp moc_qcustomplot.cpp
+	-$(DEL_FILE) moc_credit.cpp moc_form.cpp moc_mainwindow.cpp moc_qcustomplot.cpp
+moc_credit.cpp: credit.h \
+		moc_predefs.h \
+		/usr/bin/moc
+	/usr/bin/moc $(DEFINES) --include /home/admin/SmartCalc-v1.0/src/smartcalk_QT/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/admin/SmartCalc-v1.0/src/smartcalk_QT -I/usr/include/qt -I/usr/include/qt/QtPrintSupport -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/12.2.0 -I/usr/include/c++/12.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/12.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed -I/usr/include credit.h -o moc_credit.cpp
+
 moc_form.cpp: form.h \
+		s21_calc.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/admin/SmartCalc-v1.0/src/smartcalk_QT/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/admin/SmartCalc-v1.0/src/smartcalk_QT -I/usr/include/qt -I/usr/include/qt/QtPrintSupport -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/12.2.0 -I/usr/include/c++/12.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/12.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed -I/usr/include form.h -o moc_form.cpp
 
 moc_mainwindow.cpp: mainwindow.h \
 		qcustomplot.h \
+		form.h \
 		s21_calc.h \
+		credit.h \
 		moc_predefs.h \
 		/usr/bin/moc
 	/usr/bin/moc $(DEFINES) --include /home/admin/SmartCalc-v1.0/src/smartcalk_QT/moc_predefs.h -I/usr/lib/qt/mkspecs/linux-g++ -I/home/admin/SmartCalc-v1.0/src/smartcalk_QT -I/usr/include/qt -I/usr/include/qt/QtPrintSupport -I/usr/include/qt/QtWidgets -I/usr/include/qt/QtGui -I/usr/include/qt/QtCore -I/usr/include/c++/12.2.0 -I/usr/include/c++/12.2.0/x86_64-pc-linux-gnu -I/usr/include/c++/12.2.0/backward -I/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include -I/usr/local/include -I/usr/lib/gcc/x86_64-pc-linux-gnu/12.2.0/include-fixed -I/usr/include mainwindow.h -o moc_mainwindow.cpp
@@ -426,11 +440,16 @@ compiler_moc_objc_header_make_all:
 compiler_moc_objc_header_clean:
 compiler_moc_source_make_all:
 compiler_moc_source_clean:
-compiler_uic_make_all: ui_form.h ui_mainwindow.h
+compiler_uic_make_all: ui_credit.h ui_form.h ui_mainwindow.h
 compiler_uic_clean:
-	-$(DEL_FILE) ui_form.h ui_mainwindow.h
-ui_form.h: form.ui \
+	-$(DEL_FILE) ui_credit.h ui_form.h ui_mainwindow.h
+ui_credit.h: credit.ui \
 		/usr/bin/uic
+	/usr/bin/uic credit.ui -o ui_credit.h
+
+ui_form.h: form.ui \
+		/usr/bin/uic \
+		qcustomplot.h
 	/usr/bin/uic form.ui -o ui_form.h
 
 ui_mainwindow.h: mainwindow.ui \
@@ -447,18 +466,28 @@ compiler_clean: compiler_moc_predefs_clean compiler_moc_header_clean compiler_ui
 
 ####### Compile
 
+credit.o: credit.cpp credit.h \
+		ui_credit.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o credit.o credit.cpp
+
 form.o: form.cpp form.h \
-		ui_form.h
+		s21_calc.h \
+		ui_form.h \
+		qcustomplot.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o form.o form.cpp
 
 main.o: main.cpp mainwindow.h \
 		qcustomplot.h \
-		s21_calc.h
+		form.h \
+		s21_calc.h \
+		credit.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o main.cpp
 
 mainwindow.o: mainwindow.cpp mainwindow.h \
 		qcustomplot.h \
+		form.h \
 		s21_calc.h \
+		credit.h \
 		ui_mainwindow.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o mainwindow.o mainwindow.cpp
 
@@ -473,6 +502,9 @@ s21_steck.o: s21_steck.c s21_calc.h
 
 s21_validation.o: s21_validation.c s21_calc.h
 	$(CC) -c $(CFLAGS) $(INCPATH) -o s21_validation.o s21_validation.c
+
+moc_credit.o: moc_credit.cpp 
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_credit.o moc_credit.cpp
 
 moc_form.o: moc_form.cpp 
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o moc_form.o moc_form.cpp

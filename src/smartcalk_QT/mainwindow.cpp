@@ -1,12 +1,10 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-//#include "form.h"
 #include <QTextStream>
 
-// убрать баг со скобками
+// добавить в майк некий div и вообще разобраться с макефайлом
 // добвить кредитынй калькулятор
-// подчключить с файл к проект в форм
-// пердавать в график тригонометрию
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -15,7 +13,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     ui->label->setText("");
     ui->label_2->setText("");
-//    ui->label->setReadOnly(true);
     ui->label->setAlignment(Qt::AlignRight); // для вывода цифр с права
     ui->label_2->setText("0");
     ui->label_2->setAlignment(Qt::AlignRight); // для вывода цифр с права
@@ -170,27 +167,14 @@ void MainWindow::on_pushButton_Bgrav_clicked()
     if (!validation(c_tmp)) {
         form.show();
         form.paintGraph(&(*c_tmp), qt_x);
-
-//    double xBegin = 20, xEnd = qt_x+20, h = 0.1, Y;  // высота
-//       QVector<double> x,y;
-
-//        ui->widget->clearGraphs();
-
-
-//            ui->widget->xAxis->setRange(-10, 10);
-//            ui->widget->yAxis->setRange(-10, 10);
-
-//            for (qt_x = xBegin; qt_x <= xEnd; qt_x += h) {
-//                Y = pull_stack(c_tmp, qt_x);
-//                x.push_back(qt_x);
-//                y.push_back(Y);
-//            }
-
-//            ui->widget->addGraph();
-//            ui->widget->graph(0)->addData(x, y);
-//            ui->widget->replot();
-//            x.clear();
-//            y.clear();
     }
 }
 
+
+
+void MainWindow::on_credit_clicked()
+{
+    Credit window;
+    window.setModal(true);
+    window.exec();
+}

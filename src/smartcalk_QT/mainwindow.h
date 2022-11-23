@@ -7,6 +7,7 @@
 #include <QVector>
 #include <qcustomplot.h>
 #include <form.h>
+#include <credit.h>
 
 
 QT_BEGIN_NAMESPACE
@@ -28,6 +29,7 @@ public:
 private:
     Ui::MainWindow *ui;
     Form form;
+//    credit credit;
     QLabel *actWindow;
 
 private slots:
@@ -36,13 +38,12 @@ private slots:
     void operations();
     void trigonometr();
     void on_pushButton_C_clicked();
-//    void on_label_2_linkActivated(const QString &link);
-//    void on_setX_clicked();
     void on_xlab_clicked();
     void on_pushButton_equel_clicked();
     void on_pushButton_back_clicked();
     void on_pushButton_X_clicked();
     void on_main_lab_clicked();
     void on_pushButton_Bgrav_clicked();
+    void on_credit_clicked();
 };
 #endif // MAINWINDOW_H
