@@ -621,10 +621,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
+        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
     ],
     "directory": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/.qtc_clangd",
-    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
+    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
 },
 {
     "arguments": [
@@ -735,10 +735,10 @@
         "-ferror-limit=1000",
         "-x",
         "c++-header",
-        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
+        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
     ],
     "directory": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/.qtc_clangd",
-    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
+    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
 },
 {
     "arguments": [
@@ -1185,10 +1185,10 @@
         "-ferror-limit=1000",
         "-x",
         "c-header",
-        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
+        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
     ],
     "directory": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/.qtc_clangd",
-    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
+    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
 },
 {
     "arguments": [
@@ -1285,9 +1285,9 @@
         "-ferror-limit=1000",
         "-x",
         "c-header",
-        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
+        "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
     ],
     "directory": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/.qtc_clangd",
-    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_credit.h"
+    "file": "/home/admin/SmartCalc-v1.0/src/smartcalk_QT/ui_form.h"
 }
 ]
