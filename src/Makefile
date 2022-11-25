@@ -4,7 +4,7 @@ LINUX= -lsubunit -lrt -lpthread -lm
 LFLAGS= -fprofile-arcs -ftest-coverage
 LIBS= -lgtest -lgmock -pthread
 GCC = $(CC) -Wall -Wextra -Werror
-OS=$(shell uname -s)
+OS=$(uname -s)
 
 
 all: clean test
@@ -39,19 +39,20 @@ dvi:
 	open dvi.html
 
 install:
-	qmake && make && make clean && rm Makefile 
+	cd qt && qmake && make && make clean && rm Makefile && cd ..	
+
+open:
+	if($(OS), Darwin)
+		open smartcalk
 
 uninstall:
-	rm -rf ../build/SmartCalc_v2.app
+	rm -rf smartcalk.app
 
 
 build_calc:
 	gcc -c s21_*cc
 	ar rcs s21_smartcalc.a s21_*.o
 	ranlib s21_smartcalc.a
-
-
-
 
 debug:
 	$(CC) $(SOURSE) -g
@@ -67,6 +68,7 @@ clean:
 	rm -rf test
 	rm -rf report
 	rm -rf *.a
+	rm -rf smartcalk
 
 dvi:
 
