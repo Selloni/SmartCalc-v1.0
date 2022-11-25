@@ -1,10 +1,10 @@
 CC = gcc -std=c11
-SOURSE = main.c s21_calc.c s21_steck.c s21_validation.c
+SOURSE = s21_calc.c s21_steck.c s21_validation.c
 LINUX= -lsubunit -lrt -lpthread -lm
 LFLAGS= -fprofile-arcs -ftest-coverage
 LIBS= -lgtest -lgmock -pthread
 GCC = $(CC) -Wall -Wextra -Werror
-OS=$(uname -s)
+OS=$(shell uname -s)
 
 
 all: clean test
@@ -24,7 +24,7 @@ gcov_report: clean_test
 		$(GCC) --coverage test.c s21_*.c -o test $(LIBS)
 
 	else
-		$(GCC) --coverage test.c s21_*.c -o test $(LIBS)
+		$(GCC) --coverage test.c s21_*.c -o test $(LIBS) $(LINUX)
 
 	endif
 		./test
@@ -36,7 +36,7 @@ gcov_report: clean_test
 s21_smartcalc.a: build_calc
 
 dvi:
-	open dvi.html
+	cd qt && open dvi.html && cd.. 
 
 install:
 	cd qt && qmake && make && make clean && rm Makefile && cd ..	
@@ -46,20 +46,21 @@ open:
 		open smartcalk
 
 uninstall:
-	rm -rf smartcalk.app
+	rm -rf smartcalk
 
 
 build_calc:
-	gcc -c s21_*cc
+
+	cd qt && gcc -c s21_*cc
 	ar rcs s21_smartcalc.a s21_*.o
-	ranlib s21_smartcalc.a
+	ranlib s21_smartcalc.a && cd ..
 
 debug:
 	$(CC) $(SOURSE) -g
 
 
 clean:
-	rm -rf a.out
+	cd qt && rm -rf a.out
 	rm -rf a.out*
 	rm -rf *.o
 	rm -rf *.gcda
@@ -67,10 +68,7 @@ clean:
 	rm -rf *.info
 	rm -rf test
 	rm -rf report
-	rm -rf *.a
-	rm -rf smartcalk
-
-dvi:
+	rm -rf *.a && cd ..
 
 dist:
 
@@ -79,7 +77,7 @@ tests: OBJECT
 
 git:
 	git add .
-	git commit -m "рабочее состояние-проверить сложные функции"
+	git commit -m "добить ворнинги, тесты, стиль, валгринд"
 	git push
 
 OBJECT:
