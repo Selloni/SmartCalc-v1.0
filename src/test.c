@@ -1,64 +1,159 @@
-// #include <stdio.h>
+#include "s21_calc.h"
 
-// #include "s21_calc.h"
+#include <check.h>
+#include <math.h>
+#include <string.h>
 
-// typedef struct node {
-//   int data;
-//   struct node* next;
-// } nodes;
+START_TEST(test_smart_calc_1) {
+  char input[255] = "3+4*2/(1-5)^2";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq(result, 3.5);
+}
+END_TEST
 
-// nodes* makeList() {
-//   nodes* headNode = NULL;
-//   nodes* secondNode = NULL;
-//   nodes* thirdNode = NULL;
+START_TEST(test_smart_calc_2) {
+  char input[255] = "1+2+3+4*5*6^7";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq((int)result, 5598726);
+}
+END_TEST
 
-//   headNode = malloc(sizeof(nodes));
-//   secondNode = malloc(sizeof(nodes));
-//   thirdNode = malloc(sizeof(nodes));
+START_TEST(test_smart_calc_3) {
+  char input[255] = "123.456+2*3^4";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq(result, 285.456);
+}
+END_TEST
 
-//   headNode->data = 1;
-//   headNode->next = secondNode;
+START_TEST(test_smart_calc_4) {
+  char input[255] = "(8+2*5)/(1+3*2-4)";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq(result, 6);
+}
+END_TEST
 
-//   secondNode->data = 2;
-//   secondNode->next = thirdNode;
+START_TEST(test_smart_calc_5) {
+  char input[255] =
+      "(15/(7-(1+1))*3-(2+(1+1-1+1*2/2))+15/(7-(1+1))*3-(2+(1+1+1-1*2/2)))";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq(result, 10);
+}
+END_TEST
 
-//   thirdNode->data = 3;
-//   thirdNode->next = NULL;
+START_TEST(test_smart_calc_6) {
+  char input[255] = "cos(1*2)-1";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq_tol(result, -1.41614683655, 1e-06);
+}
+END_TEST
 
-//   return headNode;
-// }
+START_TEST(test_smart_calc_7) {
+  char input[255] =
+      "cos(15/(7-(1+1))*3-(2+(1+1-1+1*2/2))+15/(7-(1+1))*3-(2+(1+1+1-1*2/"
+      "2)))-1";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq_tol(result, -1.83907152908, 1e-06);
+}
+END_TEST
 
-// // void printList(nodes* headNode) {
-// //   nodes* currentNode = headNode;
-// //   while (currentNode != NULL) {
-// //     printf("The current element is %d\n", currentNode->data);
-// //     currentNode = currentNode->next;
-// //   }
-// // }
+START_TEST(test_smart_calc_8) {
+  char input[255] = "sin(2)";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq_tol(result, 0.909297, 1e-06);
+}
+END_TEST
 
-// void reverse_func(nodes* headNode, int data) {
-//   nodes* tmp = calloc(1, sizeof(nodes));
-//   tmp->data = headNode->data;
-//   tmp->next = headNode;
-//   headNode = tmp;
-// }
+START_TEST(test_smart_calc_9) {
+  char input[255] = "2mod2";
+  double result = pull_stack(input, 0);
+  ck_assert_double_eq(result, 0);
+}
+END_TEST
 
-// nodes* copy_func(nodes* headNode) {
-//   nodes* currentNode;
-//   nodes* tmp;
-//   while (headNode != NULL) {
-//     currentNode = headNode;
-//     reverse_func(headNode, headNode->data);
-//     headNode = headNode->next;
-//     free(currentNode);
-//   }
-//   return tmp;
-// }
+START_TEST(test_smart_calc_10) {
+  double x = 10;
+  char input[255] = "3+4*2/1-5+2^2";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq_tol(result, 10, 1e-06);
+}
+END_TEST
 
-// int main() {
-//   nodes* res = NULL;
-//   nodes* ls = makeList();
-//   printList(ls);
-//   res = copy_func(ls);
-//   return 0;
-// }
+START_TEST(test_smart_calc_11) {
+  double x = 10;
+  char input[255] = "3+4*2/1-5+2^2";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq_tol(result, 10, 1e-06);
+}
+END_TEST
+
+START_TEST(test_smart_calc_12) {
+  double x = 0.0003;
+  char input[255] = "asin(2*X)";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq_tol(result, 0.0006, 1e-06);
+}
+END_TEST
+
+START_TEST(test_smart_calc_13) {
+  double x = 0.0019;
+  char input[255] = "acos(2*X)";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq_tol(result, 1.567, 1e-03);
+}
+END_TEST
+
+START_TEST(test_smart_calc_14) {
+  double x = 0.0019;
+  char input[255] = "atan(2*X)";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq_tol(result, 0.00379998, 1e-06);
+}
+END_TEST
+
+START_TEST(test_smart_calc_15) {
+  double x = 0.004;
+  char input[255] = "tan(2*X)";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq_tol(result, 0.00800017, 1e-06);
+}
+END_TEST
+
+START_TEST(test_smart_calc_16) {
+  double x = 25;
+  char input[255] = "sqrt(2*X)";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq_tol(result, 7.07107, 1e-05);
+}
+END_TEST
+
+int main() {
+  Suite *s1 = suite_create("s21_smart_calc: ");
+  TCase *tc1_1 = tcase_create("s21_smart_calc: ");
+  SRunner *sr = srunner_create(s1);
+  int result;
+  suite_add_tcase(s1, tc1_1);
+
+  tcase_add_test(tc1_1, test_smart_calc_1);
+  tcase_add_test(tc1_1, test_smart_calc_2);
+  tcase_add_test(tc1_1, test_smart_calc_3);
+  tcase_add_test(tc1_1, test_smart_calc_4);
+  tcase_add_test(tc1_1, test_smart_calc_5);
+  tcase_add_test(tc1_1, test_smart_calc_6);
+  tcase_add_test(tc1_1, test_smart_calc_7);
+  tcase_add_test(tc1_1, test_smart_calc_8);
+  tcase_add_test(tc1_1, test_smart_calc_9);
+  tcase_add_test(tc1_1, test_smart_calc_10);
+  tcase_add_test(tc1_1, test_smart_calc_11);
+  tcase_add_test(tc1_1, test_smart_calc_12);
+  tcase_add_test(tc1_1, test_smart_calc_13);
+  tcase_add_test(tc1_1, test_smart_calc_14);
+  tcase_add_test(tc1_1, test_smart_calc_15);
+  tcase_add_test(tc1_1, test_smart_calc_15);
+  tcase_add_test(tc1_1, test_smart_calc_16);
+
+
+  srunner_run_all(sr, CK_ENV);
+  result = srunner_ntests_failed(sr);
+  srunner_free(sr);
+  return result == 0 ? 0 : 1;
+}

@@ -1,23 +1,22 @@
 CC = gcc -std=c11
 SOURSE = s21_calc.c s21_steck.c s21_validation.c
 LINUX= -lsubunit -lrt -lpthread -lm
-LFLAGS= -fprofile-arcs -ftest-coverage
-LIBS= -lgtest -lgmock -pthread
+# LFLAGS= -fprofile-arcs -ftest-coverage
+LIBS= -lcheck -lm -lpthread
 GCC = $(CC) -Wall -Wextra -Werror
-OS=$(shell uname -s)
+OS= $(shell uname -s)
+
 
 
 all: clean test
 
 test: clean s21_smartcalc.a
-	ifeq($(OS), Darwin)
-		$(GCC) tets.c s21_smartcalc.a -o test $(LIBS)
-	
-	else
-		$(GCC) tets.c s21_smartcalc.a -o test $(LIBS) $(LINUX)
-
-	endif
-		./test
+ifeq ($(OS),Darwin)
+	$(GCC) test.c s21_smartcalc.a -o test $(LIBS)
+else
+	$(GCC) test.c s21_smartcalc.a -o test $(LIBS) $(LINUX)
+endif
+	./test
 
 gcov_report: clean_test
 	ifeq ($(OS), Darwin)
@@ -42,7 +41,7 @@ install:
 	mv Makefile cloneMake && qmake && make && make clean && rm Makefile && mv cloneMake Makefile
 
 open:
-	ifeq ($(OS), Darwin)
+	ifeq ($(OS),Darwin)
 		open smartcalk
 
 uninstall:
@@ -50,7 +49,7 @@ uninstall:
 
 
 build_calc:
-	gcc -c s21_*cc
+	gcc -c s21_*.c
 	ar rcs s21_smartcalc.a s21_*.o
 	ranlib s21_smartcalc.a 
 
