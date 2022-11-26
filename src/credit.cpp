@@ -19,7 +19,7 @@ void Credit::on_radioButton_clicked()
 {
     if (ui->procent->text() == "" || ui->sum->text() == "" || ui->term->text() == "") {
         QMessageBox msbox;
-        msbox.setText("Золни поля, погода просто чудо как и ты");
+        msbox.setText("Заполни поля, погода просто чудо как и ты");
     } else {
         QString qt_P = "", qt_diff = "";
         QString qt_total_cr = "";

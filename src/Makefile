@@ -1,10 +1,10 @@
 CC = gcc -std=c11
-SOURSE = main.c s21_calc.c s21_steck.c s21_validation.c
+SOURSE = s21_calc.c s21_steck.c s21_validation.c
 LINUX= -lsubunit -lrt -lpthread -lm
 LFLAGS= -fprofile-arcs -ftest-coverage
 LIBS= -lgtest -lgmock -pthread
 GCC = $(CC) -Wall -Wextra -Werror
-OS=$(uname -s)
+OS=$(shell uname -s)
 
 
 all: clean test
@@ -24,7 +24,7 @@ gcov_report: clean_test
 		$(GCC) --coverage test.c s21_*.c -o test $(LIBS)
 
 	else
-		$(GCC) --coverage test.c s21_*.c -o test $(LIBS)
+		$(GCC) --coverage test.c s21_*.c -o test $(LIBS) $(LINUX)
 
 	endif
 		./test
@@ -36,23 +36,23 @@ gcov_report: clean_test
 s21_smartcalc.a: build_calc
 
 dvi:
-	open dvi.html
+	 open dvi.html
 
 install:
-	cd qt && qmake && make && make clean && rm Makefile && cd ..	
+	mv Makefile cloneMake && qmake && make && make clean && rm Makefile && mv cloneMake Makefile
 
 open:
-	if($(OS), Darwin)
+	ifeq ($(OS), Darwin)
 		open smartcalk
 
 uninstall:
-	rm -rf smartcalk.app
+		rm -rf smartcalk.app
 
 
 build_calc:
 	gcc -c s21_*cc
 	ar rcs s21_smartcalc.a s21_*.o
-	ranlib s21_smartcalc.a
+	ranlib s21_smartcalc.a 
 
 debug:
 	$(CC) $(SOURSE) -g
@@ -68,19 +68,26 @@ clean:
 	rm -rf test
 	rm -rf report
 	rm -rf *.a
-	rm -rf smartcalk
-
-dvi:
+	rm -rf *.cfg
 
 dist:
 
 tests: OBJECT
 	$(CC) -I include  $(SOURSE) unit_test.c -o test -lcheck
+	./test
 
 git:
 	git add .
-	git commit -m "рабочее состояние-проверить сложные функции"
+	git commit -m "пока рабоатет, но нужно проект в порядокпривести"
 	git push
+
+cpp:
+	cp ../materials/linters/CPPLINT.cfg ./
+	python3 ../materials/linters/cpplint.py *.h *.c
+	cppcheck *.c
 
 OBJECT:
 	$(GCC) $(SOURSE) -c
+
+valgrind:
+	valgrind --leak-check=full --track-origins=yes --trace-children=yes -s ./test
