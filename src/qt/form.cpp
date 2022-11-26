@@ -2,9 +2,6 @@
 //#include "s21_calc.h"
 #include "ui_form.h"
 
-extern "C" { // внешнее подключение
-    #include "s21_calc.h"
-}
 
 Form::Form(QWidget *parent) :
     QWidget(parent),

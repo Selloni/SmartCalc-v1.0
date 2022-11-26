@@ -1,19 +1,19 @@
 #include "s21_calc.h"
- //// почти готово, если тригонометрия есть проблема то что раньше заканчиватеься цикл, если двойной квадрат верно не отрабатывает\
- , првоерить отрабатывает ли минус в переди числа ! так же нужно написать тесты
+/* почти готово, если тригонометрия есть проблема то что раньше заканчиватеься цикл, если двойной квадрат верно не отрабатывает
+ , првоерить отрабатывает ли минус в переди числа ! так же нужно написать тесты */ 
 int calc(Node **list, Node **s_lst, int next_prior, char oper) {
     if(*s_lst != NULL) {
         Data var1 = 0;
         Data var2 = 0;
         Data sum = 0;
         char stek_oper = (**s_lst).oper;
-        int stek_prior = (**s_lst).prioritet;
+        // int stek_prior = (**s_lst).prioritet;
         printf("в стеке приоритет %d|символ(%c)-|-текущий приоритет %d: символ(%c)\n ",\
          (**s_lst).prioritet, (**s_lst).oper, next_prior, oper);
         if(oper == ')') {
             sum = total(list, s_lst);
-        } else if (next_prior > (**s_lst).prioritet || /*oper == ')' ||*/ oper == '(') { // если в стеке приоритет меньше \
-        чем текущий, кладем знак в стек 
+        } else if (next_prior > (**s_lst).prioritet || oper == '(') { /* если в стеке приоритет меньше
+        чем текущий, кладем знак в стек */
             push(s_lst, 0, oper, next_prior);
             printf("op%c|pr%d\n", oper, next_prior);
         } else {  //  рекурсия или цикл что бы постоянно проверял условие
