@@ -1,9 +1,9 @@
 #include "s21_calc.h"
-//  нужно добавить if-х, после разбора qt
+
 Data pull_stack(char *value, Data value_x) {
     Node *list = NULL;
     Node *s_lst = NULL;
-    Data itog = 0;  //  раскрыть флаг
+    Data itog = 0;
     int num_flag = 0;
     int have_trg = 0;
     Data num;
@@ -28,7 +28,7 @@ Data pull_stack(char *value, Data value_x) {
             push(&list, value_x, '0', 0); //   передовать переменную , которой пользователь будет присваивать х
             printf(" пушим х");
          } else {  //  не цифры
-            j = 0;  //////// касяк
+            j = 0;
             if (num_flag) {
                 num = atof(str);
                 push(&list, num, '0', 0);
@@ -44,8 +44,6 @@ Data pull_stack(char *value, Data value_x) {
                 have_trg = 0;
                 push(&s_lst, 0, '(', -1);  //  сразу после тригонометрии пушу скобку
                 memset(&str, '\0', 256);  //  зачистить статическую строку
-                // printf("err_trigonmetri");
-                // break;
             } else {
                 if (value[i] != '\0') { // костыль
                 int prior = pars_sing(value[i]);
@@ -61,8 +59,6 @@ Data pull_stack(char *value, Data value_x) {
     }
     print(s_lst);
     print(list);
-    // list = revers_steack(&list);
-    // s_lst = revers_steack_s(&s_lst);
     print(s_lst);
     print(list);
     itog = total(&list, &s_lst);
@@ -82,7 +78,7 @@ int trigonometr(Node **s_lst, char *word) {
     char tmp7[] = "ln";
     char tmp8[] = "log";
     char tmp9[] = "mod";
-    for(int i = 0; word[i] != '\0'; i++){  //  отстой, спросить рекомендации как сдлеать лучше
+    for(int i = 0; word[i] != '\0'; i++){  //  отстой
         str[i] = word[i];
     }
     if (!strcmp(str, tmp0)) {  //cos

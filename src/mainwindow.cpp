@@ -101,11 +101,9 @@ void MainWindow::operations()
 
 void MainWindow::on_pushButton_point_clicked()
 {
-    if(!(this->actWindow->text().contains('.'))) {
-        this->actWindow->setText(this->actWindow->text()+".");
-        if(this->actWindow->text()=='.') {
-            this->actWindow->setText("0.");
-        }
+    this->actWindow->setText(this->actWindow->text()+".");
+    if(this->actWindow->text()=='.') {
+        this->actWindow->setText("0.");
     }
 }
 

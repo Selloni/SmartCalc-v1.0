@@ -126,6 +126,15 @@ START_TEST(test_smart_calc_16) {
 }
 END_TEST
 
+START_TEST(test_smart_calc_17) {
+  double x = 0.0019;
+  char input[255] = "2.3+5.5";
+  double result = pull_stack(input, x);
+  ck_assert_double_eq(result, 7.8);
+}
+END_TEST
+
+
 int main() {
   Suite *s1 = suite_create("s21_smart_calc: ");
   TCase *tc1_1 = tcase_create("s21_smart_calc: ");
@@ -150,6 +159,7 @@ int main() {
   tcase_add_test(tc1_1, test_smart_calc_15);
   tcase_add_test(tc1_1, test_smart_calc_15);
   tcase_add_test(tc1_1, test_smart_calc_16);
+  tcase_add_test(tc1_1, test_smart_calc_17);
 
 
   srunner_run_all(sr, CK_ENV);
