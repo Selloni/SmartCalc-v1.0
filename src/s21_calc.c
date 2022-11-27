@@ -12,8 +12,6 @@ int calc(Node **list, Node **s_lst, int next_prior, char oper) {
       push(s_lst, 0, oper, next_prior);
     } else {  //  рекурсия или цикл что бы постоянно проверял условие
       while (*s_lst != NULL && next_prior <= (**s_lst).prioritet) {
-        print(*s_lst);
-        print(*list);
         stek_oper = pop_s(s_lst);
         if (stek_oper < 75 && stek_oper > 65) {
           var1 = pop(list);
@@ -40,7 +38,6 @@ int calc(Node **list, Node **s_lst, int next_prior, char oper) {
     }
   } else {
     push(s_lst, 0, oper, next_prior);
-    print(*s_lst);
   }
   return 0;
 }

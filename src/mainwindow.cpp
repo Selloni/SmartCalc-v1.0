@@ -126,16 +126,16 @@ void MainWindow::on_main_lab_clicked()
 
 void MainWindow::on_pushButton_equel_clicked()
 {
-    double total;
-    printf("debug/n");
-//    QTextStream cout(stdout);
+    setlocale(LC_NUMERIC, "C");  //  для вывода дробной части на линуксе
+    double total = 0.0;
     QString tmp = ui->label->text();
     double qt_x = ui->label_2->text().toDouble();
     QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
     char *c_tmp = ba.data();
     if (!validation(c_tmp)) {
         total = pull_stack(c_tmp, qt_x);
-        QString str_total = QString::number(total);
+        QString str_total = QString::number(total);  
+// QString str_total = QString::number((double)total, 'f', 7);  //  7 дробной части
         ui->label->setText(str_total);
     } else {
         ui->label->setText("Error");

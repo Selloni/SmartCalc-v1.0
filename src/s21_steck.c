@@ -25,7 +25,6 @@ Data pull_stack(char *value, Data value_x) {
       j++;
     } else if (value[i] == 'X') {
       push(&list, value_x, '0', 0);
-      printf(" пушим х");
     } else {  //  не цифры
       j = 0;
       if (num_flag) {
@@ -47,8 +46,6 @@ Data pull_stack(char *value, Data value_x) {
       } else {
         if (value[i] != '\0') {  // костыль
           int prior = pars_sing(value[i]);
-          printf("списаок занков");
-          print(s_lst);
           calc(&list, &s_lst, prior, value[i]);
         } else {
           break;
@@ -57,10 +54,6 @@ Data pull_stack(char *value, Data value_x) {
     }
     i++;
   }
-  print(s_lst);
-  print(list);
-  print(s_lst);
-  print(list);
   itog = total(&list, &s_lst);
   return (itog);
 }

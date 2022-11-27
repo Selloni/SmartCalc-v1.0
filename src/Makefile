@@ -70,6 +70,7 @@ clean:
 	rm -rf *.cfg
 
 dist:
+	
 
 tests: OBJECT
 	$(CC) -I include  $(SOURSE) unit_test.c -o test -lcheck
