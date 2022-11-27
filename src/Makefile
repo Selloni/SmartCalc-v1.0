@@ -68,9 +68,10 @@ clean:
 	rm -rf report
 	rm -rf *.a
 	rm -rf *.cfg
-
+	rm -rf *.tar
 dist:
-	
+	mkdir build
+	tar -cf build/dist.tar smartcalk.app
 
 tests: OBJECT
 	$(CC) -I include  $(SOURSE) unit_test.c -o test -lcheck
@@ -78,7 +79,7 @@ tests: OBJECT
 
 git:
 	git add .
-	git commit -m "стильпоправил"
+	git commit -m "проверить на валгринде"
 	git push
 
 cpp:
