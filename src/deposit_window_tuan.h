@@ -7,16 +7,15 @@ namespace Ui {
 class deposit_window_tuan;
 }
 
-class deposit_window_tuan : public QDialog
-{
-    Q_OBJECT
+class deposit_window_tuan : public QDialog {
+  Q_OBJECT
 
 public:
-    explicit deposit_window_tuan(QWidget *parent = nullptr);
-    ~deposit_window_tuan();
+  explicit deposit_window_tuan(QWidget *parent = nullptr);
+  ~deposit_window_tuan();
 
 private:
-    Ui::deposit_window_tuan *ui;
+  Ui::deposit_window_tuan *ui;
 };
 
 #endif // DEPOSIT_WINDOW_TUAN_H

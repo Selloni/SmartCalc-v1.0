@@ -4,28 +4,25 @@
 #include <QWidget>
 
 extern "C" { // внешнее подключение
-    #include "s21_calc.h"
+#include "s21_calc.h"
 }
 
 namespace Ui {
 class Form;
 }
 
-class Form : public QWidget
-{
-    Q_OBJECT
+class Form : public QWidget {
+  Q_OBJECT
 
 public:
-    explicit Form(QWidget *parent = nullptr);
-    void paintGraph(char *Y1, double X1);
-    ~Form();
+  explicit Form(QWidget *parent = nullptr);
+  void paintGraph(char *Y1, double X1);
+  ~Form();
 
 private slots:
 
-
 private:
-    Ui::Form *ui;
-
+  Ui::Form *ui;
 };
 
 #endif // FORM_H

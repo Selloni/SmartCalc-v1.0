@@ -134,7 +134,6 @@ START_TEST(test_smart_calc_17) {
 }
 END_TEST
 
-
 int main() {
   Suite *s1 = suite_create("s21_smart_calc: ");
   TCase *tc1_1 = tcase_create("s21_smart_calc: ");
@@ -160,7 +159,6 @@ int main() {
   tcase_add_test(tc1_1, test_smart_calc_15);
   tcase_add_test(tc1_1, test_smart_calc_16);
   tcase_add_test(tc1_1, test_smart_calc_17);
-
 
   srunner_run_all(sr, CK_ENV);
   result = srunner_ntests_failed(sr);

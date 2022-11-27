@@ -77,12 +77,12 @@ tests: OBJECT
 
 git:
 	git add .
-	git commit -m "исправил пролему с точкой, обнаружил баг в qt проблема с дробными числами"
+	git commit -m "стильпоправил"
 	git push
 
 cpp:
 	cp ../materials/linters/CPPLINT.cfg ./
-	python3 ../materials/linters/cpplint.py *.h *.c
+	python3 ../materials/linters/cpplint.py s21_*.h s21_*.c
 	cppcheck *.c
 
 OBJECT:
@@ -90,3 +90,9 @@ OBJECT:
 
 valgrind:
 	valgrind --leak-check=full --track-origins=yes --trace-children=yes -s ./test
+
+clang:
+	mv ../materials/linters/.clang-format .clang-format
+	# clang-format -i s21_*.c s21_*.h
+	clang-format -n s21_*.c s21_*.h
+	mv .clang-format ../materials/linters/.clang-format
