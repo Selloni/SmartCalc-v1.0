@@ -68,7 +68,7 @@ clean:
 	rm -rf report
 	rm -rf *.a
 	rm -rf *.cfg
-	rm -rf *.tar
+	rm -rf build
 dist:
 	mkdir build
 	tar -cf build/dist.tar smartcalk.app
@@ -79,7 +79,7 @@ tests: OBJECT
 
 git:
 	git add .
-	git commit -m "проверить на валгринде"
+	git commit -m "вроде все"
 	git push
 
 cpp:
