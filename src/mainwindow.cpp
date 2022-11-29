@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QTextStream>
+#include <QIntValidator>
 
 // добавить в майк некий div и вообще разобраться с макефайлом
 // добвить кредитынй калькулятор
@@ -10,12 +11,18 @@ MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
+
     ui->setupUi(this);
+    ui->step->setValidator( new QDoubleValidator(this) );
+    ui->xmin->setValidator( new QDoubleValidator(this) );
+    ui->xmax->setValidator( new QDoubleValidator(this) );
+    ui->ymin->setValidator( new QDoubleValidator(this) );
+    ui->ymax->setValidator( new QDoubleValidator(this) );
     ui->label->setText("");
     ui->label_2->setText("");
     ui->label->setAlignment(Qt::AlignRight); // для вывода цифр с права
     ui->label_2->setText("0");
-    ui->label_2->setAlignment(Qt::AlignRight); // для вывода цифр с права
+    ui->label_2->setAlignment(Qt::AlignRight);
     this->actWindow = ui->label;
     connect(ui->pushButton_0,SIGNAL(clicked()),this,SLOT(number_for_calc()));
     connect(ui->pushButton_1,SIGNAL(clicked()),this,SLOT(number_for_calc()));
@@ -159,18 +166,26 @@ void MainWindow::on_pushButton_X_clicked()
 void MainWindow::on_pushButton_Bgrav_clicked()
 {
     QString xmi = ui->xmin->text();
+    xmi.replace(",", ".");
     double xMin = xmi.toDouble();
 
+
     QString xma = ui->xmax->text();
+    xma.replace(",", ".");
     double xMax = xma.toDouble();
 
+
     QString ymi = ui->ymin->text();
+    ymi.replace(",", ".");
     double yMin = ymi.toDouble();
 
+
     QString yma = ui->ymax->text();
+    yma.replace(",", ".");
     double yMax = yma.toDouble();
 
     QString qstep = ui->step->text();
+    qstep.replace(",", ".");
     double step = qstep.toDouble();
 
     if (!graf_validation(xMax, xMin, yMin, yMax)) {

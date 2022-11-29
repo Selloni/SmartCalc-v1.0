@@ -841,9 +841,9 @@ color: rgb(255, 255, 255);</string>
    <widget class="QLineEdit" name="step">
     <property name="geometry">
      <rect>
-      <x>270</x>
+      <x>280</x>
       <y>340</y>
-      <width>41</width>
+      <width>31</width>
       <height>21</height>
      </rect>
     </property>
@@ -852,7 +852,7 @@ color: rgb(255, 255, 255);</string>
 color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
-     <string>0.1</string>
+     <string>1</string>
     </property>
    </widget>
    <widget class="QLabel" name="label_7">
