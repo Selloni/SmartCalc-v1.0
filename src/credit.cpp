@@ -2,13 +2,17 @@
 #include "ui_credit.h"
 #include <QMessageBox>
 #include <math.h>
+#include <QIntValidator>
+
 
 Credit::Credit(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::Credit)
 {
     ui->setupUi(this);
-//    sum->setValidator( new QDoubleValidator(0, 100, 2, this));
+    ui->sum->setValidator( new QDoubleValidator(this));
+    ui->procent->setValidator( new QDoubleValidator(this));
+    ui->term->setValidator( new QIntValidator(this));
 }
 
 Credit::~Credit()
@@ -29,9 +33,17 @@ void Credit::on_radioButton_clicked()
         ui->cr_pereplata->setText("");
         ui->total_cr->setText("");
         double In, P = 0, T = 0;
-        double sum_cr = ui->sum->text().toInt();
-        double percent_cr = ui->procent->text().toDouble();
+
+        QString qsum = ui->sum->text();
+        qsum.replace(",", ".");
+        double sum_cr = qsum.toDouble();
+        
+        QString qpersent_cr = ui->procent->text();
+        qpersent_cr.replace(",", ".");
+        double percent_cr = qpersent_cr.toDouble();
+
         int term_cr = ui->term->text().toInt();
+
         int month_all_cr = term_cr * 12;  //  всего месяцев
         double body_loan = sum_cr/month_all_cr;  // тело займа
         double const_sum_cr = sum_cr;
@@ -59,9 +71,19 @@ void Credit::on_ann_clicked()
     ui->output->setText("");
     ui->cr_pereplata->setText("");
     ui->total_cr->setText("");
+
+
+    QString qsum = ui->sum->text();
+    qsum.replace(",", ".");
+    double sum_cr = qsum.toDouble();
+    
+    QString qpersent_cr = ui->procent->text();
+    qpersent_cr.replace(",", ".");
+    double percent_cr = qpersent_cr.toDouble();
+
     int term_cr = ui->term->text().toInt();
-    double percent_cr = ui->procent->text().toInt();
-    int sum_cr = ui->sum->text().toInt();
+
+
     int month_all_cr = term_cr * 12;
     double i = percent_cr/100/12;
     double P = sum_cr * (i+(i/(pow((1+i), month_all_cr)-1)));

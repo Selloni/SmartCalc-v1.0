@@ -6,14 +6,14 @@ int validation(char *value) {
   int i = 0;
   int point = 0;
   if (value[0] == 94 || value[0] == 46 || value[0] == 47 || value[0] == 42 ||
-      value[0] == 41 || value[0] == 45) {  //  ^./*
+      value[0] == 41) {  //  ^./*
       err_flag = 1;
   } else {
     int len = strlen(value);
     int bracket = 0;
     while (value[i] != '\0') {
-      if (((value[i] > 41 && value[i] < 47) || value[i] == 94) &&
-          ((value[i + 1] > 41 && value[i + 1] < 47) ||
+      if (((value[i] > 41 && value[i] <= 47) || value[i] == 94) &&
+          ((value[i + 1] > 41 && value[i + 1] <= 47) ||
            value[i + 1] == 94)) {  //  )*+,-./^
         break;
       } else if (value[i] == '*' || value[i] == '+' || value[i] == '/' ||

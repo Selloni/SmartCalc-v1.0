@@ -74,7 +74,6 @@ int trigonometr(Node **s_lst, char *word) {
   char tmp6[] = "sqrt";
   char tmp7[] = "ln";
   char tmp8[] = "log";
-  char tmp9[] = "mod";
   for (int i = 0; word[i] != '\0'; i++) {  //  отстой
     str[i] = word[i];
   }

@@ -49,7 +49,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_plus,SIGNAL(clicked()),this,SLOT(operations()));
     connect(ui->pushButton_ln,SIGNAL(clicked()),this,SLOT(trigonometr()));
     connect(ui->pushButton_pow,SIGNAL(clicked()),this,SLOT(operations()));
-//    connect(ui->pushButton_mod,SIGNAL(clicked()),this,SLOT(operations()));
     connect(ui->pushButton_sqrt,SIGNAL(clicked()),this,SLOT(trigonometr()));
 }
 

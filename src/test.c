@@ -189,6 +189,12 @@ START_TEST(test_smart_calc_25) {
 }
 END_TEST
 
+// START_TEST(test_smart_calc_26) {
+//   char input[255] = "5.3%3";
+//   double result = pull_stack(input, 0);
+//   ck_assert_int_eq(result, 2);
+// }
+// END_TEST
 
 int main() {
   Suite *s1 = suite_create("s21_smart_calc: ");
@@ -222,6 +228,7 @@ int main() {
   tcase_add_test(tc1_1, test_smart_calc_23);
   tcase_add_test(tc1_1, test_smart_calc_24);
   tcase_add_test(tc1_1, test_smart_calc_25);
+  // tcase_add_test(tc1_1, test_smart_calc_26);
 
   srunner_run_all(sr, CK_ENV);
   result = srunner_ntests_failed(sr);

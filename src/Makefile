@@ -1,5 +1,5 @@
 CC = gcc -std=c11
-SOURSE = s21_calc.c s21_steck.c s21_validation.c
+SOURSE = main.c s21_calc.c s21_steck.c s21_validation.c
 LINUX= -lrt -lpthread -lm
 LIBS= -lcheck -lm -lpthread
 GCC = $(CC) -Wall -Wextra -Werror
@@ -78,9 +78,6 @@ push:
 # 	python3 ../materials/linters/cpplint.py s21_*.h s21_*.c
 # 	cppcheck *.c
 
-install_lcov:
-	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
-	brew install lcov
 
 valgrind:
 	valgrind --leak-check=full --track-origins=yes --trace-children=yes -s ./test
