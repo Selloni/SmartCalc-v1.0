@@ -1,5 +1,5 @@
 #include "s21_calc.h"
-/////////  проверить на масимально допустимое число
+
 int validation(char *value) {
   int err_flag = 1;
   int num_flag = 1;
@@ -42,4 +42,10 @@ int validation(char *value) {
     }
   }
   return (err_flag);  // 0 not error
+}
+
+int graf_validation(double xMax, double xMin, double yMin, double yMax) {
+    int return_value = 0;
+    if (xMin >= xMax || yMin >= yMax) return_value = 1;
+    return return_value;
 }

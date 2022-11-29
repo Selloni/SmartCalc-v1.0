@@ -47,5 +47,6 @@ private slots:
   void on_pushButton_Bgrav_clicked();
   void on_credit_clicked();
   void on_deposit_clicked();
+  void on_pushButton_mod_clicked();
 };
 #endif // MAINWINDOW_H

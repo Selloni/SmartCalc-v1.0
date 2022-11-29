@@ -42,7 +42,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->pushButton_plus,SIGNAL(clicked()),this,SLOT(operations()));
     connect(ui->pushButton_ln,SIGNAL(clicked()),this,SLOT(trigonometr()));
     connect(ui->pushButton_pow,SIGNAL(clicked()),this,SLOT(operations()));
-    connect(ui->pushButton_mod,SIGNAL(clicked()),this,SLOT(operations()));
+//    connect(ui->pushButton_mod,SIGNAL(clicked()),this,SLOT(operations()));
     connect(ui->pushButton_sqrt,SIGNAL(clicked()),this,SLOT(trigonometr()));
 }
 
@@ -158,14 +158,32 @@ void MainWindow::on_pushButton_X_clicked()
 
 void MainWindow::on_pushButton_Bgrav_clicked()
 {
-    double qt_x = ui->label_2->text().toDouble();
-    QString tmp = ui->label->text();
-    QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
-    char *c_tmp = ba.data();
-    if (!validation(c_tmp)) {
-        form.show();
-        form.paintGraph(&(*c_tmp), qt_x);
+    QString xmi = ui->xmin->text();
+    double xMin = xmi.toDouble();
+
+    QString xma = ui->xmax->text();
+    double xMax = xma.toDouble();
+
+    QString ymi = ui->ymin->text();
+    double yMin = ymi.toDouble();
+
+    QString yma = ui->ymax->text();
+    double yMax = yma.toDouble();
+
+    QString qstep = ui->step->text();
+    double step = qstep.toDouble();
+
+    if (!graf_validation(xMax, xMin, yMin, yMax)) {
+        double qt_x = ui->label_2->text().toDouble();
+        QString tmp = ui->label->text();
+        QByteArray ba = tmp.toLocal8Bit(); // перевод из Qstring in *str
+        char *c_tmp = ba.data();
+        if (!validation(c_tmp)) {
+            form.show();
+            form.paintGraph(&(*c_tmp), qt_x, xMax, yMax, xMin, yMin, step);
+        }
     }
+
 }
 
 
@@ -182,5 +200,11 @@ void MainWindow::on_deposit_clicked()
     deposit_window_tuan window;
     window.setModal(true);
     window.exec();
+}
+
+
+void MainWindow::on_pushButton_mod_clicked()
+{
+  actWindow->setText(actWindow->text().append('%'));
 }
 

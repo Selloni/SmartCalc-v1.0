@@ -16,32 +16,25 @@ Form::~Form()
 }
 
 
-void Form::paintGraph(char *Y1, double X1)
+void Form::paintGraph(char *Y1, double X1, double xMax, double yMax, double xMin, double yMin, double step)
 {
-    double xBegin = -20, xEnd = 20, h = 0.1, Y;  // высота
-       QVector<double> x,y;
+   double xBegin = xMin, xEnd = xMax, h = step, Y;
+   QVector<double> x,y;
 
-        ui->widget->clearGraphs();
+    ui->widget->clearGraphs();
+    ui->widget->xAxis->setRange(xMin, xMax);
+    ui->widget->yAxis->setRange(yMin, yMax);
 
+    for (X1 = xBegin; X1 <= xEnd; X1 += h) {
+        Y = pull_stack(Y1, X1);
+        x.push_back(X1);
+        y.push_back(Y);
+    }
 
-
-            ui->widget->xAxis->setRange(-20, 20);
-            ui->widget->yAxis->setRange(-20, 20);
-
-//            N = (xEnd-xBegin)/h + 2;
-
-            for (X1 = xBegin; X1 <= xEnd; X1 += h) {
-                Y = pull_stack(Y1, X1);
-                x.push_back(X1);
-                y.push_back(Y);
-            }
-
-            ui->widget->addGraph();
-            ui->widget->graph(0)->addData(x, y);
-            ui->widget->replot();
-            x.clear();
-            y.clear();
-////    printf("che ne tack ?");
-
+    ui->widget->addGraph();
+    ui->widget->graph(0)->addData(x, y);
+    ui->widget->replot();
+    x.clear();
+    y.clear();
 }
 

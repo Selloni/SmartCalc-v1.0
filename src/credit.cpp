@@ -8,6 +8,7 @@ Credit::Credit(QWidget *parent) :
     ui(new Ui::Credit)
 {
     ui->setupUi(this);
+//    sum->setValidator( new QDoubleValidator(0, 100, 2, this));
 }
 
 Credit::~Credit()
@@ -17,6 +18,7 @@ Credit::~Credit()
 
 void Credit::on_radioButton_clicked()
 {
+
     if (ui->procent->text() == "" || ui->sum->text() == "" || ui->term->text() == "") {
         QMessageBox msbox;
         msbox.setText("Заполни поля, погода просто чудо как и ты");
@@ -34,8 +36,8 @@ void Credit::on_radioButton_clicked()
         double body_loan = sum_cr/month_all_cr;  // тело займа
         double const_sum_cr = sum_cr;
         while (month_all_cr != 0) {
-            sum_cr = sum_cr - (sum_cr/month_all_cr);  //  тело постоянно уменьшаеться
             In = sum_cr * (percent_cr / 100) / 12;  //  сумма на погошение проценитов
+            sum_cr = sum_cr - (sum_cr/month_all_cr);  //  тело постоянно уменьшаеться
             P = In + body_loan;
             T = T + In + body_loan;
             qt_P = QString::number(P);

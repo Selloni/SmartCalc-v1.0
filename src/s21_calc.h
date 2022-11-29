@@ -33,4 +33,6 @@ Data total(Node **list, Node **s_lst);
 Node *revers_steack(Node **list);
 Node *revers_steack_s(Node **list);
 Data calc_triginimetr(Data var, char stek_oper);
+int graf_validation(double xMax, double xMin, double yMin, double yMax);
+
 // #endif

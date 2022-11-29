@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>621</width>
-    <height>338</height>
+    <height>376</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -658,8 +658,8 @@ text-align: center</string>
    <widget class="QPushButton" name="pushButton_Bgrav">
     <property name="geometry">
      <rect>
-      <x>420</x>
-      <y>300</y>
+      <x>240</x>
+      <y>310</y>
       <width>181</width>
       <height>24</height>
      </rect>
@@ -675,7 +675,7 @@ color: rgb(0, 0, 0);</string>
    <widget class="QPushButton" name="credit">
     <property name="geometry">
      <rect>
-      <x>220</x>
+      <x>30</x>
       <y>300</y>
       <width>181</width>
       <height>24</height>
@@ -692,8 +692,8 @@ color: rgb(0, 0, 0);</string>
    <widget class="QPushButton" name="deposit">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>300</y>
+      <x>30</x>
+      <y>340</y>
       <width>181</width>
       <height>24</height>
      </rect>
@@ -704,6 +704,171 @@ color: rgb(0, 0, 0);</string>
     </property>
     <property name="text">
      <string>Депозитное богатство</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="xmin">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>300</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(61, 56, 70);
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>-10</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ymin">
+    <property name="geometry">
+     <rect>
+      <x>460</x>
+      <y>340</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(61, 56, 70);
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>-10</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="xmax">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>300</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(61, 56, 70);
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>10</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="ymax">
+    <property name="geometry">
+     <rect>
+      <x>530</x>
+      <y>340</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(61, 56, 70);
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>10</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>300</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>X</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>510</x>
+      <y>340</y>
+      <width>21</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>y</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>470</x>
+      <y>320</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>min</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>540</x>
+      <y>320</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>max</string>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="step">
+    <property name="geometry">
+     <rect>
+      <x>270</x>
+      <y>340</y>
+      <width>41</width>
+      <height>21</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(61, 56, 70);
+color: rgb(255, 255, 255);</string>
+    </property>
+    <property name="text">
+     <string>0.1</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>340</y>
+      <width>31</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(255, 255, 255, 0);</string>
+    </property>
+    <property name="text">
+     <string>step</string>
     </property>
    </widget>
    <zorder>pushButton_6_</zorder>
@@ -745,6 +910,16 @@ color: rgb(0, 0, 0);</string>
    <zorder>pushButton_Bgrav</zorder>
    <zorder>credit</zorder>
    <zorder>deposit</zorder>
+   <zorder>xmin</zorder>
+   <zorder>ymin</zorder>
+   <zorder>xmax</zorder>
+   <zorder>ymax</zorder>
+   <zorder>label_3</zorder>
+   <zorder>label_4</zorder>
+   <zorder>label_5</zorder>
+   <zorder>label_6</zorder>
+   <zorder>step</zorder>
+   <zorder>label_7</zorder>
   </widget>
  </widget>
  <resources/>
