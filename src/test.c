@@ -134,6 +134,62 @@ START_TEST(test_smart_calc_17) {
 }
 END_TEST
 
+START_TEST(test_smart_calc_18) {
+  char input[255] = "-(-3+2)";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq((int)result, 1);
+}
+END_TEST
+
+START_TEST(test_smart_calc_19) {
+  char input[255] = "(-2-3+1)";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq((int)result, -4);
+}
+END_TEST
+
+START_TEST(test_smart_calc_20) {
+  char input[255] = "(+2-6)+(-4-10)";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq((int)result, -18);
+}
+
+START_TEST(test_smart_calc_21) {
+  char input[255] = "-2-3+1";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq((int)result, -4);
+}
+END_TEST
+
+START_TEST(test_smart_calc_22) {
+  char input[255] = "5%3";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq(result, 2);
+}
+END_TEST
+
+START_TEST(test_smart_calc_23) {
+  char input[255] = "(132+sin(asin(sqrt(ln(log(228.11)))))-4*5^6*(123))";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq(result, -7687367.073);
+}
+END_TEST
+
+START_TEST(test_smart_calc_24) {
+  char input[255] = "15/(7-(1+1))*3-(2+(1+1))*15/(7-(200+1))*3-(2+(1+1))*(15/(7-(1+1))*3-(2+(1+1))+15/(7-(1+1))*3-(2+(1+1)))";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq(result, -30.07);
+}
+END_TEST
+
+START_TEST(test_smart_calc_25) {
+  char input[255] = "sin(-1)";
+  double result = pull_stack(input, 0);
+  ck_assert_int_eq(result, 0.84);
+}
+END_TEST
+
+
 int main() {
   Suite *s1 = suite_create("s21_smart_calc: ");
   TCase *tc1_1 = tcase_create("s21_smart_calc: ");
@@ -156,9 +212,16 @@ int main() {
   tcase_add_test(tc1_1, test_smart_calc_13);
   tcase_add_test(tc1_1, test_smart_calc_14);
   tcase_add_test(tc1_1, test_smart_calc_15);
-  tcase_add_test(tc1_1, test_smart_calc_15);
   tcase_add_test(tc1_1, test_smart_calc_16);
   tcase_add_test(tc1_1, test_smart_calc_17);
+  tcase_add_test(tc1_1, test_smart_calc_18);
+  tcase_add_test(tc1_1, test_smart_calc_19);
+  tcase_add_test(tc1_1, test_smart_calc_20);
+  tcase_add_test(tc1_1, test_smart_calc_21);
+  tcase_add_test(tc1_1, test_smart_calc_22);
+  tcase_add_test(tc1_1, test_smart_calc_23);
+  tcase_add_test(tc1_1, test_smart_calc_24);
+  tcase_add_test(tc1_1, test_smart_calc_25);
 
   srunner_run_all(sr, CK_ENV);
   result = srunner_ntests_failed(sr);

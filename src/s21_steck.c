@@ -13,18 +13,21 @@ Data pull_stack(char *value, Data value_x) {
   char str[256] = {'\0'};  //  есть ли не обходимось создавать статический масив
   int len = strlen(value);
   len += 1;
-  if (value[0] == '-') {
-    push(&list, 0, 0, 0);
-    push(&s_lst, 0, '-', 1);
-    i++;
+  if (value[0] == '-' || value[0] == '+') {
+    push(&list, 0, '0', 0);
+    // push(&s_lst, 0, value[0], 1);
+    // i++;
   }
   while (i != len) {
-    if (value[i] > 47 && value[i] < 58 || value[i] == '.') {
+    if ((value[i] > 47 && value[i] < 58) || value[i] == '.') {
       str[j] = value[i];
       num_flag = 1;
       j++;
     } else if (value[i] == 'X') {
       push(&list, value_x, '0', 0);
+    } else if (value[i] == '(' && (value[i+1] == '+' || value[i+1] == '-')) {
+          push(&list, 0, 0, 0);
+          push(&s_lst, 0, '(', -1);
     } else {  //  не цифры
       j = 0;
       if (num_flag) {
@@ -35,10 +38,9 @@ Data pull_stack(char *value, Data value_x) {
       num_flag = 0;
       if (value[i] > 96 && value[i] < 123) {  // alphabet
         str[k] = value[i];
-        have_trg = 1;  //   думал реализовать флаг, для контроля входа в цикл
+        have_trg = 1;
         k++;
       } else if (have_trg) {
-  //  заходит в фунцию тригонометрия выполняет функцию, но не заходит в устловие if
         trigonometr(&s_lst, str);
         have_trg = 0;
         push(&s_lst, 0, '(', -1);  //  сразу после тригонометрии пушу скобку
@@ -46,7 +48,9 @@ Data pull_stack(char *value, Data value_x) {
       } else {
         if (value[i] != '\0') {  // костыль
           int prior = pars_sing(value[i]);
-          calc(&list, &s_lst, prior, value[i]);
+          if (prior != 0) {
+            calc(&list, &s_lst, prior, value[i]);
+          }
         } else {
           break;
         }
@@ -59,8 +63,8 @@ Data pull_stack(char *value, Data value_x) {
 }
 
 int trigonometr(Node **s_lst, char *word) {
-  char str[5] = {'\0'};
   int err = 0;
+  char str[5] = {'\0'};
   char tmp0[] = "cos";
   char tmp1[] = "sin";
   char tmp2[] = "tan";
@@ -101,9 +105,6 @@ int trigonometr(Node **s_lst, char *word) {
   } else if (!strcmp(str, tmp8)) {  // log
     err = 1;
     push(s_lst, 0, 'J', 4);
-  } else if (!strcmp(str, tmp9)) {  // mod
-    err = 1;
-    push(s_lst, 0, 'A', 2);
   }
   return (err);
 }

@@ -12,10 +12,10 @@ typedef double Data;
 
 // структура элемента списка
 typedef struct Node {
-  Data data;  // по этому указателю мы храним какие-то данные
+  Data data;  //  цифры
   struct Node *next;  // это у нас ссылка на следующий указатель
-  char oper;
-  int prioritet;  // struct list_item *prev это у нас ссылка на предыдущий указатель
+  char oper;  //  знаки
+  int prioritet;  //  приоритет, у цифр = 0
 } Node;
 // typedef struct Node Node;
 

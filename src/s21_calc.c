@@ -8,7 +8,7 @@ int calc(Node **list, Node **s_lst, int next_prior, char oper) {
     if (oper == ')') {
       sum = total(list, s_lst);
     } else if (next_prior > (**s_lst).prioritet || oper == '(') {
-// /* если в стеке приоритет меньше чем текущий, кладем знак в стек */
+      // /* если в стеке приоритет меньше чем текущий, кладем знак в стек */
       push(s_lst, 0, oper, next_prior);
     } else {  //  рекурсия или цикл что бы постоянно проверял условие
       while (*s_lst != NULL && next_prior <= (**s_lst).prioritet) {
@@ -70,7 +70,7 @@ Data total(Node **list, Node **s_lst) {
         sum = var2 * var1;
       } else if (sign == '^') {
         sum = pow(var2, var1);
-      } else if (sign == 'A') {
+      } else if (sign == '%') {
         sum = fmod(var2, var1);
       }
     }
@@ -123,6 +123,8 @@ int pars_sing(char val) {
     prior = -1;
   } else if (val == ')') {
     prior = -1;
-  }
+  } else if (val == '%') {
+    prior = 3;
+  } 
   return prior;
 }

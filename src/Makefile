@@ -1,7 +1,6 @@
 CC = gcc -std=c11
 SOURSE = s21_calc.c s21_steck.c s21_validation.c
-LINUX= -lsubunit -lrt -lpthread -lm
-# LFLAGS= -fprofile-arcs -ftest-coverage
+LINUX= -lrt -lpthread -lm
 LIBS= -lcheck -lm -lpthread
 GCC = $(CC) -Wall -Wextra -Werror
 OS= $(shell uname -s)
@@ -18,21 +17,19 @@ else
 endif
 	./test
 
-gcov_report: clean_test
-	ifeq ($(OS), Darwin)
-		$(GCC) --coverage test.c s21_*.c -o test $(LIBS)
+gcov_report:
+ifeq ($(OS), Darwin)
+	$(GCC) --coverage test.c s21_*.c -o test $(LIBS)
 
-	else
-		$(GCC) --coverage test.c s21_*.c -o test $(LIBS) $(LINUX)
+else
+	$(GCC) --coverage test.c s21_*.c -o test $(LIBS) $(LINUX)
 
-	endif
-		./test
-		lcov -t "test" -o test.info --no-external -c -d .
-		genhtml -o report test.info
-		open report/index.html
-		rm -rf test.* s21_*.* test s21_*
-
-s21_smartcalc.a: build_calc
+endif
+	chmod +x *
+	./test
+	lcov -t "test" -o test.info --no-external -c -d .
+	genhtml -o report/ test.info
+	open ./report/index.html
 
 dvi:
 	 open dvi.html
@@ -40,15 +37,12 @@ dvi:
 install:
 	mv Makefile cloneMake && qmake && make && make clean && rm Makefile && mv cloneMake Makefile
 
-open:
-	ifeq ($(OS),Darwin)
-		open smartcalk
 
 uninstall:
 		rm -rf smartcalk.app
 
 
-build_calc:
+s21_smartcalc.a:
 	gcc -c s21_*.c
 	ar rcs s21_smartcalc.a s21_*.o
 	ranlib s21_smartcalc.a 
@@ -69,32 +63,30 @@ clean:
 	rm -rf *.a
 	rm -rf *.cfg
 	rm -rf build
+
 dist:
 	mkdir build
 	tar -cf build/dist.tar smartcalk.app
 
-tests: OBJECT
-	$(CC) -I include  $(SOURSE) unit_test.c -o test -lcheck
-	./test
-
-git:
+push:
 	git add .
 	git commit -m "вроде все"
 	git push
 
-cpp:
-	cp ../materials/linters/CPPLINT.cfg ./
-	python3 ../materials/linters/cpplint.py s21_*.h s21_*.c
-	cppcheck *.c
+# cpp:
+# 	cp ../materials/linters/CPPLINT.cfg ./
+# 	python3 ../materials/linters/cpplint.py s21_*.h s21_*.c
+# 	cppcheck *.c
 
-OBJECT:
-	$(GCC) $(SOURSE) -c
+install_lcov:
+	curl -fsSL https://rawgit.com/kube/42homebrew/master/install.sh | zsh
+	brew install lcov
 
 valgrind:
 	valgrind --leak-check=full --track-origins=yes --trace-children=yes -s ./test
 
 clang:
 	mv ../materials/linters/.clang-format .clang-format
-	# clang-format -i s21_*.c s21_*.h
+	clang-format -i s21_*.c s21_*.h
 	clang-format -n s21_*.c s21_*.h
 	mv .clang-format ../materials/linters/.clang-format
