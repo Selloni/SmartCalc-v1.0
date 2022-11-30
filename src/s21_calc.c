@@ -125,6 +125,6 @@ int pars_sing(char val) {
     prior = -1;
   } else if (val == '%') {
     prior = 3;
-  } 
+  }
   return prior;
 }

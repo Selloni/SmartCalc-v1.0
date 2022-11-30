@@ -14,7 +14,7 @@ typedef double Data;
 typedef struct Node {
   Data data;  //  цифры
   struct Node *next;  // это у нас ссылка на следующий указатель
-  char oper;  //  знаки
+  char oper;      //  знаки
   int prioritet;  //  приоритет, у цифр = 0
 } Node;
 // typedef struct Node Node;

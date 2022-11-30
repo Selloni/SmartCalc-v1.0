@@ -184,17 +184,73 @@ END_TEST
 
 START_TEST(test_smart_calc_25) {
   char input[255] = "sin(-1)";
-  double result = pull_stack(input, 0);
-  ck_assert_int_eq(result, 0.84);
+  if (!validation(input)) { 
+    double result = pull_stack(input, 0);
+    ck_assert_int_eq(result, 0.84);
+  }
 }
 END_TEST
 
-// START_TEST(test_smart_calc_26) {
-//   char input[255] = "5.3%3";
-//   double result = pull_stack(input, 0);
-//   ck_assert_int_eq(result, 2);
+START_TEST(test_smart_calc_26) {
+  char input[255] = "(/)3";
+  if (!validation(input)) {
+    double result = pull_stack(input, 0);
+    ck_assert_int_eq(result, 2);
+  }
+}
+END_TEST
+
+START_TEST(test_smart_calc_27) {
+  char input[255] = "3%";
+  int result = validation(input); 
+  ck_assert_int_eq(result, 1);
+}
+END_TEST
+
+START_TEST(test_smart_calc_28) {
+  char input[255] = "(/3)";
+  double result = validation(input);
+  ck_assert_int_eq(result, 1);
+}
+END_TEST
+
+START_TEST(test_smart_calc_29) {
+  double X= 2;
+  char input[255] = "((-2-3+X))";
+  double result = pull_stack(input, X);
+  ck_assert_int_eq((int)result, -3);
+}
+END_TEST
+
+// START_TEST(test_smart_calc_30) {
+//   char input[255] = "((-2-3+X))";
+//   int result = validation(input); 
+//   ck_assert_int_eq(result, 0);
 // }
 // END_TEST
+
+// START_TEST(test_smart_calc_31) {
+//   char input[255] = "((-2-3+X)*3)";
+//   int result = validation(input); 
+//   ck_assert_int_eq(result, 0);
+// }
+// END_TEST
+
+// START_TEST(test_smart_calc_32) {
+//   char input[255] = "4((-2+X)3)";
+//   int result = validation(input); 
+//   ck_assert_int_eq(result, 0);
+// }
+// END_TEST
+
+START_TEST(test_smart_calc_33) {
+  double X= 2;
+  char input[255] = "4((-3+X)2)";
+  double result = pull_stack(input, X);
+  ck_assert_int_eq((int)result, -8);
+}
+END_TEST
+
 
 int main() {
   Suite *s1 = suite_create("s21_smart_calc: ");
@@ -228,7 +284,14 @@ int main() {
   tcase_add_test(tc1_1, test_smart_calc_23);
   tcase_add_test(tc1_1, test_smart_calc_24);
   tcase_add_test(tc1_1, test_smart_calc_25);
-  // tcase_add_test(tc1_1, test_smart_calc_26);
+  tcase_add_test(tc1_1, test_smart_calc_26);
+  tcase_add_test(tc1_1, test_smart_calc_27);
+  tcase_add_test(tc1_1, test_smart_calc_28);
+  tcase_add_test(tc1_1, test_smart_calc_29);
+  // tcase_add_test(tc1_1, test_smart_calc_30);
+  // tcase_add_test(tc1_1, test_smart_calc_31);
+  // tcase_add_test(tc1_1, test_smart_calc_32);
+  tcase_add_test(tc1_1, test_smart_calc_33);
 
   srunner_run_all(sr, CK_ENV);
   result = srunner_ntests_failed(sr);

@@ -23,11 +23,16 @@ Data pull_stack(char *value, Data value_x) {
       str[j] = value[i];
       num_flag = 1;
       j++;
+      if (value[i+1] == '(' || value[i-1] == ')') push(&s_lst, 0, '*', 3);
     } else if (value[i] == 'X') {
       push(&list, value_x, '0', 0);
-    } else if (value[i] == '(' && (value[i+1] == '+' || value[i+1] == '-')) {
-          push(&list, 0, 0, 0);
-          push(&s_lst, 0, '(', -1);
+      if ((value[i - 1] > 47 && value[i - 1] < 58) || (value[i + 1] > 47 && value[i + 1] < 58)) {
+        push(&s_lst, 0, '*', 3);  //  умножение между Х и числом
+      }
+    } else if (value[i] == '(' &&
+               (value[i + 1] == '+' || value[i + 1] == '-')) {
+      push(&list, 0, 0, 0);  //  пушу 0 если после скобки знак
+      push(&s_lst, 0, '(', -1);
     } else {  //  не цифры
       j = 0;
       if (num_flag) {

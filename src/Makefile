@@ -1,6 +1,6 @@
 CC = gcc -std=c11
 SOURSE = main.c s21_calc.c s21_steck.c s21_validation.c
-LINUX= -lrt -lpthread -lm
+LINUX= -lsubunit -lrt -lpthread -lm
 LIBS= -lcheck -lm -lpthread
 GCC = $(CC) -Wall -Wextra -Werror
 OS= $(shell uname -s)
@@ -40,6 +40,7 @@ install:
 
 uninstall:
 		rm -rf smartcalk.app
+		
 
 
 s21_smartcalc.a:
