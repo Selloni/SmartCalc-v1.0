@@ -21,7 +21,9 @@ int validation(char *value) {
               (value[i] != ')' && value[i + 1] != ')'))
             break;
         } else if (value[i] == '(' &&
-                   ((value[i + 1] >= 41 && value[i + 1] <= 47) || value[i + 1] == 94 || value[i + 1] == 37) && (value[i + 1] != 45 || value[i + 1] != 43)) {
+                   ((value[i + 1] >= 41 && value[i + 1] <= 47) ||
+                    value[i + 1] == 94 || value[i + 1] == 37) &&
+                   (value[i + 1] != 45 || value[i + 1] != 43)) {
           break;
         } else if (value[i] == '*' || value[i] == '+' || value[i] == '/' ||
                    value[i] == '-') {
