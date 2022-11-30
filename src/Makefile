@@ -71,7 +71,7 @@ dist:
 
 push:
 	git add .
-	git commit -m "вроде все"
+	git commit -m "done"
 	git push
 
 # cpp:

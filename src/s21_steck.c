@@ -15,8 +15,6 @@ Data pull_stack(char *value, Data value_x) {
   len += 1;
   if (value[0] == '-' || value[0] == '+') {
     push(&list, 0, '0', 0);
-    // push(&s_lst, 0, value[0], 1);
-    // i++;
   }
   while (i != len) {
     if ((value[i] > 47 && value[i] < 58) || value[i] == '.') {

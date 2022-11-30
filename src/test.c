@@ -251,6 +251,14 @@ START_TEST(test_smart_calc_33) {
 }
 END_TEST
 
+// START_TEST(test_smart_calc_34) {
+//   double X= 2;
+//   char input[255] = "2^2^3";
+//   double result = pull_stack(input, X);
+//   ck_assert_int_eq((int)result, 264);
+// }
+// END_TEST
+
 
 int main() {
   Suite *s1 = suite_create("s21_smart_calc: ");
@@ -292,6 +300,7 @@ int main() {
   // tcase_add_test(tc1_1, test_smart_calc_31);
   // tcase_add_test(tc1_1, test_smart_calc_32);
   tcase_add_test(tc1_1, test_smart_calc_33);
+  // tcase_add_test(tc1_1, test_smart_calc_34);
 
   srunner_run_all(sr, CK_ENV);
   result = srunner_ntests_failed(sr);
